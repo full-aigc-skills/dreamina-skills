@@ -1,4 +1,4 @@
-# text2image 参数参考（CLI v1.4.14）
+# text2image 参数参考（CLI v1.4.15）
 
 | 参数 | 必填 | 取值/约束 |
 |---|---|---|
@@ -12,7 +12,7 @@
 | `--poll` | 否 | 非负秒数；0 表示仅提交 |
 
 尺寸与模型矩阵以
-[`dreamina-cli` skill 的统一 v1.4.14 契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.14-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
+[`dreamina-cli` skill 的统一 v1.4.15 契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.15-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
 为准。
 
 ```bash

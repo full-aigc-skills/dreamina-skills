@@ -1,12 +1,12 @@
 ---
 name: jimeng-cli-text2video
-description: Use when the user wants to submit, poll, or troubleshoot Dreamina 即梦 text-to-video tasks through `dreamina text2video`. Covers CLI v1.4.14 required video resolution, Seedance 2.0 model constraints, duration and ratio validation, sessions, and async terminal statuses.
+description: Use when the user wants to submit, poll, or troubleshoot Dreamina 即梦 text-to-video tasks through `dreamina text2video`. Covers CLI v1.4.15 required video resolution, Seedance 2.0 家族 plus seedance2.5 model constraints, duration and ratio validation, sessions, and async terminal statuses.
 license: Complete terms in LICENSE.txt
 ---
 
 # 即梦 CLI 文生视频
 
-执行前先运行 `dreamina text2video -h`。本技能记录 v1.4.14 稳定工作流；实际 help 始终是参数事实源。
+执行前先运行 `dreamina text2video -h`。本技能记录 v1.4.15 稳定工作流；实际 help 始终是参数事实源。
 
 ## When to use and boundary
 
@@ -14,10 +14,11 @@ license: Complete terms in LICENSE.txt
 
 ## 必须遵守
 
-- 每次提交显式传 `--video_resolution`，token 必须是小写 `720p`、`1080p` 或 `4k`。
-- `seedance2.0_vip` 支持 720p/1080p/4k；其他公开模型仅支持 720p。
-- 文生视频公开模型仅为 Seedance 2.0 家族，不要传旧 3.x 或 Seedance 1.x token。
-- duration 范围 4–15 秒，默认模型 `seedance2.0fast`。
+- 每次提交显式传 `--video_resolution`，token 必须是小写 `480p`/`720p`/`1080p`/`4k`。`480p` 仅 `seedance2.5` 支持。
+- `seedance2.0_vip` 支持 720p/1080p/4k；其他 Seedance 2.0 家族模型仅支持 720p。
+- v1.4.15 新增 `seedance2.5`：480p/720p，时长 4–30 秒。
+- 文生视频公开模型仅为 Seedance 2.0 家族与 `seedance2.5`，不要传旧 3.x 或 Seedance 1.x token。
+- Seedance 2.0 家族时长 4–15 秒，默认模型 `seedance2.0fast`；`seedance2.5` 时长 4–30 秒。
 - 提交前说明会消耗积分；耗时场景优先异步提交。
 
 ## 标准执行
@@ -45,6 +46,18 @@ dreamina text2video \
   --poll=0
 ```
 
+v1.4.15 Seedance 2.5 长视频（4–30 秒，仅 480p/720p）：
+
+```bash
+dreamina text2video \
+  --prompt="延时摄影：城市从黎明到夜空的连续变化，云层流动，灯光渐次亮起" \
+  --duration=20 \
+  --ratio=16:9 \
+  --model_version=seedance2.5 \
+  --video_resolution=720p \
+  --poll=0
+```
+
 ## 异步闭环
 
 ### Step 1：验证
@@ -63,14 +76,15 @@ dreamina text2video \
 ## Gotchas
 
 1. **分辨率遗漏**：每次都必须传 `video_resolution`。
-2. **token 大小写**：使用 `720p`/`1080p`，不是大写 P。
+2. **token 大小写**：使用 `480p`/`720p`/`1080p`/`4k`，不是大写 P。
 3. **模型越界**：文生视频不接受 Seedance 1.x 或旧 3.x。
-4. **高分辨率误用**：1080p/4k 仅 `seedance2.0_vip`。
-5. **长任务误判**：poll 超时仍为 `querying` 时继续查询，不立即重提。
+4. **高分辨率误用**：1080p/4k 仅 `seedance2.0_vip`；`seedance2.5` 不可用 1080p/4k。
+5. **时长越界**：Seedance 2.0 家族 4–15 秒，`seedance2.5` 4–30 秒，超出会被拒。
+6. **长任务误判**：poll 超时仍为 `querying` 时继续查询，不立即重提；长视频尤其需要更长 `--poll`。
 
 ## References
 
-- [`dreamina-cli` skill 的 v1.4.14 参数契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.14-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
+- [`dreamina-cli` skill 的 v1.4.15 参数契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.15-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
 - [参数参考](references/parameter-reference.md)
 - [模型选择](references/model-guide.md)
 - [VIP 指南](references/official-doc-vip-guide.md)

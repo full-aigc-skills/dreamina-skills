@@ -50,3 +50,21 @@ dreamina multimodal2video \
   --model_version=seedance2.0 \
   --poll=180
 ```
+
+### v1.4.15 Seedance 2.5：纯音频驱动
+
+v1.4.15 起 `multimodal2video --model_version=seedance2.5` 允许**仅传音频**作为输入，
+参考音视频总时长 2–30 秒，输出时长 4–30 秒，仅 480p/720p。
+
+```bash
+dreamina user_credit
+ls -la ./music.mp3
+
+dreamina multimodal2video \
+  --video_resolution=720p \
+  --audio ./music.mp3 \
+  --prompt="按音乐情绪切换画面，节奏点对应转场；保持电影感调色与稳定运镜。" \
+  --duration=20 \
+  --model_version=seedance2.5 \
+  --poll=240
+```

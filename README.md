@@ -34,7 +34,7 @@ Or install specific skills: `npx skills add full-aigc-skills/jimeng-skills --ski
 
 | Skill | Description |
 |-------|-------------|
-| `dreamina-cli` | Umbrella skill for CLI v1.4.14 cross-cutting contracts, OAuth login, session CRUD, task history, command selection, and routing to the four execution skills. |
+| `dreamina-cli` | Umbrella skill for CLI v1.4.15 cross-cutting contracts, OAuth login, session CRUD, task history, command selection, and routing to the four execution skills. |
 | `jimeng-cli-image2image` |  Provides comprehensive guidance for executing image-to-image (图生图) editing via the dreamina CLI for |
 | `jimeng-cli-image2video` |  "Provides comprehensive guidance for executing image-to-video (图生视频) generation via the dreamina CL |
 | `jimeng-cli-text2image` |  Provides comprehensive guidance for executing text-to-image generation via the dreamina CLI for 即梦  |

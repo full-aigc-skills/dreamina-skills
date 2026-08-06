@@ -50,6 +50,35 @@ dreamina text2video \
 dreamina query_result --submit_id=<id> --download_dir=./output
 ```
 
+**最高分辨率场景**: v1.4.14 之前需 `seedance2.0_vip --video_resolution=1080p/4k`；
+v1.4.15 `seedance2.5` 不可走 1080p/4k，如需高分辨率仍保留 VIP 路径。
+
+---
+
+## 工作流 2.5：长视频 / 延时摄影（v1.4.15 Seedance 2.5）
+
+**场景**: 需要 15 秒以上的长视频，例如延时摄影、镜头叙事
+
+**步骤**:
+```bash
+dreamina user_credit
+
+# seedance2.5 仅 480p/720p，时长 4–30 秒
+dreamina text2video \
+  --video_resolution=720p \
+  --prompt="<long-form prompt with motion beats>" \
+  --duration=20 \
+  --ratio=16:9 \
+  --model_version=seedance2.5 \
+  --poll=240
+
+# 长视频即使 240 秒也可能仍 querying，继续 query_result
+dreamina query_result --submit_id=<id> --download_dir=./output
+```
+
+**注意**：`seedance2.5` 不走 VIP 通道，不能选 1080p/4k；如果业务方坚持高分辨率
+长视频，目前官方 CLI 暂无对应组合，需走 Web 端。
+
 ---
 
 ## 工作流 3：异步批量视频

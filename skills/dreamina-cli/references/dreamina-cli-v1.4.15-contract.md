@@ -1,7 +1,11 @@
-# Dreamina CLI v1.4.14 契约
+# Dreamina CLI v1.4.15 契约
 
 > 来源：官方安装器 `curl -fsSL https://jimeng.jianying.com/cli | bash` 安装的
-> 2026-07-21 构建（commit `b5ccc5d`）及各子命令 `-h`。执行真实任务前仍须重跑 help。
+> 2026-08-01 构建及各子命令 `-h`。执行真实任务前仍须重跑 help。
+>
+> v1.4.15 相对 v1.4.14 的差异：视频侧新增 `--model_version=seedance2.5`，适用
+> `text2video`、`image2video`、`frames2video`、`multimodal2video`，输出
+> 480p / 720p，时长 4–30 秒；`multimodal2video` 支持 2–30 秒参考音视频及纯音频输入。
 
 ## 图片生成
 
@@ -24,17 +28,17 @@
 
 | 命令 | 公开模型 | 分辨率 |
 |---|---|---|
-| `text2video` | Seedance 2.0 家族 | VIP 模型 720p/1080p/4k；其他 720p |
-| `image2video` | `seedance1.0fast`、`seedance1.5pro`、Seedance 2.0 家族 | 同上 |
-| `frames2video` | `seedance1.5pro`、Seedance 2.0 家族 | 同上 |
-| `multimodal2video` | Seedance 2.0 家族 | 同上 |
+| `text2video` | Seedance 2.0 家族、`seedance2.5` | VIP 模型 720p/1080p/4k；其他 720p；`seedance2.5` 仅 480p/720p |
+| `image2video` | `seedance1.0fast`、`seedance1.5pro`、Seedance 2.0 家族、`seedance2.5` | 同上 |
+| `frames2video` | `seedance1.5pro`、Seedance 2.0 家族、`seedance2.5` | 同上 |
+| `multimodal2video` | Seedance 2.0 家族、`seedance2.5` | 同上 |
 | `multiframe2video` | 固定模型，不可覆写 | 720p、1080p |
 
-- 所有视频生成命令的 `--video_resolution` 必填，token 使用小写 `720p`、`1080p`、`4k`。
+- 所有视频生成命令的 `--video_resolution` 必填，token 使用小写 `720p`、`1080p`、`4k`；`seedance2.5` 可使用 `480p` 或 `720p`。
 - `image2video` 的 `--image`、`--prompt`、`--video_resolution` 均必填。
 - `seedance1.0fast` 时长 5–10 秒；`seedance1.5pro` 时长 5–12 秒；
-  Seedance 2.0 家族时长 4–15 秒。
-- `multimodal2video` 至少包含一个 image 或 video；audio 不能单独提交。
+  Seedance 2.0 家族时长 4–15 秒；`seedance2.5` 时长 4–30 秒。
+- `multimodal2video` v1.4.15 起允许纯音频输入；参考音视频总时长 2–30 秒。
 - `multiframe2video` 接受 2–20 张图；单段时长 1–8 秒，总时长至少 2 秒。
 
 ## 异步状态
@@ -49,7 +53,7 @@
 1. 通过官方安装器升级 CLI。
 2. 运行每个生成子命令的 `-h`。
 3. 更新 SDK 的
-   `src/test/resources/cli-contract/dreamina-v1.4.14-help.snapshot.tsv`。
+   `src/test/resources/cli-contract/dreamina-v1.4.15-help.snapshot.tsv`。
 4. 运行：
 
 ```bash

@@ -1,12 +1,12 @@
 ---
 name: jimeng-cli-text2image
-description: Use when the user wants to submit, poll, or troubleshoot Dreamina 即梦 text-to-image tasks through `dreamina text2image`. Covers CLI v1.4.14 required resolution, custom width/height, Seedream model tokens, batch count, sessions, and async terminal status handling.
+description: Use when the user wants to submit, poll, or troubleshoot Dreamina 即梦 text-to-image tasks through `dreamina text2image`. Covers CLI v1.4.15 required resolution, custom width/height, Seedream model tokens, batch count, sessions, and async terminal status handling.
 license: Complete terms in LICENSE.txt
 ---
 
 # 即梦 CLI 文生图
 
-执行前先运行 `dreamina text2image -h`。本技能记录 v1.4.14 稳定工作流；实际 help 始终是参数事实源。
+执行前先运行 `dreamina text2image -h`。本技能记录 v1.4.15 稳定工作流；实际 help 始终是参数事实源。
 
 ## When to use and boundary
 
@@ -21,7 +21,7 @@ license: Complete terms in LICENSE.txt
 - 提交前说明会消耗积分；优先 `--poll=0` 获取 `submit_id`。
 
 模型与分辨率矩阵、宽高像素限制见
-[`dreamina-cli` skill 的 `references/dreamina-cli-v1.4.14-contract.md`](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.14-contract.md)。
+[`dreamina-cli` skill 的 `references/dreamina-cli-v1.4.15-contract.md`](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.15-contract.md)。
 如未安装,请先 `npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`。
 
 ## 标准执行
@@ -65,7 +65,7 @@ dreamina text2image \
 
 ## Gotchas
 
-1. **分辨率遗漏**：v1.4.14 会拒绝未传 `resolution_type` 的请求。
+1. **分辨率遗漏**：v1.4.15（沿用 v1.4.14 规则）会拒绝未传 `resolution_type` 的请求。
 2. **宽高冲突**：自定义 width/height 不能与 ratio 同时出现。
 3. **展示名误作 token**：`5.0 Pro` 必须转换为 `5.0Pro`。
 4. **受理误作成功**：`querying` 不是成功终态。
@@ -73,7 +73,7 @@ dreamina text2image \
 
 ## References
 
-- [`dreamina-cli` skill 的 v1.4.14 参数契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.14-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
+- [`dreamina-cli` skill 的 v1.4.15 参数契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.15-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
 - [参数参考](references/parameter-reference.md)
 - [模型选择](references/model-guide.md)
 - [工作流模式](references/workflow-patterns.md)

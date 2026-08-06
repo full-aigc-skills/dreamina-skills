@@ -46,6 +46,8 @@
 | "产品使用步骤演示" | multiframe2video | 步骤序列 |
 | "把这个人物放到那个场景里动起来" | multimodal2video | 人物+场景分离 |
 | "让这张照片里的人跟着音乐节奏说话" | multimodal2video | 音频驱动 |
+| "给一段 15 秒以上的音乐生成匹配画面" | multimodal2video `--model_version=seedance2.5`（v1.4.15 起支持纯音频） | 长时长纯音频 |
+| "给一张主图生成 20 秒的长镜头" | image2video `--model_version=seedance2.5` | v1.4.15 新增长时长 |
 
 ## 常见误路由
 

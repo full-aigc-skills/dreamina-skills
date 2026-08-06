@@ -1,6 +1,6 @@
 ---
 name: dreamina-cli
-description: Use when an agent needs Dreamina（即梦） login, sessions, task history, or image/video generation through the dreamina CLI, especially when command routing is not yet known. Covers the v1.4.14 cross-cutting contract and routes generation to the four `jimeng-cli-*` execution skills.
+description: Use when an agent needs Dreamina（即梦） login, sessions, task history, or image/video generation through the dreamina CLI, especially when command routing is not yet known. Covers the v1.4.15 cross-cutting contract (Seedream 4.x/5.0/5.0Pro for images, Seedance 1.x/2.0 家族 plus seedance2.5 for video) and routes generation to the four `jimeng-cli-*` execution skills.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -12,8 +12,8 @@ Use this skill when you need Dreamina（即梦） image or video generation, log
 
 This skill is intentionally short. Detailed flags and supported values belong to the CLI itself, so always treat `dreamina -h` and `dreamina <subcommand> -h` as the primary reference.
 
-The reviewed v1.4.14 contract is recorded in
-[references/dreamina-cli-v1.4.14-contract.md](references/dreamina-cli-v1.4.14-contract.md).
+The reviewed v1.4.15 contract is recorded in
+[references/dreamina-cli-v1.4.15-contract.md](references/dreamina-cli-v1.4.15-contract.md).
 
 ## When to use and boundary
 
@@ -59,7 +59,7 @@ Warn about credit consumption, distinguish help inspection from real submit, and
 ## Gotchas
 
 1. **Help drift**: release notes are not a substitute for current subcommand help.
-2. **Double fact source**: keep parameter matrices in the v1.4.14 contract reference.
+2. **Double fact source**: keep parameter matrices in the v1.4.15 contract reference.
 3. **Accepted versus successful**: `querying` is not terminal success.
 4. **Paid action**: warn before any real generation submit.
 5. **OAuth pause**: always report whether login succeeded, was reused, or failed.

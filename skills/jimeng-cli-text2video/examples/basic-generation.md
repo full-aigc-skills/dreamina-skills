@@ -72,6 +72,23 @@ dreamina text2video --prompt="镜头缓缓推近，一只橘猫在窗台上伸�
 # 使用了所有默认值: duration=5s, ratio=16:9, model=seedance2.0fast, resolution=720p
 ```
 
+### Example: v1.4.15 长视频（Seedance 2.5）
+
+**场景**: 城市延时摄影，需要 20 秒以上连续画面
+
+**执行**:
+```bash
+dreamina user_credit
+dreamina text2video \
+  --video_resolution=720p \
+  --prompt="延时摄影：从黄昏到深夜的同一城市广场，行人穿梭、街灯渐次亮起、云层流动，20秒，电影感竖移镜头" \
+  --duration=20 \
+  --ratio=16:9 \
+  --model_version=seedance2.5 \
+  --poll=240
+# 注意：seedance2.5 仅 480p/720p，时长 4–30 秒；不可走 1080p/4k。
+```
+
 ## Workflow Summary
 
 ```

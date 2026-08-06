@@ -1,6 +1,6 @@
 ---
 name: jimeng-cli-image2video
-description: Use when the user provides image, video, or audio references and wants Dreamina 即梦 video generation through `image2video`, `frames2video`, `multiframe2video`, or `multimodal2video`. Covers CLI v1.4.14 mode routing, required video resolution, Seedance model sets, input limits, and async terminal statuses.
+description: Use when the user provides image, video, or audio references and wants Dreamina 即梦 video generation through `image2video`, `frames2video`, `multiframe2video`, or `multimodal2video`. Covers CLI v1.4.15 mode routing, required video resolution, Seedance 1.x/2.0 家族 plus seedance2.5 model sets, input limits, and async terminal statuses.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -17,19 +17,20 @@ license: Complete terms in LICENSE.txt
 | 单图动画 | `image2video` | `--image`、必填 `--prompt` |
 | 首尾帧过渡 | `frames2video` | `--first`、`--last` |
 | 2–20 张故事板 | `multiframe2video` | `--images` |
-| 图/视频/音频全能参考 | `multimodal2video` | 至少一张图或一个视频 |
+| 图/视频/音频全能参考 | `multimodal2video` | 至少一张图、一个视频或一个音频 |
 
-## v1.4.14 硬约束
+## v1.4.15 硬约束
 
 - 所有四种模式都必须显式传 `--video_resolution`。
-- 分辨率 token 使用小写 `720p`、`1080p`、`4k`。
-- `multiframe2video` 固定模型，只接受 720p/1080p。
-- 其他三种模式只有 `seedance2.0_vip` 可用 1080p/4k，其他模型仅 720p。
-- `image2video` 支持 `seedance1.0fast`、`seedance1.5pro` 和 Seedance 2.0 家族。
-- `frames2video` 支持 `seedance1.5pro` 和 Seedance 2.0 家族。
-- `multimodal2video` 仅支持 Seedance 2.0 家族，音频不能作为唯一输入。
+- 分辨率 token 使用小写 `480p`/`720p`/`1080p`/`4k`；`480p` 仅 `seedance2.5` 支持。
+- `multiframe2video` 固定模型，不接受 `seedance2.5`，只接受 720p/1080p。
+- 其他三种模式只有 `seedance2.0_vip` 可用 1080p/4k；`seedance2.5` 仅 480p/720p。
+- `image2video` 支持 `seedance1.0fast`、`seedance1.5pro`、Seedance 2.0 家族与 `seedance2.5`。
+- `frames2video` 支持 `seedance1.5pro`、Seedance 2.0 家族与 `seedance2.5`。
+- `multimodal2video` 支持 Seedance 2.0 家族与 `seedance2.5`；v1.4.15 起允许**纯音频**输入（仅 `seedance2.5`）。
+- `seedance2.5` 时长 4–30 秒，参考音视频总时长 2–30 秒。
 
-完整矩阵见 [`dreamina-cli` skill 的 v1.4.14 契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.14-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)。
+完整矩阵见 [`dreamina-cli` skill 的 v1.4.15 契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.15-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)。
 
 ## 最小正确示例
 
@@ -71,14 +72,15 @@ dreamina multiframe2video \
 ## Gotchas
 
 1. **模式误路由**：单图、首尾帧、故事板、全能参考的参数名不同。
-2. **分辨率遗漏**：四个命令都必须传 `video_resolution`。
-3. **多帧越权**：multiframe 不接受 model_version，也不能用 4k。
+2. **分辨率遗漏**：四个命令都必须传 `video_resolution`；`seedance2.5` 仅 480p/720p。
+3. **多帧越权**：multiframe 不接受 model_version，也不能用 4k，也不可用 `seedance2.5`。
 4. **transition 数量**：N 张图需要 N−1 条 transition。
-5. **音频单独提交**：multimodal 至少还要有一张图或一个视频。
+5. **音频单独提交**：v1.4.14 下 multimodal 至少还要有一张图或一个视频；v1.4.15 起 `seedance2.5` 允许纯音频输入（参考音视频总时长 2–30 秒）。
+6. **时长越界**：`seedance2.5` 4–30 秒；Seedance 2.0 家族 4–15 秒；超出会被拒。
 
 ## References
 
-- [`dreamina-cli` skill 的 v1.4.14 参数契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.14-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
+- [`dreamina-cli` skill 的 v1.4.15 参数契约](https://github.com/full-aigc-skills/jimeng-skills/blob/main/skills/dreamina-cli/references/dreamina-cli-v1.4.15-contract.md)(如未安装:`npx skills add full-aigc-skills/jimeng-skills --skill dreamina-cli`)
 - [模式选择](references/mode-guide.md)
 - [参数参考](references/parameter-reference.md)
 - [VIP 指南](references/official-doc-vip-guide.md)

@@ -28,7 +28,7 @@ npx skills add full-aigc-skills/jimeng-skills
 
 | 技能 | 描述 |
 |------|------|
-| `dreamina-cli` | dreamina CLI v1.4.14 总览技能，覆盖必填分辨率、精确模型 token、异步终态、OAuth 登录、会话 CRUD、任务历史与子命令路由。 |
+| `dreamina-cli` | dreamina CLI v1.4.15 总览技能，覆盖必填分辨率、精确模型 token、Seedance 2.5 长视频（480p/720p、4–30 秒）、异步终态、OAuth 登录、会话 CRUD、任务历史与子命令路由。 |
 | `jimeng-cli-image2image` |  Provides comprehensive guidance for executing image-to-image (图生图) editing via the dreamina CLI for |
 | `jimeng-cli-image2video` |  "Provides comprehensive guidance for executing image-to-video (图生视频) generation via the dreamina CL |
 | `jimeng-cli-text2image` |  Provides comprehensive guidance for executing text-to-image generation via the dreamina CLI for 即梦  |

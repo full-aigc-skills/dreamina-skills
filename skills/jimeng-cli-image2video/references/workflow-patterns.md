@@ -70,6 +70,40 @@ dreamina multimodal2video \
 
 ---
 
+## 工作流 4.5：v1.4.15 Seedance 2.5 长时长 / 纯音频
+
+**场景**: 长时长（>15s）的图生视频，或只有音频素材需要驱动画面
+
+**步骤（单图长镜头）**:
+```bash
+dreamina user_credit
+ls -la ./subject.png
+
+dreamina image2video \
+  --video_resolution=720p \
+  --image ./subject.png \
+  --prompt="慢速横移镜头，主体保持居中，背景流动" \
+  --duration=20 \
+  --model_version=seedance2.5 \
+  --poll=240
+```
+
+**步骤（纯音频驱动，仅 seedance2.5）**:
+```bash
+dreamina user_credit
+ls -la ./music.mp3
+
+dreamina multimodal2video \
+  --video_resolution=720p \
+  --audio ./music.mp3 \
+  --prompt="按音乐情绪切换画面，节奏点对应转场" \
+  --duration=20 \
+  --model_version=seedance2.5 \
+  --poll=240
+```
+
+---
+
 ## 文件验证
 
 ```bash
