@@ -1,0 +1,15 @@
+{
+  "skill": "dreamina-canvas-discover-models",
+  "scenario": "live capability discovery",
+  "description": "Confirms that every model, voice, ratio, resolution, duration, and batch value is taken from the live discovery payload rather than from cached memory.",
+  "expectations": [
+    "Before any generation, model search --detail full is run for the relevant --type",
+    "voice list paginates with --offset / --count and respects the 100-row ceiling",
+    "schema \"<command path>\" is consulted to confirm flag names before constructing argv",
+    "TTS --voice-name is resolved server-side; music --model is mandatory and taken from MODE=music",
+    "A remembered model name from another environment or older commit is rejected in favour of re-discovery",
+    "vipConfigs[] is read as a model requirement, not as a credit-balance signal"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["model", "voice", "schema", "version"]
+}

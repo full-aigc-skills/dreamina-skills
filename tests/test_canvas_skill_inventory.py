@@ -109,6 +109,16 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-auth")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_discovery_uses_runtime_catalogs(self) -> None:
+        text = skill_text("dreamina-canvas-discover-models")
+        for command in ("model search", "--detail full", "voice list", "schema"):
+            self.assertIn(command, text, command)
+        self.assertIn("never", text.lower())
+
+    def test_discovery_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-discover-models")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
