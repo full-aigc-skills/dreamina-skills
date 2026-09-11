@@ -26,6 +26,16 @@ CANVAS_SKILLS = {
 }
 
 
+def skill_text(name: str) -> str:
+    return (SKILLS / name / "SKILL.md").read_text(encoding="utf-8")
+
+
+def skill_openai_yaml(name: str) -> dict:
+    import yaml  # type: ignore[import-not-found]
+
+    return yaml.safe_load((SKILLS / name / "agents" / "openai.yaml").read_text(encoding="utf-8"))
+
+
 class CanvasSkillInventoryTests(unittest.TestCase):
     def test_canvas_skill_inventory_is_complete(self) -> None:
         actual = {
@@ -71,6 +81,15 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         )
         for family in ("auth", "model", "voice", "canvas", "node", "operation", "resource"):
             self.assertIn(family, schema["commands"], family)
+
+    def test_cli_skill_owns_cross_cutting_invariants(self) -> None:
+        text = skill_text("dreamina-canvas-cli")
+        for token in ("--format json", "requiredAction", "submitId", "exit code 20", "stdout", "stderr"):
+            self.assertIn(token, text, token)
+
+    def test_cli_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-cli")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-cli",
+  "scenario": "foundation invariants",
+  "description": "Confirms that the foundation Skill owns argv construction, exit-code routing, stdout/stderr separation, and identifier persistence.",
+  "expectations": [
+    "Pre-flight runs `version` then `schema <command path>` before any other call",
+    "argv is always passed via list, never shell interpolation",
+    "`--format json` is the default for every machine-driven call",
+    "Failures are routed by numeric exit code and `error.requiredAction`, never by parsing the localized message",
+    "`exit code 20` resumes the same operation; it never authorizes a new submission",
+    "`--submit-id \"\"` is rejected with exit 2 and is the deliberate trap for missing variable expansions",
+    "stdout in `--format json` mode contains only the declared payload; stderr carries the failure envelope",
+    "`projectId` and `submitId` are persisted across processes; reusing the same `submitId` never re-bills"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliVersionField": "data.commit"
+}
