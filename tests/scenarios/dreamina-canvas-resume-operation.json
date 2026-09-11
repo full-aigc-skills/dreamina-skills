@@ -1,0 +1,16 @@
+{
+  "skill": "dreamina-canvas-resume-operation",
+  "scenario": "operation recovery by submitId",
+  "description": "Confirms that recovery proceeds by ID, never by resubmitting with a fresh submitId, and that submission.state + resubmittable govern the only legal transition.",
+  "expectations": [
+    "operation status is preferred when the caller only needs a snapshot",
+    "operation wait --timeout bounds only the local wait; the server keeps running",
+    "submission.state=absent + resubmittable=true escalates to the user; never auto-retries",
+    "A missing submission field is treated as 'accepted by server', not as 'absent'",
+    "Per-item state rules apply for batch operations",
+    "Recovery journal persists projectId + nodeId + submitId with mode 0600",
+    "tokens, signed URLs, cookies, or creditConfirmationToken never appear in journals"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["operation", "node", "resource", "version"]
+}

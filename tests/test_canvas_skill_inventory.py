@@ -146,6 +146,19 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-quote-and-run")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_recovery_never_changes_submit_id(self) -> None:
+        text = skill_text("dreamina-canvas-resume-operation")
+        self.assertIn("operation status", text)
+        self.assertIn("operation wait", text)
+        self.assertIn("resubmittable", text)
+        # The skill must explicitly forbid re-submitting
+        self.assertIn("minting a new", text.lower())
+        self.assertIn("never", text.lower())
+
+    def test_resume_operation_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-resume-operation")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
