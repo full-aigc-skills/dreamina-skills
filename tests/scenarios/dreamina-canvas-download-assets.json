@@ -1,0 +1,16 @@
+{
+  "skill": "dreamina-canvas-download-assets",
+  "scenario": "verified asset download with SHA-256",
+  "description": "Confirms that downloads are verified by byte count + SHA-256 from the post-write response and that signed URLs are never persisted.",
+  "expectations": [
+    "resource get is informational; the post-write response is authoritative",
+    "resource download writes atomically; partial files never appear in --output",
+    "The skill treats exit 0 plus byteCount == wc -c plus sha256 == shasum as the only success signal",
+    "Mismatched byteCount or sha256 quarantines (with user consent) and is not auto-retried",
+    "resourceId is a lowercase canonical UUID; uppercase / urn:uuid: / hyphen-stripped / resource_ prefix are rejected",
+    "signedUrl, storageId, providerTaskId never appear in stdout, stderr, logs, fixtures, or journals",
+    "Output directory is user-approved and exists before download"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["resource", "node", "operation", "version"]
+}

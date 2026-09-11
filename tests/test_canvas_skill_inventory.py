@@ -159,6 +159,18 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-resume-operation")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_download_requires_resource_fact_and_receipt(self) -> None:
+        text = skill_text("dreamina-canvas-download-assets")
+        for token in ("resource get", "resource download", "SHA-256", "resourceId"):
+            self.assertIn(token, text, token)
+        # The skill must explicitly forbid persisting signed URLs
+        self.assertIn("never", text.lower())
+        self.assertIn("signed", text.lower())
+
+    def test_download_assets_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-download-assets")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
