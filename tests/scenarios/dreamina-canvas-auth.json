@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-auth",
+  "scenario": "auth lifecycle and profile isolation",
+  "description": "Confirms that auth account is the only authoritative logged-in check; auth status is local-only; profiles are isolated; non-TTY login returns a recoverable challenge without looping.",
+  "expectations": [
+    "auth account is treated as the authoritative 'am I logged in?' check",
+    "auth status is treated as local-only and never sufficient on its own",
+    "non-TTY auth login returns a challenge payload that is handed off to a human, not looped",
+    "auth wait --device-code is the recovery path, not auth login",
+    "profiles are isolated: credentials, contexts, and journal files do not cross profiles",
+    "any command returning exit 11 is recovered by re-login + retry with the same identifiers",
+    "any command returning exit 12 is escalated to a human, never auto-retried",
+    "tokens, cookies, signed URLs, and creditConfirmationToken never appear in stdout, stderr, logs, fixtures, or journals"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["auth", "version", "schema"]
+}

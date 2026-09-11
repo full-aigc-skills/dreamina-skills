@@ -91,6 +91,24 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-cli")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_auth_distinguishes_local_and_server_identity(self) -> None:
+        text = skill_text("dreamina-canvas-auth")
+        self.assertIn("auth status", text)
+        self.assertIn("auth account", text)
+        self.assertIn("local", text.lower())
+        self.assertIn("server", text.lower())
+        self.assertIn("token", text.lower())
+        # The skill must explicitly forbid persisting or echoing tokens
+        self.assertIn("never", text.lower())
+        # --profile isolation must be present
+        self.assertIn("--profile", text)
+        # auth wait is the recovery path, not auth login
+        self.assertIn("auth wait", text)
+
+    def test_auth_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-auth")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,17 @@
+interface:
+  display_name: "Dreamina Canvas Authentication"
+  short_description: "Login, refresh, logout, profile isolation; never persists tokens"
+  default_prompt: |
+    Use auth account as the authoritative "am I logged in?" check. auth status
+    is local-only and never enough on its own. Reuse the original projectId /
+    submitId / nodeId after re-authentication.
+policy:
+  allow_implicit_invocation: false
+  invocation_requires:
+    - "Confirmed installation of dreamina-canvas"
+    - "User consent for any interactive login or browser authorisation step"
+  forbids:
+    - "Persisting or logging OAuth tokens, cookies, signed URLs, or session material"
+    - "Speculative auth refresh when the credential is not in its refresh window"
+    - "Auto-retrying on permission denied (exit 12)"
+    - "Generating, quoting, or submitting any paid command"
