@@ -1,10 +1,10 @@
 <div align="center">
 
-# jimeng-skills
+# dreamina-skills
 
-**即梦 (Jimeng) AIGC skills — text-to-image, image-to-image, text-to-video, image-to-video via CLI and Prompt**
+**Dreamina（即梦）AIGC skills — text-to-image, image-to-image, text-to-video, and image-to-video via CLI, OpenCLI, and Prompt workflows**
 
-[![GitHub](https://img.shields.io/badge/github-full--aigc--skills%2Fjimeng-skills-green.svg)](https://github.com/full-aigc-skills/jimeng-skills)
+[![GitHub](https://img.shields.io/badge/github-full--aigc--skills%2Fdreamina-skills-green.svg)](https://github.com/full-aigc-skills/dreamina-skills)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-purple.svg)](https://agentskills.io)
 
@@ -18,35 +18,35 @@ English | [简体中文](./README.zh-CN.md)
 
 ## 📖 Introduction
 
-**jimeng-skills** is a curated collection of Agent Skills for AI coding agents, part of the [Full AIGC Skills](https://github.com/full-aigc-skills) ecosystem.
+**dreamina-skills** is a curated collection of Agent Skills for AI coding agents, part of the [Full AIGC Skills](https://github.com/full-aigc-skills) ecosystem.
 
 This package includes **13 skills**. Each skill is a self-contained `SKILL.md` file that AI agents load on-demand.
 
 ## 📦 Install
 
 ```bash
-npx skills add full-aigc-skills/jimeng-skills
+npx skills add full-aigc-skills/dreamina-skills
 ```
 
-Or install specific skills: `npx skills add full-aigc-skills/jimeng-skills --skill <skill-name>`
+Or install specific skills: `npx skills add full-aigc-skills/dreamina-skills --skill <skill-name>`
 
 ## 🎯 Skills (13)
 
 | Skill | Description |
 |-------|-------------|
-| `dreamina-cli` | Umbrella skill for CLI v1.4.15 cross-cutting contracts, OAuth login, session CRUD, task history, command selection, and routing to the four execution skills. |
-| `jimeng-cli-image2image` |  Provides comprehensive guidance for executing image-to-image (图生图) editing via the dreamina CLI for |
-| `jimeng-cli-image2video` |  "Provides comprehensive guidance for executing image-to-video (图生视频) generation via the dreamina CL |
-| `jimeng-cli-text2image` |  Provides comprehensive guidance for executing text-to-image generation via the dreamina CLI for 即梦  |
-| `jimeng-cli-text2video` |  Provides comprehensive guidance for executing text-to-video generation via the dreamina CLI for 即梦  |
-| `jimeng-opencli-image2image` |  Guide Jimeng image-to-image for standard members without dreamina CLI. opencli jimeng has no image2 |
-| `jimeng-opencli-image2video` |  Guide Jimeng image-to-video for standard members without dreamina CLI. opencli jimeng has no image2 |
-| `jimeng-opencli-text2image` |  Execute Jimeng text-to-image for standard (non-VIP) members using only opencli jimeng browser comma |
-| `jimeng-opencli-text2video` |  Guide Jimeng text-to-video for standard members without dreamina CLI. Use opencli jimeng generate-v |
-| `jimeng-prompt-image2image` |  "Provides comprehensive guidance for crafting image-to-image (图生图) edit prompts for 即梦 (Dreamina/Ji |
-| `jimeng-prompt-image2video` |  "Provides comprehensive guidance for crafting image-to-video (图生视频) prompts for 即梦 (Dreamina/Jimeng |
-| `jimeng-prompt-text2image` |  Provides comprehensive guidance for crafting text-to-image prompts for 即梦 (Dreamina/Jimeng) AI imag |
-| `jimeng-prompt-text2video` |  "Provides comprehensive guidance for crafting text-to-video prompts for 即梦 (Dreamina/Jimeng) video  |
+| `dreamina-cli` | Umbrella skill for CLI v1.4.18 contracts, runtime video-ratio discovery, OAuth login, session CRUD, task history, and routing to the four execution skills. |
+| `dreamina-cli-image2image` | Run image-guided editing through `dreamina image2image`, including model, size, batch, session, and async-result rules. |
+| `dreamina-cli-image2video` | Route and run image-, frame-, storyboard-, or multimodal-reference video tasks with command-specific ratio constraints. |
+| `dreamina-cli-text2image` | Run prompt-only image generation through `dreamina text2image` with validated model and resolution combinations. |
+| `dreamina-cli-text2video` | Run prompt-only video generation with v1.4.18 ratio, duration, resolution, and async-result handling. |
+| `dreamina-opencli-image2image` | Guide browser-command fallbacks for image editing when the local Dreamina CLI is unavailable. |
+| `dreamina-opencli-image2video` | Guide browser-command fallbacks for image-to-video workflows when the local Dreamina CLI is unavailable. |
+| `dreamina-opencli-text2image` | Run standard-member text-to-image workflows through OpenCLI browser commands. |
+| `dreamina-opencli-text2video` | Run standard-member text-to-video workflows through OpenCLI browser commands. |
+| `dreamina-prompt-image2image` | Author precise image-edit prompts for element, style, background, restoration, and multi-reference changes. |
+| `dreamina-prompt-image2video` | Author prompts for single-image, first/last-frame, multi-frame, and multimodal video generation. |
+| `dreamina-prompt-text2image` | Author structured Dreamina text-to-image prompts with scene, style, color, composition, and quality guidance. |
+| `dreamina-prompt-text2video` | Author structured Dreamina text-to-video prompts with motion, camera, timing, scene, and evaluation guidance. |
 
 ## 🤖 Supported Agents
 
@@ -57,14 +57,14 @@ Works with [Claude Code](https://code.claude.com), [Codex](https://developers.op
 **Option 1: npx skills CLI (Recommended)**
 
 ```bash
-npx skills add full-aigc-skills/jimeng-skills
+npx skills add full-aigc-skills/dreamina-skills
 ```
 
 **Option 2: Manual Installation**
 
 ```bash
-git clone https://github.com/full-aigc-skills/jimeng-skills.git
-cp -r jimeng-skills/skills/* .claude/skills/
+git clone https://github.com/full-aigc-skills/dreamina-skills.git
+cp -r dreamina-skills/skills/* .claude/skills/
 ```
 
 For more details, see the [Claude Code Skills Guide](https://code.claude.com/docs/en/skills) and [Agent Skills Spec](https://agentskills.io/).

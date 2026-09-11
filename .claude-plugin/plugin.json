@@ -1,26 +1,26 @@
 {
-  "name": "jimeng-skills",
-  "version": "1.3.0",
-  "description": "即梦 (Jimeng) AIGC skills — CLI v1.4.15 required resolution, custom image dimensions, exact Seedream/Seedance tokens, Seedance 2.5 long-form video (480p/720p, 4–30s) and pure-audio multimodal input, terminal statuses, sessions, and Prompt workflows",
+  "name": "dreamina-skills",
+  "version": "1.4.0",
+  "description": "Dreamina（即梦）AIGC skills — CLI v1.4.18 runtime video-ratio discovery, Seedance 2.5 video at 480p/720p/1080p for 4–30s, image/video generation, async terminal statuses, sessions, OpenCLI, and prompt workflows",
   "author": {
     "name": "AIGC Skills Community"
   },
-  "homepage": "https://github.com/full-aigc-skills/jimeng-skills",
-  "repository": "https://github.com/full-aigc-skills/jimeng-skills",
+  "homepage": "https://github.com/full-aigc-skills/dreamina-skills",
+  "repository": "https://github.com/full-aigc-skills/dreamina-skills",
   "source": "./",
   "skills": [
     "./skills/dreamina-cli",
-    "./skills/jimeng-cli-image2image",
-    "./skills/jimeng-cli-image2video",
-    "./skills/jimeng-cli-text2image",
-    "./skills/jimeng-cli-text2video",
-    "./skills/jimeng-opencli-image2image",
-    "./skills/jimeng-opencli-image2video",
-    "./skills/jimeng-opencli-text2image",
-    "./skills/jimeng-opencli-text2video",
-    "./skills/jimeng-prompt-image2image",
-    "./skills/jimeng-prompt-image2video",
-    "./skills/jimeng-prompt-text2image",
-    "./skills/jimeng-prompt-text2video"
+    "./skills/dreamina-cli-image2image",
+    "./skills/dreamina-cli-image2video",
+    "./skills/dreamina-cli-text2image",
+    "./skills/dreamina-cli-text2video",
+    "./skills/dreamina-opencli-image2image",
+    "./skills/dreamina-opencli-image2video",
+    "./skills/dreamina-opencli-text2image",
+    "./skills/dreamina-opencli-text2video",
+    "./skills/dreamina-prompt-image2image",
+    "./skills/dreamina-prompt-image2video",
+    "./skills/dreamina-prompt-text2image",
+    "./skills/dreamina-prompt-text2video"
   ]
 }

@@ -1,6 +1,6 @@
 ---
 name: dreamina-cli
-description: Use when an agent needs Dreamina（即梦） login, sessions, task history, or image/video generation through the dreamina CLI, especially when command routing is not yet known. Covers the v1.4.15 cross-cutting contract (Seedream 4.x/5.0/5.0Pro for images, Seedance 1.x/2.0 家族 plus seedance2.5 for video) and routes generation to the four `jimeng-cli-*` execution skills.
+description: Use when an agent needs Dreamina（即梦） login, sessions, task history, or image/video generation through the dreamina CLI, especially when command routing is not yet known or video ratio behavior must be checked at runtime.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -12,8 +12,8 @@ Use this skill when you need Dreamina（即梦） image or video generation, log
 
 This skill is intentionally short. Detailed flags and supported values belong to the CLI itself, so always treat `dreamina -h` and `dreamina <subcommand> -h` as the primary reference.
 
-The reviewed v1.4.15 contract is recorded in
-[references/dreamina-cli-v1.4.15-contract.md](references/dreamina-cli-v1.4.15-contract.md).
+The reviewed v1.4.18 contract is recorded in
+[references/dreamina-cli-v1.4.18-contract.md](references/dreamina-cli-v1.4.18-contract.md).
 
 ## When to use and boundary
 
@@ -53,13 +53,14 @@ Warn about credit consumption, distinguish help inspection from real submit, and
 ## Validation
 
 - Validate the installed CLI help against the reviewed contract before changing model or resolution assumptions.
+- Discover video ratio support at runtime with `dreamina <subcommand> --help`: four video commands expose `--ratio`, while `multiframe2video` infers it from the first image.
 - Validate local files before upload and preserve every returned `submit_id`.
 - Validate terminal status from `query_result`, not shell exit code alone.
 
 ## Gotchas
 
 1. **Help drift**: release notes are not a substitute for current subcommand help.
-2. **Double fact source**: keep parameter matrices in the v1.4.15 contract reference.
+2. **Double fact source**: keep parameter matrices in the v1.4.18 contract reference.
 3. **Accepted versus successful**: `querying` is not terminal success.
 4. **Paid action**: warn before any real generation submit.
 5. **OAuth pause**: always report whether login succeeded, was reused, or failed.
@@ -137,6 +138,9 @@ If you are running a test sweep, keep results in a machine-readable format so yo
   If the CLI returns `AigcComplianceConfirmationRequired`, reply proactively: ask them to complete that web-side confirmation first, then retry.
 - Do not assume that different commands support the same models, ratios, durations, or resolutions.
   Check each subcommand's `-h` before use.
+- In v1.4.18, `text2video` and `multimodal2video` accept explicit `--ratio`; `image2video`
+  and `frames2video` expose the flag but reject it with `seedance2.5`; `multiframe2video`
+  has no ratio flag. Re-discover these rules at runtime instead of generalizing across commands.
 
 ## Good agent behavior
 

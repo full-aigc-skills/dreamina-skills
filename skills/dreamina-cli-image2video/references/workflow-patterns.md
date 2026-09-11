@@ -1,0 +1,137 @@
+# Workflow Patterns — I2V 执行工作流
+
+> 4 种子命令的标准工作流和错误处理。
+
+---
+
+## 工作流 1：单图生视频
+
+```bash
+dreamina user_credit
+ls -la ./photo.png                    # 验证图片存在
+
+dreamina image2video \
+  --video_resolution=720p \
+  --image ./photo.png \
+  --prompt="微风吹动发丝，眼睛缓慢眨动，镜头缓缓推近" \
+  --duration=6 \
+  --poll=60
+```
+
+## 工作流 2：首尾帧
+
+```bash
+dreamina user_credit
+ls -la ./start.png ./end.png          # 验证两张图片
+
+dreamina frames2video \
+  --video_resolution=720p \
+  --first ./start.png \
+  --last ./end.png \
+  --prompt="花瓣从含苞到完全盛开，外层先开内层随后逐层绽放" \
+  --duration=10 \
+  --poll=60
+```
+
+## 工作流 3：多帧故事
+
+```bash
+dreamina user_credit
+# 验证所有帧存在
+ls -la ./f1.png ./f2.png ./f3.png ./f4.png
+
+dreamina multiframe2video \
+  --video_resolution=720p \
+  --images ./f1.png,./f2.png,./f3.png,./f4.png \
+  --transition-prompt="从沉思过渡到惊喜，镜头缓慢推进" \
+  --transition-prompt="从惊喜过渡到急切，镜头加速跟随" \
+  --transition-prompt="从急切过渡到喜悦，镜头稳定在笑容" \
+  --transition-duration=3 \
+  --transition-duration=3 \
+  --transition-duration=3 \
+  --poll=120
+```
+
+## 工作流 4：全能参考
+
+```bash
+dreamina user_credit
+ls -la ./person.png ./scene.png ./music.mp3
+
+dreamina multimodal2video \
+  --video_resolution=720p \
+  --image ./person.png \
+  --image ./scene.png \
+  --audio ./music.mp3 \
+  --prompt="图一人物特征配图二场景环境。运动节奏跟随音频。光源统一。色调协调。" \
+  --duration=10 \
+  --poll=120
+```
+
+---
+
+## 工作流 4.5：v1.4.18 Seedance 2.5 长时长 / 纯音频
+
+**场景**: 长时长（>15s）的图生视频，或只有音频素材需要驱动画面
+
+**步骤（单图长镜头）**:
+```bash
+dreamina user_credit
+ls -la ./subject.png
+
+dreamina image2video \
+  --video_resolution=720p \
+  --image ./subject.png \
+  --prompt="慢速横移镜头，主体保持居中，背景流动" \
+  --duration=20 \
+  --model_version=seedance2.5 \
+  --poll=240
+```
+
+**步骤（纯音频驱动，仅 seedance2.5）**:
+```bash
+dreamina user_credit
+ls -la ./music.mp3
+
+dreamina multimodal2video \
+  --video_resolution=720p \
+  --audio ./music.mp3 \
+  --prompt="按音乐情绪切换画面，节奏点对应转场" \
+  --duration=20 \
+  --model_version=seedance2.5 \
+  --poll=240
+```
+
+---
+
+## 文件验证
+
+```bash
+# 提交前必须验证所有输入文件存在
+ls -la ./input.png
+
+# 多文件逐个验证
+for f in ./a.png ./b.png ./c.png; do
+  test -f "$f" && echo "OK: $f" || echo "MISSING: $f"
+done
+```
+
+## 错误处理
+
+| 错误 | 原因 | 解决 |
+|------|------|------|
+| `AigcComplianceConfirmationRequired` | 模型需首次Web授权 | dreamina网站授权后重试 |
+| `Credit insufficient` | 额度不足 | 视频消耗大，告知用户 |
+| `file not found` | 图片路径错误 | `ls -la` 验证，使用绝对路径 |
+| `invalid sub-command` | 参数名用错 | 检查子命令参数：`--image` vs `--images` vs `--first` |
+| `too many images` | 超过限制 | multiframe ≤20, multimodal image ≤9 |
+| Poll timeout "querying" | 视频仍在生成 | 非失败。`query_result --submit_id=<id>` |
+
+## 登录排查
+
+```bash
+dreamina user_credit                   # 自检
+dreamina login --debug                 # 调试
+ls -la ~/.dreamina_cli/                # 配置文件
+dreamina relogin                       # 切换账号
+```

@@ -1,10 +1,10 @@
 <div align="center">
 
-# jimeng-skills
+# dreamina-skills
 
-**即梦 (Jimeng) AIGC 技能 — 文生图、图生图、文生视频、图生视频，CLI 与 Prompt 双通道**
+**Dreamina（即梦）AIGC 技能 — 文生图、图生图、文生视频、图生视频，覆盖 CLI、OpenCLI 与 Prompt 工作流**
 
-[![GitHub](https://img.shields.io/badge/github-full--aigc--skills%2Fjimeng-skills-green.svg)](https://github.com/full-aigc-skills/jimeng-skills)
+[![GitHub](https://img.shields.io/badge/github-full--aigc--skills%2Fdreamina-skills-green.svg)](https://github.com/full-aigc-skills/dreamina-skills)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-兼容-purple.svg)](https://agentskills.io)
 
@@ -16,31 +16,31 @@
 
 ## 📖 简介
 
-**jimeng-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **13 个技能**。
+**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **13 个技能**。
 
 ## 📦 安装
 
 ```bash
-npx skills add full-aigc-skills/jimeng-skills
+npx skills add full-aigc-skills/dreamina-skills
 ```
 
 ## 🎯 技能列表 (13)
 
 | 技能 | 描述 |
 |------|------|
-| `dreamina-cli` | dreamina CLI v1.4.15 总览技能，覆盖必填分辨率、精确模型 token、Seedance 2.5 长视频（480p/720p、4–30 秒）、异步终态、OAuth 登录、会话 CRUD、任务历史与子命令路由。 |
-| `jimeng-cli-image2image` |  Provides comprehensive guidance for executing image-to-image (图生图) editing via the dreamina CLI for |
-| `jimeng-cli-image2video` |  "Provides comprehensive guidance for executing image-to-video (图生视频) generation via the dreamina CL |
-| `jimeng-cli-text2image` |  Provides comprehensive guidance for executing text-to-image generation via the dreamina CLI for 即梦  |
-| `jimeng-cli-text2video` |  Provides comprehensive guidance for executing text-to-video generation via the dreamina CLI for 即梦  |
-| `jimeng-opencli-image2image` |  Guide Jimeng image-to-image for standard members without dreamina CLI. opencli jimeng has no image2 |
-| `jimeng-opencli-image2video` |  Guide Jimeng image-to-video for standard members without dreamina CLI. opencli jimeng has no image2 |
-| `jimeng-opencli-text2image` |  Execute Jimeng text-to-image for standard (non-VIP) members using only opencli jimeng browser comma |
-| `jimeng-opencli-text2video` |  Guide Jimeng text-to-video for standard members without dreamina CLI. Use opencli jimeng generate-v |
-| `jimeng-prompt-image2image` |  "Provides comprehensive guidance for crafting image-to-image (图生图) edit prompts for 即梦 (Dreamina/Ji |
-| `jimeng-prompt-image2video` |  "Provides comprehensive guidance for crafting image-to-video (图生视频) prompts for 即梦 (Dreamina/Jimeng |
-| `jimeng-prompt-text2image` |  Provides comprehensive guidance for crafting text-to-image prompts for 即梦 (Dreamina/Jimeng) AI imag |
-| `jimeng-prompt-text2video` |  "Provides comprehensive guidance for crafting text-to-video prompts for 即梦 (Dreamina/Jimeng) video  |
+| `dreamina-cli` | dreamina CLI v1.4.18 总览技能，覆盖运行时视频比例发现、Seedance 2.5（480p/720p/1080p、4–30 秒）、异步终态、OAuth 登录、会话 CRUD、任务历史与子命令路由。 |
+| `dreamina-cli-image2image` | 通过 `dreamina image2image` 执行图像编辑，覆盖模型、尺寸、批量、会话和异步结果规则。 |
+| `dreamina-cli-image2video` | 在单图、首尾帧、故事板和多模态参考之间路由，并执行命令级比例约束。 |
+| `dreamina-cli-text2image` | 通过 `dreamina text2image` 执行文生图，并校验模型与分辨率组合。 |
+| `dreamina-cli-text2video` | 执行文生视频，覆盖 v1.4.18 比例、时长、分辨率与异步结果闭环。 |
+| `dreamina-opencli-image2image` | 本地 Dreamina CLI 不可用时，指导通过 OpenCLI 浏览器命令完成图像编辑。 |
+| `dreamina-opencli-image2video` | 本地 Dreamina CLI 不可用时，指导通过 OpenCLI 浏览器命令完成图生视频。 |
+| `dreamina-opencli-text2image` | 通过 OpenCLI 浏览器命令执行普通会员文生图工作流。 |
+| `dreamina-opencli-text2video` | 通过 OpenCLI 浏览器命令执行普通会员文生视频工作流。 |
+| `dreamina-prompt-image2image` | 为元素、风格、背景、修复和多参考编辑编写精确的图生图提示词。 |
+| `dreamina-prompt-image2video` | 为单图、首尾帧、多帧和多模态视频生成编写提示词。 |
+| `dreamina-prompt-text2image` | 编写覆盖场景、风格、色彩、构图和质量约束的结构化文生图提示词。 |
+| `dreamina-prompt-text2video` | 编写覆盖运动、镜头、时间、场景和评估规则的结构化文生视频提示词。 |
 
 ## 🤖 支持的智能体
 
@@ -51,14 +51,14 @@ npx skills add full-aigc-skills/jimeng-skills
 **方式一：npx skills CLI（推荐）**
 
 ```bash
-npx skills add full-aigc-skills/jimeng-skills
+npx skills add full-aigc-skills/dreamina-skills
 ```
 
 **方式二：手动安装**
 
 ```bash
-git clone https://github.com/full-aigc-skills/jimeng-skills.git
-cp -r jimeng-skills/skills/* .claude/skills/
+git clone https://github.com/full-aigc-skills/dreamina-skills.git
+cp -r dreamina-skills/skills/* .claude/skills/
 ```
 
 ## 📄 License

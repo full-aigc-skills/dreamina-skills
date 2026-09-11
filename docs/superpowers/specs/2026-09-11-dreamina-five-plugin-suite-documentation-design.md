@@ -10,8 +10,8 @@
 
 本阶段只交付可检查的规划与文档，不执行以下操作：
 
-- 不重命名本地 `jimeng-skills` 目录。
-- 不重命名 `full-aigc-skills/jimeng-skills` GitHub 仓库。
+- 不重命名本地 `dreamina-skills` 目录。
+- 不重命名 `full-aigc-skills/dreamina-skills` GitHub 仓库。
 - 不创建五个插件仓库。
 - 不安装 Dreamina、Blender、Maya 或 ffmpeg。
 - 不运行付费图片或视频生成。
@@ -29,7 +29,7 @@
 |:---|:---|:---|
 | 当前技能库包含 13 个一级 Skill 目录 | 已确认 | 本地 `skills/` 目录审计，2026-09-11 |
 | 当前多数目录和 frontmatter 使用 `jimeng-*`，已有一个 `dreamina-cli` | 已确认 | 本地 Skill 路径与 `SKILL.md` |
-| 当前 GitHub 仓库为 `full-aigc-skills/jimeng-skills` | 已确认 | Git remote 与 README |
+| 当前 GitHub 仓库为 `full-aigc-skills/dreamina-skills` | 已确认 | Git remote 与 README |
 | Dreamina CLI 文档当前记录 v1.4.18 | 已确认 | 即梦 CLI 体验指南，2026-09-11 读取 |
 | `dreamina-canvas` 支持画布、节点、模型、报价、批准、异步任务和资源操作 | 已确认 | 画布 CLI 使用说明，2026-09-11 读取 |
 | Blender 官方包版本为 1.0.0 | 已确认 | 即梦 3D 渲染插件下载页 |

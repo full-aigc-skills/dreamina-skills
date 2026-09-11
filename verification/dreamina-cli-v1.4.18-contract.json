@@ -1,0 +1,44 @@
+{
+  "documentedRelease": "1.4.18",
+  "releaseDate": "2026-09-10",
+  "source": "installed-cli-help",
+  "binaryCommit": "ec1b9fa",
+  "binaryReportedVersion": "ec1b9fa-dirty",
+  "buildTime": "2026-09-09T09:09:35Z",
+  "binarySha256": "454653ac83291df908fc8d541ab715659bc9c7e4c2b8e907d5d255faa8fe0e87",
+  "versionMetadataSha256": "99ca0327a18dcafcf16a5c491ca38a6cf894c96c9e17580e330ffcebe7ba0121",
+  "videoHelpSha256": "de5594c6a70262c928d2136587badfc98b0abbf9fa4bcd93ef48791ec211202d",
+  "commandsWithRatio": [
+    "frames2video",
+    "image2video",
+    "multimodal2video",
+    "text2video"
+  ],
+  "commandBehavior": {
+    "text2video": {
+      "ratioFlag": true,
+      "default": "16:9",
+      "seedance2.5": "explicit ratio supported"
+    },
+    "image2video": {
+      "ratioFlag": true,
+      "default": "infer from first frame",
+      "seedance2.5": "explicit ratio rejected; follows first frame"
+    },
+    "frames2video": {
+      "ratioFlag": true,
+      "default": "infer from first frame",
+      "seedance2.5": "explicit ratio rejected; follows first frame"
+    },
+    "multiframe2video": {
+      "ratioFlag": false,
+      "default": "infer from first image",
+      "seedance2.5": "unsupported; command uses a fixed model"
+    },
+    "multimodal2video": {
+      "ratioFlag": true,
+      "default": "16:9",
+      "seedance2.5": "explicit ratio supported"
+    }
+  }
+}
