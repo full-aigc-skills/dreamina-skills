@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-quote-and-run",
+  "scenario": "quote-confirm-run with quote-bound approval and submitId reuse",
+  "description": "Confirms that approval is bound to the latest authoritative quote, the submitId is reused on recovery, and per-item batch outcomes are honoured.",
+  "expectations": [
+    "node quote is called against the latest authoritative draft",
+    "node confirm mints a short-lived creditConfirmationToken and refuses when --credit-ceiling is below the latest total",
+    "node run is called with the same submitId across retries; switching submitId re-bills",
+    "node run per-item outcomes map to the documented exit codes (0, 2 REJECTED, 20 UNKNOWN/resume)",
+    "A missing submission.state is treated as 'accepted', not 'absent'",
+    "REJECTED is terminal and is never auto-retried",
+    "creditConfirmationToken never leaves process memory",
+    "Failures are branched on exit code + requiredAction, never on localized message"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["node", "operation", "version"]
+}

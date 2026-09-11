@@ -131,6 +131,21 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-create")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_paid_run_requires_authoritative_quote_and_action_time_approval(self) -> None:
+        text = skill_text("dreamina-canvas-quote-and-run")
+        self.assertLess(text.index("node quote"), text.index("node confirm"))
+        self.assertLess(text.index("node confirm"), text.index("node run"))
+        self.assertIn("--credit-ceiling", text)
+        self.assertIn("partialData.items", text)
+        self.assertIn("--yes", text)
+        # The approval paragraph must NOT advertise any default-yes behaviour
+        approval_para = text[text.index("--credit-ceiling"):]
+        self.assertNotIn("默认", approval_para)
+
+    def test_quote_and_run_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-quote-and-run")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
