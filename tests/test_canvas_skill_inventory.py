@@ -119,6 +119,18 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-discover-models")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_create_reuses_explicit_project_id_for_cross_process_retry(self) -> None:
+        text = skill_text("dreamina-canvas-create")
+        self.assertIn("canvas create", text)
+        self.assertIn("--project-id", text)
+        self.assertIn("--use", text)
+        # Concurrency awareness
+        self.assertIn("concurrent", text.lower())
+
+    def test_create_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-create")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,16 @@
+{
+  "skill": "dreamina-canvas-create",
+  "scenario": "idempotent canvas creation and projectId reuse",
+  "description": "Confirms that every multi-step or cross-process flow passes --project-id explicitly and never depends on the local --use context.",
+  "expectations": [
+    "canvas create is called with a caller-supplied lowercase UUID for --project-id",
+    "The projectId is persisted to .state/project-id before any generation call",
+    "--use is used only for a single sequential user flow",
+    "Concurrent or cross-process flows always pass --project-id explicitly",
+    "canvas ls paginates with --limit / --offset",
+    "When the response carries a different projectId than the request, the caller stops and surfaces the mismatch",
+    "No OAuth token, cookie, signed URL, or creditConfirmationToken is echoed or persisted"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["canvas", "version", "auth"]
+}
