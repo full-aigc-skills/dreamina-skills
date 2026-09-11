@@ -20,7 +20,27 @@ English | [简体中文](./README.zh-CN.md)
 
 **dreamina-skills** is a curated collection of Agent Skills for AI coding agents, part of the [Full AIGC Skills](https://github.com/full-aigc-skills) ecosystem.
 
-This package includes **13 skills**. Each skill is a self-contained `SKILL.md` file that AI agents load on-demand.
+This package includes **13 Dreamina skills** plus **13 in-progress Canvas skills** that target the `dreamina-canvas` CLI. Each skill is a self-contained `SKILL.md` file that AI agents load on-demand.
+
+### Canvas Skill inventory (in progress)
+
+| Layer | Skill | Invocation |
+|-------|-------|------------|
+| Foundation | `dreamina-canvas-cli` | explicit |
+| Atomic | `dreamina-canvas-auth` | explicit |
+| Atomic | `dreamina-canvas-discover-models` | explicit |
+| Atomic | `dreamina-canvas-create` | explicit |
+| Atomic | `dreamina-canvas-quote-and-run` | explicit |
+| Atomic | `dreamina-canvas-resume-operation` | explicit |
+| Atomic | `dreamina-canvas-download-assets` | explicit |
+| Domain | `dreamina-canvas-generate-image` | explicit |
+| Domain | `dreamina-canvas-generate-video` | explicit |
+| Domain | `dreamina-canvas-generate-audio` | explicit |
+| Domain | `dreamina-canvas-manage-timeline` | explicit |
+| Orchestration | `dreamina-canvas-compose` | explicit |
+| Orchestration | `dreamina-canvas-use` | implicit |
+
+Canvas Skills consume the guide contract at `verification/dreamina-canvas-guide-contract.json` and rely on the installed CLI's `version`, `schema`, `model`, and `voice` output for runtime truth. They are not yet implemented; subsequent tasks create and validate every directory.
 
 ## 📦 Install
 

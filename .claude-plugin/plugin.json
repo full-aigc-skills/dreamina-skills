@@ -1,7 +1,7 @@
 {
   "name": "dreamina-skills",
-  "version": "1.4.0",
-  "description": "Dreamina（即梦）AIGC skills — CLI v1.4.18 runtime video-ratio discovery, Seedance 2.5 video at 480p/720p/1080p for 4–30s, image/video generation, async terminal statuses, sessions, OpenCLI, and prompt workflows",
+  "version": "1.5.0",
+  "description": "Dreamina (即梦) AIGC skills — CLI v1.4.18 video + Canvas suite. Canvas Skills target the dreamina-canvas CLI and depend on runtime version/schema/model/voice discovery. The 13 Canvas Skills are explicit except for dreamina-canvas-use, which is the only implicitly invokable orchestrator.",
   "author": {
     "name": "AIGC Skills Community"
   },
@@ -21,6 +21,43 @@
     "./skills/dreamina-prompt-image2image",
     "./skills/dreamina-prompt-image2video",
     "./skills/dreamina-prompt-text2image",
-    "./skills/dreamina-prompt-text2video"
-  ]
+    "./skills/dreamina-prompt-text2video",
+    "./skills/dreamina-canvas-cli",
+    "./skills/dreamina-canvas-auth",
+    "./skills/dreamina-canvas-discover-models",
+    "./skills/dreamina-canvas-create",
+    "./skills/dreamina-canvas-compose",
+    "./skills/dreamina-canvas-generate-image",
+    "./skills/dreamina-canvas-generate-video",
+    "./skills/dreamina-canvas-generate-audio",
+    "./skills/dreamina-canvas-manage-timeline",
+    "./skills/dreamina-canvas-quote-and-run",
+    "./skills/dreamina-canvas-resume-operation",
+    "./skills/dreamina-canvas-download-assets",
+    "./skills/dreamina-canvas-use"
+  ],
+  "skillLayers": {
+    "canvas": {
+      "description": "13 dreamina-canvas-* Skills targeting the dreamina-canvas CLI.",
+      "implementationStatus": "in-progress",
+      "implicitInvocation": ["dreamina-canvas-use"],
+      "explicitInvocation": [
+        "dreamina-canvas-cli",
+        "dreamina-canvas-auth",
+        "dreamina-canvas-discover-models",
+        "dreamina-canvas-create",
+        "dreamina-canvas-compose",
+        "dreamina-canvas-generate-image",
+        "dreamina-canvas-generate-video",
+        "dreamina-canvas-generate-audio",
+        "dreamina-canvas-manage-timeline",
+        "dreamina-canvas-quote-and-run",
+        "dreamina-canvas-resume-operation",
+        "dreamina-canvas-download-assets"
+      ],
+      "sourceContract": "verification/dreamina-canvas-guide-contract.json",
+      "consumesRuntimeSchema": true,
+      "hardCodedCatalogs": false
+    }
+  }
 }

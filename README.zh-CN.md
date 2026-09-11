@@ -16,7 +16,7 @@
 
 ## 📖 简介
 
-**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **13 个技能**。
+**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **13 个 Dreamina 技能** 与 **13 个尚在创建中的 Canvas 技能**（面向 `dreamina-canvas` CLI）。
 
 ## 📦 安装
 
@@ -41,6 +41,26 @@ npx skills add full-aigc-skills/dreamina-skills
 | `dreamina-prompt-image2video` | 为单图、首尾帧、多帧和多模态视频生成编写提示词。 |
 | `dreamina-prompt-text2image` | 编写覆盖场景、风格、色彩、构图和质量约束的结构化文生图提示词。 |
 | `dreamina-prompt-text2video` | 编写覆盖运动、镜头、时间、场景和评估规则的结构化文生视频提示词。 |
+
+### Canvas 技能清单（建设中）
+
+| 层 | 技能 | 调用方式 |
+|----|------|----------|
+| 基础 | `dreamina-canvas-cli` | 显式 |
+| 原子 | `dreamina-canvas-auth` | 显式 |
+| 原子 | `dreamina-canvas-discover-models` | 显式 |
+| 原子 | `dreamina-canvas-create` | 显式 |
+| 原子 | `dreamina-canvas-quote-and-run` | 显式 |
+| 原子 | `dreamina-canvas-resume-operation` | 显式 |
+| 原子 | `dreamina-canvas-download-assets` | 显式 |
+| 领域 | `dreamina-canvas-generate-image` | 显式 |
+| 领域 | `dreamina-canvas-generate-video` | 显式 |
+| 领域 | `dreamina-canvas-generate-audio` | 显式 |
+| 领域 | `dreamina-canvas-manage-timeline` | 显式 |
+| 编排 | `dreamina-canvas-compose` | 显式 |
+| 编排 | `dreamina-canvas-use` | 隐式 |
+
+Canvas 技能遵守 `verification/dreamina-canvas-guide-contract.json` 中的引导契约，并以安装版 CLI 的 `version`、`schema`、`model`、`voice` 输出为运行时真相；尚未实现，后续 Task 会逐个创建并验证目录。
 
 ## 🤖 支持的智能体
 

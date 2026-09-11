@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "source": "user-provided-cli-guide-2026-09-11",
+  "binary": "dreamina-canvas",
+  "cliConventions": {
+    "formatFlag": "--format json",
+    "profiles": "--profile",
+    "environments": "--environment",
+    "stdout": "JSON payload only",
+    "stderr": "single error object or diagnostic",
+    "exitCodes": "numeric, preserved as-is"
+  },
+  "commandFamilies": [
+    "auth",
+    "model",
+    "voice",
+    "canvas",
+    "node",
+    "operation",
+    "resource",
+    "schema",
+    "version"
+  ],
+  "exitCodes": ["0", "1", "2", "10", "11", "12", "13", "20", "21", "22"],
+  "requiredActions": [
+    "none",
+    "login",
+    "confirm",
+    "retry",
+    "resume",
+    "upgrade",
+    "human_intervention",
+    "contact_support"
+  ],
+  "identifiers": {
+    "projectId": "lowercase UUID, persisted across processes",
+    "submitId": "lowercase UUID, never empty on recovery",
+    "nodeId": "lowercase UUID, returned by canvas/node APIs",
+    "operationId": "lowercase UUID, returned by submit/operation APIs",
+    "resourceId": "lowercase UUID, returned by resource APIs",
+    "quoteId": "lowercase UUID, binds approval to exact quote"
+  },
+  "stateMachine": ["Draft", "Saved", "Quoted", "Approved", "Submitted", "Querying", "Completed", "Failed", "Unknown"],
+  "invariant": "Saving a node is not generation; paid commands require quote-bound action-time approval.",
+  "secretsNeverPersisted": [
+    "access_token",
+    "refresh_token",
+    "cookie",
+    "signed_url",
+    "credit_confirmation_token"
+  ]
+}

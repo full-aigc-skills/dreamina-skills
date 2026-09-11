@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "binary": "dreamina-canvas",
+  "commands": {
+    "auth": ["login", "wait", "status", "account", "refresh", "logout"],
+    "model": ["search", "get"],
+    "voice": ["list"],
+    "canvas": ["create", "list", "select"],
+    "node": ["create", "edit", "quote", "confirm", "run", "status"],
+    "operation": ["status", "wait", "list"],
+    "resource": ["get", "download"],
+    "schema": ["<command-path>"],
+    "version": []
+  },
+  "schemaRequest": "schema \"<command path>\"",
+  "formatFlag": "--format json"
+}
