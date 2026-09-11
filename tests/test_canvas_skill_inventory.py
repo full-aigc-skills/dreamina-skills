@@ -37,14 +37,15 @@ class CanvasSkillInventoryTests(unittest.TestCase):
 
     def test_guide_contract_is_complete_and_seed_only(self) -> None:
         contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
-        self.assertEqual(contract["source"], "user-provided-cli-guide-2026-09-11")
+        self.assertIn("dreamina-canvas", contract["source"])
+        self.assertIn("2026-09-11", contract["source"])
         self.assertEqual(
             set(contract["commandFamilies"]),
             {"auth", "model", "voice", "canvas", "node", "operation", "resource", "schema", "version"},
         )
         self.assertEqual(
             set(contract["exitCodes"]),
-            {"0", "1", "2", "10", "11", "12", "13", "20", "21", "22"},
+            {0, 1, 2, 11, 12, 13, 20, 21, 22},
         )
         self.assertEqual(
             set(contract["requiredActions"]),

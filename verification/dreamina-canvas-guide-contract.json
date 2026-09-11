@@ -1,13 +1,20 @@
 {
   "schemaVersion": "1.0",
-  "source": "user-provided-cli-guide-2026-09-11",
+  "source": "dreamina-canvas-cli-guide-2026-09-11 + live schema probe v1.0.0/ae2c968",
   "binary": "dreamina-canvas",
+  "version": {
+    "commit": "ae2c968",
+    "edition": "public",
+    "distribution": "cn",
+    "buildTime": "2026-09-05T08:54:32Z",
+    "releaseDate": "2026-09-05"
+  },
   "cliConventions": {
     "formatFlag": "--format json",
-    "profiles": "--profile",
-    "environments": "--environment",
-    "stdout": "JSON payload only",
-    "stderr": "single error object or diagnostic",
+    "globalFlags": ["format", "non-interactive", "yes", "profile", "region"],
+    "profileRule": "letters, digits, dot, underscore, hyphen only",
+    "stdout": "JSON payload only in --format json",
+    "stderr": "single error envelope JSON object on failure",
     "exitCodes": "numeric, preserved as-is"
   },
   "commandFamilies": [
@@ -21,7 +28,18 @@
     "schema",
     "version"
   ],
-  "exitCodes": ["0", "1", "2", "10", "11", "12", "13", "20", "21", "22"],
+  "exitCodes": [0, 1, 2, 11, 12, 13, 20, 21, 22],
+  "exitCodeSemantics": {
+    "0": "success",
+    "1": "uncategorized internal failure",
+    "2": "invalid command, argument, or schema",
+    "11": "login required or session expired",
+    "12": "permission, capability, or entitlement denied",
+    "13": "environment or release compatibility blocked; upgrade CLI per error.clientUpgrade.upgradeUrl",
+    "20": "operation recoverable, not converged in this run; continue with operationRef",
+    "21": "retryable service or transport failure",
+    "22": "human intervention required"
+  },
   "requiredActions": [
     "none",
     "login",
@@ -33,20 +51,41 @@
     "contact_support"
   ],
   "identifiers": {
-    "projectId": "lowercase UUID, persisted across processes",
-    "submitId": "lowercase UUID, never empty on recovery",
-    "nodeId": "lowercase UUID, returned by canvas/node APIs",
-    "operationId": "lowercase UUID, returned by submit/operation APIs",
-    "resourceId": "lowercase UUID, returned by resource APIs",
-    "quoteId": "lowercase UUID, binds approval to exact quote"
+    "projectId": "lowercase UUID; persisted across processes; required for cross-process retry",
+    "submitId": "lowercase UUID; never empty on recovery; CLI freezes one per process; empty string rejected with exit 2",
+    "nodeId": "lowercase UUID; returned by node APIs; use node find to look up",
+    "updateId": "lowercase UUID; returned by node edit; the retry identity for node edits",
+    "operationRef": "alias for submitId in operation status/wait",
+    "resourceId": "lowercase canonical UUID only (no urn:uuid:, no hyphen-stripped, no resource_ prefix)",
+    "quoteId": "lowercase UUID; binds approval to the latest authoritative draft",
+    "creditConfirmationToken": "short-lived, in-memory only; never persisted, logged, or journaled"
   },
+  "referenceSyntax": {
+    "nodeRef": "node:node_xxx — refers to a node's latest resource and creates a canvas edge",
+    "resourceRef": "res:<lowercase UUID> — frozen to a specific resource, no canvas edge",
+    "uriRef": "uri:<value> — reserved, currently rejected",
+    "vidRef": "vid:<value> — reserved, currently rejected",
+    "promptPlaceholder": "{{type:value}} — inline placeholders that become references when mentioned in prompt",
+    "elementSlots": "main/voice/auxiliary/description take bare node_xxx or lowercase UUID; node: prefix returns cli.invalid_resource_reference exit 2"
+  },
+  "nodeTypes": ["image", "video", "audio", "element", "text", "timeline"],
+  "imageModes": ["t2i", "i2i"],
+  "videoModes": ["t2v", "first_last_frame", "m2v"],
+  "audioModes": ["tts", "music"],
+  "approvalModes": ["credit-ceiling", "credit-token", "interactive-y/N", "yes"],
   "stateMachine": ["Draft", "Saved", "Quoted", "Approved", "Submitted", "Querying", "Completed", "Failed", "Unknown"],
-  "invariant": "Saving a node is not generation; paid commands require quote-bound action-time approval.",
+  "submissionStates": ["absent", "in_progress", "completed"],
+  "invariant": "Saving a node is not generation; paid commands require quote-bound action-time approval; reusing submitId never re-bills; switching submitId re-bills.",
   "secretsNeverPersisted": [
     "access_token",
     "refresh_token",
     "cookie",
     "signed_url",
-    "credit_confirmation_token"
-  ]
+    "credit_confirmation_token",
+    "storage_id"
+  ],
+  "localState": {
+    "contextsPath": "dreamina-canvas/contexts/<profile-and-environment>.json (mode 0600)",
+    "operationsPath": "dreamina-canvas/operations/<profile-and-environment>/<submitId>.json (mode 0600)"
+  }
 }
