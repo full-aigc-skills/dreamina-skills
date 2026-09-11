@@ -25,3 +25,4 @@ openspec
 AGENTS.md
 CLAUDE.md
 *.db
+.worktrees/
