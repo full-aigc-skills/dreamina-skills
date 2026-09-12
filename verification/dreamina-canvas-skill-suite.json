@@ -1,9 +1,6 @@
 {
-  "schemaVersion": "1.0",
-  "skillCount": 26,
   "canvasSkillCount": 13,
   "existingDreaminaSkillCount": 13,
-  "implicitInvocation": ["dreamina-canvas-use"],
   "explicitInvocation": [
     "dreamina-canvas-cli",
     "dreamina-canvas-auth",
@@ -18,31 +15,50 @@
     "dreamina-canvas-resume-operation",
     "dreamina-canvas-download-assets"
   ],
+  "implicitInvocation": [
+    "dreamina-canvas-use"
+  ],
   "runtimeBoundary": {
-    "cli_runtime": "PASS",
-    "cli_runtime_version": "1.0.0",
-    "cli_runtime_commit": "ae2c968",
-    "cli_runtime_edition": "public",
-    "cli_runtime_distribution": "cn",
-    "cli_runtime_environment": "prod",
-    "cli_runtime_buildTime": "2026-09-05T08:54:32Z",
     "auth": "PASS",
     "auth_evidence": "Device-authorization login completed under explicit user authorization; auth status reported loggedIn=true and auth account returned ok=true (isVip=true, vipLevel=standard). User identifier redacted.",
+    "cli_runtime": "PASS",
+    "cli_runtime_buildTime": "2026-09-05T08:54:32Z",
+    "cli_runtime_commit": "ae2c968",
+    "cli_runtime_distribution": "cn",
+    "cli_runtime_edition": "public",
+    "cli_runtime_environment": "prod",
+    "cli_runtime_version": "1.0.0",
     "paid_canary": "PASS",
-    "paid_canary_evidence": "One t2i draft quoted at totalMaxCredits=5, approved with --credit-ceiling 100, run once with a persisted submitId, waited to terminal succeeded, downloaded, and verified: wc -c and shasum -a 256 matched the reported size/sha256 and artifact_guard.verify() returned ok=true.",
     "paid_canary_artifact": {
-      "resourceId": "b062d52f-fa20-4093-ae8b-d011ba853d82",
-      "size": 705847,
-      "sha256": "042406680ed8d763bc7e661a3588a42b01e7d9c096d14d01f8b0881a9ff7fd96",
-      "media": "1536x1536 jpeg",
+      "approvedCeiling": 100,
       "creditsConsumed": 5,
-      "approvedCeiling": 100
+      "media": "1536x1536 jpeg",
+      "resourceId": "b062d52f-fa20-4093-ae8b-d011ba853d82",
+      "sha256": "042406680ed8d763bc7e661a3588a42b01e7d9c096d14d01f8b0881a9ff7fd96",
+      "size": 705847
     },
+    "paid_canary_evidence": "One t2i draft quoted at totalMaxCredits=5, approved with --credit-ceiling 100, run once with a persisted submitId, waited to terminal succeeded, downloaded, and verified: wc -c and shasum -a 256 matched the reported size/sha256 and artifact_guard.verify() returned ok=true.",
     "schemaDriftObserved": [
       "guide `model search` vs installed `model list`",
       "guide `model <name>` vs installed `model find <name>`",
       "installed `node create image --dry-run` (undocumented in the guide)"
     ]
   },
-  "sourceContract": "verification/dreamina-canvas-guide-contract.json"
+  "schemaVersion": "1.0",
+  "skillCount": 26,
+  "sourceContract": "verification/dreamina-canvas-guide-contract.json",
+  "trace": {
+    "aggregateUsedAsEvidence": false,
+    "evaluatedPerSkill": true,
+    "evaluator": "skill-trace-evaluation/scripts/trace_evaluate.py",
+    "passCount": 13,
+    "perSkillMean": {
+      "avg": 3.88,
+      "max": 4.03,
+      "min": 3.84
+    },
+    "report": "verification/dreamina-canvas-trace.md",
+    "skillCount": 13,
+    "threshold": 3.0
+  }
 }
