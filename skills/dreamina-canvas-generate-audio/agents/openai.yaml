@@ -1,0 +1,19 @@
+interface:
+  display_name: "Dreamina Canvas Audio Node"
+  short_description: "TTS (--voice-name) or music (--model + --duration); never accepts --count"
+  default_prompt: |
+    TTS requires --voice-name; music requires --model + --duration. Never
+    pass --count on audio nodes. Never default the music model. Hand off
+    paid execution to dreamina-canvas-quote-and-run.
+policy:
+  allow_implicit_invocation: false
+  invocation_requires:
+    - "Confirmed installation of dreamina-canvas"
+    - "Live voice list (for TTS) or live audio model discovery (for music)"
+    - "For paid execution: explicit handoff to dreamina-canvas-quote-and-run"
+  forbids:
+    - "Calling --run from this Skill"
+    - "Passing --count on audio nodes"
+    - "Supplying --model on TTS or --voice-name on music"
+    - "Implicit-defaulting the music model"
+    - "Persisting tokens, signed URLs, cookies, or session material"

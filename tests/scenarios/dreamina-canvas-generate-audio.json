@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-generate-audio",
+  "scenario": "audio node TTS vs music",
+  "description": "Confirms that TTS requires --voice-name and forbids --model, music requires --model and --duration and forbids --voice-name, and --count is never accepted on audio nodes.",
+  "expectations": [
+    "TTS requires --voice-name from voice list",
+    "TTS forbids --model",
+    "Music requires --model from MODE=music discovery and --duration > 0",
+    "Music forbids --voice-name",
+    "Missing --model on music is rejected with cli.audio_music_model_required (exit 2)",
+    "--count is rejected on audio nodes",
+    "Switching modes is a full generation replace",
+    "Paid execution is handed off to dreamina-canvas-quote-and-run"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["node", "model", "voice", "version"]
+}

@@ -197,6 +197,19 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-generate-video")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_audio_skill_enforces_mode_specific_fields(self) -> None:
+        text = skill_text("dreamina-canvas-generate-audio")
+        self.assertIn("tts", text)
+        self.assertIn("--voice-name", text)
+        self.assertIn("music", text)
+        self.assertIn("--model", text)
+        # The skill must explicitly state that --count is not accepted
+        self.assertIn("--count", text)
+
+    def test_generate_audio_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-generate-audio")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
