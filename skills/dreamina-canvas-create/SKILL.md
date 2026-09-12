@@ -1,6 +1,6 @@
 ---
 name: dreamina-canvas-create
-description: Use when an agent or script must create, list, or select a Dreamina Canvas. Owns the idempotent --project-id rule: every concurrent or cross-process retry must reuse the same lowercase UUID; never depend on the local --use context from another process.
+description: "Use when an agent or script must create, list, or select a Dreamina Canvas. Owns the idempotent --project-id rule: every concurrent or cross-process retry must reuse the same lowercase UUID; never depend on the local --use context from another process."
 license: Complete terms in LICENSE
 ---
 

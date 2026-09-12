@@ -1,6 +1,6 @@
 ---
 name: dreamina-canvas-generate-image
-description: Use when an agent or script must save or run a Dreamina Canvas image node (t2i or i2i), compose ordered node: and res: references, separate generation edits from sparse metadata edits, and hand off paid execution to dreamina-canvas-quote-and-run.
+description: "Use when an agent or script must save or run a Dreamina Canvas image node (t2i or i2i), compose ordered node: and res: references, separate generation edits from sparse metadata edits, and hand off paid execution to dreamina-canvas-quote-and-run."
 license: Complete terms in LICENSE
 ---
 
