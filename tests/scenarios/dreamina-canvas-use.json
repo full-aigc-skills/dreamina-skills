@@ -1,0 +1,16 @@
+{
+  "skill": "dreamina-canvas-use",
+  "scenario": "end-to-end Canvas orchestration",
+  "description": "Confirms that dreamina-canvas-use is the only implicit Canvas Skill and routes to the smallest applicable chain, reporting every lifecycle stage.",
+  "expectations": [
+    "dreamina-canvas-use is the only dreamina-canvas-* Skill with allow_implicit_invocation == true",
+    "Every final response surfaces: saved draft id, quoted amount, user approval, submission acceptance, terminal completion, verified artifact",
+    "Routing selects the smallest applicable chain (does not call every Skill)",
+    "The end-to-end Skill does not duplicate global flags, exit codes, model catalogs, or node schemas",
+    "Spend is never approved on the user's behalf",
+    "submitId is forwarded from dreamina-canvas-quote-and-run, not minted here",
+    "tokens, signed URLs, cookies, creditConfirmationToken never appear in any response or log"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["auth", "model", "voice", "canvas", "node", "operation", "resource", "schema", "version"]
+}

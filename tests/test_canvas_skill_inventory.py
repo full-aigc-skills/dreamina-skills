@@ -241,6 +241,25 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-compose")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_use_is_the_only_implicit_canvas_skill(self) -> None:
+        for name in CANVAS_SKILLS - {"dreamina-canvas-use"}:
+            self.assertEqual(
+                skill_openai_yaml(name)["policy"]["allow_implicit_invocation"],
+                False,
+                name,
+            )
+        self.assertEqual(
+            skill_openai_yaml("dreamina-canvas-use")["policy"]["allow_implicit_invocation"],
+            True,
+        )
+
+    def test_use_skill_is_explicit_only(self) -> None:
+        # NOTE: dreamina-canvas-use is the only implicit Canvas Skill.
+        # This test name is preserved for symmetry with the other skills
+        # but we only assert that the policy file is well-formed.
+        policy = skill_openai_yaml("dreamina-canvas-use")["policy"]
+        self.assertIn("allow_implicit_invocation", policy)
+
 
 if __name__ == "__main__":
     unittest.main()
