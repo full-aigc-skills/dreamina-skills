@@ -62,9 +62,22 @@ class CanvasSuiteValidationTests(unittest.TestCase):
     def test_runtime_boundary_recorded(self) -> None:
         suite = json.loads(SUITE_JSON.read_text(encoding="utf-8"))
         boundary = suite["runtimeBoundary"]
+        # cli_runtime is always required: every Canvas Skill depends on a
+        # discoverable installed artifact.
         self.assertEqual(boundary["cli_runtime"], "PASS")
-        self.assertEqual(boundary["auth"], "NOT_RUN")
-        self.assertEqual(boundary["paid_canary"], "NOT_RUN")
+        # auth and paid_canary are separate approval boundaries. They are
+        # PASS only when credentials and action-time approval were actually
+        # supplied; otherwise they must be explicitly NOT_RUN. Both are
+        # valid recorded states — silently omitting the key is not.
+        for gate in ("auth", "paid_canary"):
+            self.assertIn(boundary[gate], {"PASS", "NOT_RUN"}, gate)
+        # A PASS must carry its evidence string.
+        for gate in ("auth", "paid_canary"):
+            if boundary[gate] == "PASS":
+                self.assertTrue(
+                    boundary.get(f"{gate}_evidence"),
+                    f"{gate}=PASS requires an evidence string",
+                )
 
     def test_canvas_skill_frontmatter_matches_dirname(self) -> None:
         for name in EXPECTED_CANVAS:

@@ -24,12 +24,25 @@
     "cli_runtime_commit": "ae2c968",
     "cli_runtime_edition": "public",
     "cli_runtime_distribution": "cn",
+    "cli_runtime_environment": "prod",
     "cli_runtime_buildTime": "2026-09-05T08:54:32Z",
-    "cli_runtime_installedAt": "/Users/wandl/.local/bin/dreamina-canvas",
-    "auth": "NOT_RUN",
-    "auth_reason": "User-supplied credentials were not provided this session; only CLI binary is installed.",
-    "paid_canary": "NOT_RUN",
-    "paid_canary_reason": "Paid generation requires separate action-time approval and live auth."
+    "auth": "PASS",
+    "auth_evidence": "Device-authorization login completed under explicit user authorization; auth status reported loggedIn=true and auth account returned ok=true (isVip=true, vipLevel=standard). User identifier redacted.",
+    "paid_canary": "PASS",
+    "paid_canary_evidence": "One t2i draft quoted at totalMaxCredits=5, approved with --credit-ceiling 100, run once with a persisted submitId, waited to terminal succeeded, downloaded, and verified: wc -c and shasum -a 256 matched the reported size/sha256 and artifact_guard.verify() returned ok=true.",
+    "paid_canary_artifact": {
+      "resourceId": "b062d52f-fa20-4093-ae8b-d011ba853d82",
+      "size": 705847,
+      "sha256": "042406680ed8d763bc7e661a3588a42b01e7d9c096d14d01f8b0881a9ff7fd96",
+      "media": "1536x1536 jpeg",
+      "creditsConsumed": 5,
+      "approvedCeiling": 100
+    },
+    "schemaDriftObserved": [
+      "guide `model search` vs installed `model list`",
+      "guide `model <name>` vs installed `model find <name>`",
+      "installed `node create image --dry-run` (undocumented in the guide)"
+    ]
   },
   "sourceContract": "verification/dreamina-canvas-guide-contract.json"
 }
