@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-compose",
+  "scenario": "non-charging Canvas DAG composition",
+  "description": "Confirms that composition saves the graph without spending credits, builds layers from dependencies, and hands paid execution off to the quote-and-run Skill.",
+  "expectations": [
+    "node create is called in dependency order (upstream before downstream)",
+    "Every returned nodeId is persisted by the caller alias; never re-derived",
+    "Reference syntax matches the canvas contract (node: / res: / bare)",
+    "Element slot bindings use bare ids or bare UUIDs (no prefix)",
+    "node run is never called from this Skill; paid execution is handed off",
+    "DAG layers are explicit; node run does not perform DAG scheduling",
+    "Prompt placeholders {{type:value}} become references and round-trip",
+    "URI / VID references are rejected"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["node", "model", "voice", "version"]
+}

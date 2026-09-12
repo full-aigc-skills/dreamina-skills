@@ -224,6 +224,23 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-manage-timeline")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_compose_saves_graph_before_any_paid_run(self) -> None:
+        text = skill_text("dreamina-canvas-compose")
+        # Required node-type coverage
+        for kind in ("Text", "Element", "Timeline"):
+            self.assertIn(kind, text, kind)
+        # The skill must call out the node run DAG scheduling gap
+        self.assertIn("node run", text)
+        self.assertIn("DAG", text)
+        # Default-only-save contract must be present
+        self.assertIn("save", text.lower())
+        # No-approval rule
+        self.assertIn("never", text.lower())
+
+    def test_compose_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-compose")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
