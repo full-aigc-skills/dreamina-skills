@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 
 EXPECTED_SKILLS = {
+    # Pre-existing 12 Dreamina skills
     "dreamina-cli",
     "dreamina-cli-image2image",
     "dreamina-cli-image2video",
@@ -21,6 +22,20 @@ EXPECTED_SKILLS = {
     "dreamina-prompt-image2video",
     "dreamina-prompt-text2image",
     "dreamina-prompt-text2video",
+    # 13 new Canvas skills (Tasks 2-14)
+    "dreamina-canvas-cli",
+    "dreamina-canvas-auth",
+    "dreamina-canvas-discover-models",
+    "dreamina-canvas-create",
+    "dreamina-canvas-compose",
+    "dreamina-canvas-generate-image",
+    "dreamina-canvas-generate-video",
+    "dreamina-canvas-generate-audio",
+    "dreamina-canvas-manage-timeline",
+    "dreamina-canvas-quote-and-run",
+    "dreamina-canvas-resume-operation",
+    "dreamina-canvas-download-assets",
+    "dreamina-canvas-use",
 }
 
 VIDEO_COMMANDS = {

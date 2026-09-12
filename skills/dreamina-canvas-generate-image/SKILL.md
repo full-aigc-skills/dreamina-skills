@@ -117,7 +117,7 @@ never:
 
 - Calls `--run` itself.
 - Supplies `--credit-ceiling` or `--credit-token`.
-- Persists `creditConfirmationToken`.
+- Persists `credit-approval token`.
 
 ## Failure → recovery
 

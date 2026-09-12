@@ -39,7 +39,7 @@
   "skillLayers": {
     "canvas": {
       "description": "13 dreamina-canvas-* Skills targeting the dreamina-canvas CLI.",
-      "implementationStatus": "in-progress",
+      "implementationStatus": "implemented",
       "implicitInvocation": ["dreamina-canvas-use"],
       "explicitInvocation": [
         "dreamina-canvas-cli",
@@ -56,6 +56,7 @@
         "dreamina-canvas-download-assets"
       ],
       "sourceContract": "verification/dreamina-canvas-guide-contract.json",
+      "suiteReport": "verification/dreamina-canvas-skill-suite.json",
       "consumesRuntimeSchema": true,
       "hardCodedCatalogs": false
     }

@@ -87,6 +87,6 @@ verbatim when piping into other commands; do not retype them.
 ## What this Skill will not do
 
 - Create a canvas without a caller-supplied `--project-id`.
-- Persist OAuth tokens, cookies, signed URLs, or `creditConfirmationToken`.
+- Persist OAuth tokens, cookies, signed URLs, or `credit-approval token`.
 - Mutate the contexts file outside of an explicit `--use` request.
 - Skip re-validation of the live `--project-id` before a paid call.

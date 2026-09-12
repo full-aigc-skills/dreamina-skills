@@ -12,7 +12,7 @@ policy:
     - "Confirmed installation of dreamina-canvas"
     - "User's authorisation for each paid stage"
   forbids:
-    - "Persisting tokens, signed URLs, cookies, or creditConfirmationToken"
+    - "Persisting tokens, signed URLs, cookies, or credit-approval token"
     - "Approving spend on the user's behalf"
     - "Duplicating the lower-level Skills' command, exit-code, or model details"
     - "Minting a submitId; only forward the one from dreamina-canvas-quote-and-run"

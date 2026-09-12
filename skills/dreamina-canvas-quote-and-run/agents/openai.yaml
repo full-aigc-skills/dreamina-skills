@@ -12,7 +12,7 @@ policy:
     - "User-supplied projectId, nodeIds, submitId, and credit ceiling"
     - "Explicit action-time approval for the spend"
   forbids:
-    - "Persisting creditConfirmationToken, signed URLs, cookies, or OAuth tokens"
+    - "Persisting credit-approval token, signed URLs, cookies, or OAuth tokens"
     - "Re-quoting from a stale draft"
     - "Minting a new submitId on retry"
     - "Using --yes when the ceiling is knowable in advance"

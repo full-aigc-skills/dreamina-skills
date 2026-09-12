@@ -126,6 +126,6 @@ authoritative next-step hint for scripts.
 ## What this Skill will not do
 
 - Install the CLI, log in, refresh tokens, or perform any paid generation.
-- Persist OAuth tokens, cookies, signed URLs, or `creditConfirmationToken`.
+- Persist OAuth tokens, cookies, signed URLs, or `credit-approval token`.
 - Branch on localised human-language messages.
 - Mutate the local `--use` canvas context unless the caller asked explicitly.

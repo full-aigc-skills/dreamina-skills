@@ -31,7 +31,7 @@
 
 ## What is never echoed
 
-Tokens, cookies, signed URLs, `creditConfirmationToken`, `storageId`, and any
+Tokens, cookies, signed URLs, `credit-approval token`, `storageId`, and any
 provider task identifier must never appear in stdout, stderr, log files,
 fixture data, or skill journals. If a script accidentally captures one,
 rotate the credential immediately rather than redacting and re-using.

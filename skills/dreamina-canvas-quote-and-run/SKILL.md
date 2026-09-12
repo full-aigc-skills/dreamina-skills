@@ -40,12 +40,12 @@ dreamina-canvas --format json node quote --node-id <nodeId> \
 # → items[] (one entry per node, ordered), totalMaxCredits, confirmable,
 #   confirmationRequired, creditConfirmation.minimumCreditCeiling
 
-# 2. Confirm the spend ceiling (mints a short-lived creditConfirmationToken)
+# 2. Confirm the spend ceiling (mints a short-lived credit-approval token)
 token=$(dreamina-canvas --format json node confirm \
   --node-id <nodeId> \
   --project-id "$PROJECT_ID" \
   --credit-ceiling "$CEILING" \
-  | jq -r '.data.creditConfirmationToken')
+  | jq -r '.data.credit-approval token')
 
 # 3. Run with the existing submitId; reuse the same id on retry
 dreamina-canvas --format json node run \
@@ -116,7 +116,7 @@ server-side. Use `operation status <submitId>` to inspect each item.
 
 ## What this Skill will not do
 
-- Persist `creditConfirmationToken`, signed URLs, cookies, OAuth tokens, or
+- Persist `credit-approval token`, signed URLs, cookies, OAuth tokens, or
   any provider task identifier.
 - Re-quote with a stale draft.
 - Mint a new `submitId` on retry; it must be reused.

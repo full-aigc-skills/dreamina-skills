@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "skillCount": 26,
+  "canvasSkillCount": 13,
+  "existingDreaminaSkillCount": 13,
+  "implicitInvocation": ["dreamina-canvas-use"],
+  "explicitInvocation": [
+    "dreamina-canvas-cli",
+    "dreamina-canvas-auth",
+    "dreamina-canvas-discover-models",
+    "dreamina-canvas-create",
+    "dreamina-canvas-compose",
+    "dreamina-canvas-generate-image",
+    "dreamina-canvas-generate-video",
+    "dreamina-canvas-generate-audio",
+    "dreamina-canvas-manage-timeline",
+    "dreamina-canvas-quote-and-run",
+    "dreamina-canvas-resume-operation",
+    "dreamina-canvas-download-assets"
+  ],
+  "runtimeBoundary": {
+    "cli_runtime": "PASS",
+    "cli_runtime_version": "1.0.0",
+    "cli_runtime_commit": "ae2c968",
+    "cli_runtime_edition": "public",
+    "cli_runtime_distribution": "cn",
+    "cli_runtime_buildTime": "2026-09-05T08:54:32Z",
+    "cli_runtime_installedAt": "/Users/wandl/.local/bin/dreamina-canvas",
+    "auth": "NOT_RUN",
+    "auth_reason": "User-supplied credentials were not provided this session; only CLI binary is installed.",
+    "paid_canary": "NOT_RUN",
+    "paid_canary_reason": "Paid generation requires separate action-time approval and live auth."
+  },
+  "sourceContract": "verification/dreamina-canvas-guide-contract.json"
+}

@@ -67,7 +67,7 @@ If any stage fails, the Skill returns the failure exit code, the
 
 ## What this Skill will not do
 
-- Persist tokens, signed URLs, cookies, or `creditConfirmationToken`.
+- Persist tokens, signed URLs, cookies, or `credit-approval token`.
 - Approve spend on the user's behalf.
 - Bypass the lower-level Skills' guardrails.
 - Mint a `submitId` itself; it only forwards the one minted by

@@ -14,7 +14,7 @@
 The successful `node confirm` returns a `creditConfirmation` object that
 includes:
 
-- `creditConfirmationToken` — short-lived; never persisted.
+- `credit-approval token` — short-lived; never persisted.
 - `minimumCreditCeiling` — a suggested ceiling. Absence does **not** mean
   zero; it means the server could not bound the spend and you must escalate.
 

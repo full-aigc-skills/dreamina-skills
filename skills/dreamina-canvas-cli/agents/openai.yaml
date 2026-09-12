@@ -13,4 +13,4 @@ policy:
   forbids:
     - "Installing the CLI from this Skill"
     - "Logging in, refreshing tokens, or running paid commands"
-    - "Persisting OAuth tokens, cookies, signed URLs, or creditConfirmationToken"
+    - "Persisting OAuth tokens, cookies, signed URLs, or credit-approval token"

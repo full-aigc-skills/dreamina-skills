@@ -62,7 +62,8 @@ estimate. Trust only the post-write response.
 - Persist signed URLs, cookies, OAuth tokens, `storageId`, or provider
   task identifiers.
 - Echo or log the response body's `signedUrl` / `downloadUrl` /
-  `providerTaskId` fields, even when present.
+  `providerTaskId` fields, even when present; the Skill forbids
+  persisting or echoing signed URLs in any form.
 - Download into a directory the user has not explicitly named.
 - Re-derive a `resourceId` from anything other than `node show` /
   `operation status` output; never guess.

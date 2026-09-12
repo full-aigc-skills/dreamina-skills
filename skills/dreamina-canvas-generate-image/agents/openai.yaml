@@ -14,5 +14,5 @@ policy:
   forbids:
     - "Calling --run from this Skill"
     - "Supplying --credit-ceiling or --credit-token"
-    - "Persisting creditConfirmationToken, signed URLs, cookies, or OAuth tokens"
+    - "Persisting credit-approval token, signed URLs, cookies, or OAuth tokens"
     - "Treating generation edit as a sparse update"
