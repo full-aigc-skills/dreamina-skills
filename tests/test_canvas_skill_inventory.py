@@ -171,6 +171,20 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-download-assets")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_image_skill_separates_t2i_and_i2i_references(self) -> None:
+        text = skill_text("dreamina-canvas-generate-image")
+        self.assertIn("--mode t2i", text)
+        self.assertIn("--mode i2i", text)
+        self.assertIn("node:", text)
+        self.assertIn("res:", text)
+        # Generation edit replaces the full block; --clear-generation is the opt-out
+        self.assertIn("--clear-generation", text)
+        self.assertIn("sparse", text.lower())
+
+    def test_generate_image_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-generate-image")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()

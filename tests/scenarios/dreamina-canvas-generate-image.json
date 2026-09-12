@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-generate-image",
+  "scenario": "image node save and edit",
+  "description": "Confirms that image generation follows Canvas reference rules, generation edits are full replace, metadata edits are sparse, and paid execution is handed off.",
+  "expectations": [
+    "t2i rejects image / Element / resource refs; i2i requires at least one image-bearing ref",
+    "Generation edits include the complete new generation block; missing flags are cleared",
+    "Metadata edits are sparse; only flags supplied are updated",
+    "--clear-generation is mutually exclusive with all generation flags",
+    "Prompt placeholders {{type:value}} become references and round-trip via node show",
+    "Paid execution is handed off to dreamina-canvas-quote-and-run; this Skill never calls --run",
+    "node: and res: refs are distinguished; internal short links are rejected",
+    "Model / ratio / resolution names are taken from the live discovery payload"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["node", "model", "voice", "version"]
+}
