@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-generate-video",
+  "scenario": "video node save and edit with mode-aware references",
+  "description": "Confirms that the public video mode set is t2v | first_last_frame | m2v, i2v and multi_modal are rejected, and reference rules are honoured.",
+  "expectations": [
+    "Public --mode values are exactly t2v, first_last_frame, m2v",
+    "--mode i2v is rejected with exit code 2 (no such mode)",
+    "--mode multi_modal is rejected with exit code 2 (server-internal alias)",
+    "first_last_frame accepts 1 or 2 image-bearing refs; two frames must match in source ratio",
+    "m2v is used for image-to-video, video guidance, Element references, and ratio preservation",
+    "Generation edit replaces the full block; --clear-generation is the opt-out",
+    "Paid execution is handed off to dreamina-canvas-quote-and-run",
+    "node: and res: refs are distinguished; internal short links are rejected"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["node", "model", "version"]
+}

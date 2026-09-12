@@ -185,6 +185,18 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-generate-image")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_video_skill_uses_only_public_canvas_modes(self) -> None:
+        text = skill_text("dreamina-canvas-generate-video")
+        for mode in ("t2v", "first_last_frame", "m2v"):
+            self.assertIn(mode, text, mode)
+        # The skill must explicitly state that i2v and multi_modal are rejected
+        self.assertIn("i2v", text)
+        self.assertIn("multi_modal", text)
+
+    def test_generate_video_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-generate-video")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
