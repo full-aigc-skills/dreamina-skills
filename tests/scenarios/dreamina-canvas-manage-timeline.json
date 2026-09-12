@@ -1,0 +1,17 @@
+{
+  "skill": "dreamina-canvas-manage-timeline",
+  "scenario": "timeline track replacement warning",
+  "description": "Confirms that --clip / --audio-clip rebuild the corresponding track and warns before destructive edits.",
+  "expectations": [
+    "node create timeline accepts --clip and / or --audio-clip",
+    "node edit timeline with --clip or --audio-clip rebuilds the corresponding track and re-issues clip identities",
+    "Metadata-only edits omit both --clip and --audio-clip",
+    "--clear-tracks is mutually exclusive with --clip and --audio-clip",
+    "Clip references are bare node ids or lowercase resource UUIDs; node: / res: prefix returns cli.invalid_resource_reference",
+    "Audio-only timeline is valid; server inserts an empty visual track",
+    "Track replacement requires explicit user consent",
+    "Paid execution is handed off to dreamina-canvas-quote-and-run"
+  ],
+  "cliBinary": "dreamina-canvas",
+  "cliCommandFamilies": ["node", "version"]
+}

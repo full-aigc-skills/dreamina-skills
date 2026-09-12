@@ -1,0 +1,19 @@
+interface:
+  display_name: "Dreamina Canvas Timeline"
+  short_description: "Build and edit timeline tracks; warns before destructive track replacement"
+  default_prompt: |
+    Passing --clip or --audio-clip to node edit timeline rebuilds the
+    corresponding track and issues new clip identities. Confirm with the
+    user before destructive edits; for title-only changes omit both flags.
+    Hand off paid execution.
+policy:
+  allow_implicit_invocation: false
+  invocation_requires:
+    - "Confirmed installation of dreamina-canvas"
+    - "Explicit user consent for any track replacement"
+    - "For paid execution: explicit handoff to dreamina-canvas-quote-and-run"
+  forbids:
+    - "Calling --run from this Skill"
+    - "Passing node: or res: prefix on --clip or --audio-clip"
+    - "Silently merging old and new clip lists"
+    - "Persisting tokens, signed URLs, cookies, or session material"

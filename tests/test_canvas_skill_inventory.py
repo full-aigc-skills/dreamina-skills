@@ -210,6 +210,20 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         policy = skill_openai_yaml("dreamina-canvas-generate-audio")["policy"]
         self.assertEqual(policy["allow_implicit_invocation"], False)
 
+    def test_timeline_edit_warns_before_track_replacement(self) -> None:
+        text = skill_text("dreamina-canvas-manage-timeline")
+        self.assertIn("--clip", text)
+        self.assertIn("--audio-clip", text)
+        # The skill must warn about full track replacement
+        self.assertIn("rebuild", text.lower())
+        self.assertIn("destructive", text.lower())
+        # It must explicitly call out the uncommitted-changes loss boundary
+        self.assertIn("unsaved", text.lower())
+
+    def test_manage_timeline_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-manage-timeline")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
 
 if __name__ == "__main__":
     unittest.main()
