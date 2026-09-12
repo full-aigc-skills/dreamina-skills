@@ -128,3 +128,23 @@ persists tokens.
 - Persist tokens, signed URLs, cookies, or session material.
 - Accept `i2v` or `multi_modal` as a mode.
 - Treat generation edits as a partial update.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- Live model discovery result for video
+- For paid execution: explicit handoff to dreamina-canvas-quote-and-run
+
+Forbids:
+- Passing --mode i2v or --mode multi_modal
+- Calling --run from this Skill
+- Supplying --credit-ceiling or --credit-token
+- Persisting tokens, signed URLs, cookies, or session material
+
+Default prompt:
+
+> Public video modes are t2v, first_last_frame, m2v. There is no i2v and
+> no multi_modal --mode value. When the user says 'image to video' or
+> wants to preserve a ratio, use m2v. Hand off paid execution.
+> 

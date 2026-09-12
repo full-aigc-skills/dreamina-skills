@@ -1,18 +1,5 @@
 interface:
-  display_name: "Dreamina Canvas Asset Download"
-  short_description: "Verify and download completed node resources with SHA-256"
-  default_prompt: |
-    Always verify the file after download via byte count + SHA-256. Use only
-    the post-write response as truth. Never persist signed URLs or storage
-    IDs.
+  display_name: Dreamina Canvas Asset Download
+  short_description: Verify and download completed node resources with SHA-256
 policy:
   allow_implicit_invocation: false
-  invocation_requires:
-    - "Confirmed installation of dreamina-canvas"
-    - "A known lowercase resourceId and projectId"
-    - "A user-approved output directory"
-  forbids:
-    - "Persisting signed URLs, storageId, OAuth tokens, cookies, or provider task IDs"
-    - "Downloading into a directory the user has not explicitly named"
-    - "Treating a pre-flight resource get as proof of download success"
-    - "Quarantining or deleting files without explicit user consent"

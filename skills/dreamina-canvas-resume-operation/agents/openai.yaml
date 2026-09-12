@@ -1,17 +1,6 @@
 interface:
-  display_name: "Dreamina Canvas Operation Recovery"
-  short_description: "Observe and recover async runs by submitId; never resubmit without resubmittable=true"
-  default_prompt: |
-    Recover by ID, never by minting a new submitId. Treat a missing
-    submission field as 'accepted by server', not as 'absent'. Only the
-    absent + resubmittable=true combination allows a fresh node run.
+  display_name: Dreamina Canvas Operation Recovery
+  short_description: Observe and recover async runs by submitId; never resubmit without
+    resubmittable=true
 policy:
   allow_implicit_invocation: false
-  invocation_requires:
-    - "Confirmed installation of dreamina-canvas"
-    - "A persisted lowercase projectId and submitId"
-  forbids:
-    - "Minting a new submitId on retry"
-    - "Treating a missing submission.state as 'absent'"
-    - "Auto-resubmitting when resubmittable is not explicitly true"
-    - "Persisting tokens, signed URLs, cookies, or session material"

@@ -1,16 +1,5 @@
 interface:
-  display_name: "Dreamina Canvas CLI"
-  short_description: "Construct safe argv, route exit codes, separate stdout/stderr"
-  default_prompt: |
-    Before any non-trivial dreamina-canvas call, run version + schema, pass
-    --format json, and route failures by exit code + requiredAction. Never
-    hard-code model or voice names.
+  display_name: Dreamina Canvas CLI
+  short_description: Construct safe argv, route exit codes, separate stdout/stderr
 policy:
   allow_implicit_invocation: false
-  invocation_requires:
-    - "Confirmed installation of dreamina-canvas"
-    - "Verified --format json contract via dreamina-canvas schema"
-  forbids:
-    - "Installing the CLI from this Skill"
-    - "Logging in, refreshing tokens, or running paid commands"
-    - "Persisting OAuth tokens, cookies, signed URLs, or credit-approval token"

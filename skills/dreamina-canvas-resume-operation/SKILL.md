@@ -87,3 +87,22 @@ that item. Use `operation status <submitId>` to inspect each item.
 - Re-submit when `resubmittable` is not explicitly `true`.
 - Treat a missing `submission` field as `absent`.
 - Persist tokens, signed URLs, cookies, or session material.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- A persisted lowercase projectId and submitId
+
+Forbids:
+- Minting a new submitId on retry
+- Treating a missing submission.state as 'absent'
+- Auto-resubmitting when resubmittable is not explicitly true
+- Persisting tokens, signed URLs, cookies, or session material
+
+Default prompt:
+
+> Recover by ID, never by minting a new submitId. Treat a missing
+> submission field as 'accepted by server', not as 'absent'. Only the
+> absent + resubmittable=true combination allows a fresh node run.
+> 

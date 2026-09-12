@@ -82,3 +82,23 @@ The Skill considers a download successful only when:
 
 Any mismatch is treated as a hard failure; the file is quarantined (or
 deleted if the caller prefers) and the user is informed.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- A known lowercase resourceId and projectId
+- A user-approved output directory
+
+Forbids:
+- Persisting signed URLs, storageId, OAuth tokens, cookies, or provider task IDs
+- Downloading into a directory the user has not explicitly named
+- Treating a pre-flight resource get as proof of download success
+- Quarantining or deleting files without explicit user consent
+
+Default prompt:
+
+> Always verify the file after download via byte count + SHA-256. Use only
+> the post-write response as truth. Never persist signed URLs or storage
+> IDs.
+> 

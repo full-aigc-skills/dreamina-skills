@@ -91,3 +91,21 @@ profile). A model name valid in one environment is not portable to another.
 - Treat a remembered name as equivalent to a re-discovery.
 - Save the discovery payload to a public log, fixture, or example. Use
   placeholders like `<model>` / `<voice-name>` / `<ratio>` instead.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- Confirmed active profile and environment via dreamina-canvas version
+
+Forbids:
+- Hard-coding or recommending a specific model name, voice name, ratio, resolution, duration, or batch count
+- Treating a discovery payload from one environment as valid in another
+- Saving raw discovery payloads into public logs, fixtures, or examples
+
+Default prompt:
+
+> Before generation, always run `model search --type <x> --detail full` and
+> `voice list` (for TTS) on the live CLI. Never substitute a remembered
+> model or voice name. Confirm flag names with `schema "<command path>"`.
+> 

@@ -1,18 +1,6 @@
 interface:
-  display_name: "Dreamina Canvas (end-to-end)"
-  short_description: "Single implicit entry point; routes to the smallest applicable Canvas Skill chain"
-  default_prompt: |
-    Route to the smallest applicable Skill chain. Always surface saved
-    draft, quoted amount, user approval, submission acceptance, terminal
-    completion, and verified artifact. Never duplicate the lower-level
-    Skills' details. Never approve spend.
+  display_name: Dreamina Canvas (end-to-end)
+  short_description: Single implicit entry point; routes to the smallest applicable
+    Canvas Skill chain
 policy:
   allow_implicit_invocation: true
-  invocation_requires:
-    - "Confirmed installation of dreamina-canvas"
-    - "User's authorisation for each paid stage"
-  forbids:
-    - "Persisting tokens, signed URLs, cookies, or credit-approval token"
-    - "Approving spend on the user's behalf"
-    - "Duplicating the lower-level Skills' command, exit-code, or model details"
-    - "Minting a submitId; only forward the one from dreamina-canvas-quote-and-run"

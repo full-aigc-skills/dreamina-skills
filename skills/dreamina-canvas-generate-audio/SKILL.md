@@ -98,3 +98,24 @@ persists tokens.
 - Accept `--count` on audio nodes.
 - Use a remembered voice or music-model name across environments.
 - Implicit-default the music model.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- Live voice list (for TTS) or live audio model discovery (for music)
+- For paid execution: explicit handoff to dreamina-canvas-quote-and-run
+
+Forbids:
+- Calling --run from this Skill
+- Passing --count on audio nodes
+- Supplying --model on TTS or --voice-name on music
+- Implicit-defaulting the music model
+- Persisting tokens, signed URLs, cookies, or session material
+
+Default prompt:
+
+> TTS requires --voice-name; music requires --model + --duration. Never
+> pass --count on audio nodes. Never default the music model. Hand off
+> paid execution to dreamina-canvas-quote-and-run.
+> 

@@ -125,3 +125,24 @@ Hand off to `dreamina-canvas-quote-and-run`. This Skill never calls
 - Silently merge old and new clip lists; track replacement is destructive
   and the user must consent.
 - Guess missing options locally; let the server fill them from the source.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- Explicit user consent for any track replacement
+- For paid execution: explicit handoff to dreamina-canvas-quote-and-run
+
+Forbids:
+- Calling --run from this Skill
+- Passing node: or res: prefix on --clip or --audio-clip
+- Silently merging old and new clip lists
+- Persisting tokens, signed URLs, cookies, or session material
+
+Default prompt:
+
+> Passing --clip or --audio-clip to node edit timeline rebuilds the
+> corresponding track and issues new clip identities. Confirm with the
+> user before destructive edits; for title-only changes omit both flags.
+> Hand off paid execution.
+> 

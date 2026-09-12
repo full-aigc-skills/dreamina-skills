@@ -1,16 +1,6 @@
 interface:
-  display_name: "Dreamina Canvas Lifecycle"
-  short_description: "Create, list, and select canvases; reuse lowercase --project-id across processes"
-  default_prompt: |
-    Always pass --project-id explicitly on cross-process retries and in any
-    concurrent flow. Use --use only for a single sequential user flow. Never
-    retype the returned projectId; pipe it.
+  display_name: Dreamina Canvas Lifecycle
+  short_description: Create, list, and select canvases; reuse lowercase --project-id
+    across processes
 policy:
   allow_implicit_invocation: false
-  invocation_requires:
-    - "Confirmed installation of dreamina-canvas"
-    - "A caller-supplied lowercase UUID for --project-id on creation"
-  forbids:
-    - "Letting the CLI auto-generate --project-id in a multi-step or cross-process workflow"
-    - "Mutating the local --use contexts file outside an explicit user request"
-    - "Reusing a projectId returned from a response that contradicts the request"

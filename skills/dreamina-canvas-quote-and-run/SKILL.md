@@ -124,3 +124,24 @@ server-side. Use `operation status <submitId>` to inspect each item.
   and `error.requiredAction`.
 - Use `--yes` instead of `--credit-ceiling` when the price is knowable
   in advance.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- User-supplied projectId, nodeIds, submitId, and credit ceiling
+- Explicit action-time approval for the spend
+
+Forbids:
+- Persisting credit-approval token, signed URLs, cookies, or OAuth tokens
+- Re-quoting from a stale draft
+- Minting a new submitId on retry
+- Using --yes when the ceiling is knowable in advance
+- Treating a missing submission.state field as 'absent'
+
+Default prompt:
+
+> Always re-quote from the latest authoritative draft before run. Bind
+> approval with --credit-ceiling, not --yes. Reuse the same submitId on
+> recovery; switching submitId re-bills.
+> 

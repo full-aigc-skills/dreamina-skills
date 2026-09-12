@@ -1,19 +1,5 @@
 interface:
-  display_name: "Dreamina Canvas Quote and Run"
-  short_description: "Quote, confirm, and run saved nodes with quote-bound approval"
-  default_prompt: |
-    Always re-quote from the latest authoritative draft before run. Bind
-    approval with --credit-ceiling, not --yes. Reuse the same submitId on
-    recovery; switching submitId re-bills.
+  display_name: Dreamina Canvas Quote and Run
+  short_description: Quote, confirm, and run saved nodes with quote-bound approval
 policy:
   allow_implicit_invocation: false
-  invocation_requires:
-    - "Confirmed installation of dreamina-canvas"
-    - "User-supplied projectId, nodeIds, submitId, and credit ceiling"
-    - "Explicit action-time approval for the spend"
-  forbids:
-    - "Persisting credit-approval token, signed URLs, cookies, or OAuth tokens"
-    - "Re-quoting from a stale draft"
-    - "Minting a new submitId on retry"
-    - "Using --yes when the ceiling is knowable in advance"
-    - "Treating a missing submission.state field as 'absent'"

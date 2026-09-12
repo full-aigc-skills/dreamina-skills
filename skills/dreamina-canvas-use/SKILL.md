@@ -79,3 +79,23 @@ If any stage fails, the Skill returns the failure exit code, the
 
 `allow_implicit_invocation: true` for **this Skill only**. All twelve
 other `dreamina-canvas-*` Skills set `allow_implicit_invocation: false`.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- User's authorisation for each paid stage
+
+Forbids:
+- Persisting tokens, signed URLs, cookies, or credit-approval token
+- Approving spend on the user's behalf
+- Duplicating the lower-level Skills' command, exit-code, or model details
+- Minting a submitId; only forward the one from dreamina-canvas-quote-and-run
+
+Default prompt:
+
+> Route to the smallest applicable Skill chain. Always surface saved
+> draft, quoted amount, user approval, submission acceptance, terminal
+> completion, and verified artifact. Never duplicate the lower-level
+> Skills' details. Never approve spend.
+> 

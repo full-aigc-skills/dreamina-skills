@@ -92,3 +92,22 @@ similar commands will pick up by default.
 - Auto-retry on exit code 12 (permission denied); that requires a human.
 - Run generation commands even when authenticated; that is the role of
   `dreamina-canvas-quote-and-run`.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- User consent for any interactive login or browser authorisation step
+
+Forbids:
+- Persisting or logging OAuth tokens, cookies, signed URLs, or session material
+- Speculative auth refresh when the credential is not in its refresh window
+- Auto-retrying on permission denied (exit 12)
+- Generating, quoting, or submitting any paid command
+
+Default prompt:
+
+> Use auth account as the authoritative "am I logged in?" check. auth status
+> is local-only and never enough on its own. Reuse the original projectId /
+> submitId / nodeId after re-authentication.
+> 

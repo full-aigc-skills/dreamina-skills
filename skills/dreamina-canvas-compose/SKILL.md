@@ -120,3 +120,25 @@ topological run batches before any paid execution:
 - Mint a `submitId`; the run batches only describe which nodeIds to
   quote / confirm / run.
 - Schedule the DAG server-side; it does not happen.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- A user-approved canvas structure plan
+- For paid execution: explicit handoff to dreamina-canvas-quote-and-run
+
+Forbids:
+- Calling --run from this Skill
+- Supplying --credit-ceiling or --credit-token
+- Persisting tokens, signed URLs, cookies, or session material
+- Assuming node run performs DAG scheduling
+- Re-deriving a nodeId from memory; always read it from the response
+
+Default prompt:
+
+> Compose the canvas as a saved graph. Create upstream nodes before
+> downstream references. Persist every nodeId. Plan explicit run
+> batches because node run does not perform DAG scheduling. Hand off
+> paid execution to dreamina-canvas-quote-and-run.
+> 

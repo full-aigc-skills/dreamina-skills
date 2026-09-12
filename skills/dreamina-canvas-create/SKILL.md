@@ -90,3 +90,21 @@ verbatim when piping into other commands; do not retype them.
 - Persist OAuth tokens, cookies, signed URLs, or `credit-approval token`.
 - Mutate the contexts file outside of an explicit `--use` request.
 - Skip re-validation of the live `--project-id` before a paid call.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- A caller-supplied lowercase UUID for --project-id on creation
+
+Forbids:
+- Letting the CLI auto-generate --project-id in a multi-step or cross-process workflow
+- Mutating the local --use contexts file outside an explicit user request
+- Reusing a projectId returned from a response that contradicts the request
+
+Default prompt:
+
+> Always pass --project-id explicitly on cross-process retries and in any
+> concurrent flow. Use --use only for a single sequential user flow. Never
+> retype the returned projectId; pipe it.
+> 

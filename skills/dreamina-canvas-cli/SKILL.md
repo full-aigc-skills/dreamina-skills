@@ -129,3 +129,21 @@ authoritative next-step hint for scripts.
 - Persist OAuth tokens, cookies, signed URLs, or `credit-approval token`.
 - Branch on localised human-language messages.
 - Mutate the local `--use` canvas context unless the caller asked explicitly.
+
+## Policy
+
+Invocation requires:
+- Confirmed installation of dreamina-canvas
+- Verified --format json contract via dreamina-canvas schema
+
+Forbids:
+- Installing the CLI from this Skill
+- Logging in, refreshing tokens, or running paid commands
+- Persisting OAuth tokens, cookies, signed URLs, or credit-approval token
+
+Default prompt:
+
+> Before any non-trivial dreamina-canvas call, run version + schema, pass
+> --format json, and route failures by exit code + requiredAction. Never
+> hard-code model or voice names.
+> 
