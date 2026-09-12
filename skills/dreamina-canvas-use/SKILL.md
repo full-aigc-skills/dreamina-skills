@@ -98,4 +98,4 @@ Default prompt:
 > draft, quoted amount, user approval, submission acceptance, terminal
 > completion, and verified artifact. Never duplicate the lower-level
 > Skills' details. Never approve spend.
-> 
+>

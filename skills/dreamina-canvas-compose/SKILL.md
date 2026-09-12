@@ -141,4 +141,4 @@ Default prompt:
 > downstream references. Persist every nodeId. Plan explicit run
 > batches because node run does not perform DAG scheduling. Hand off
 > paid execution to dreamina-canvas-quote-and-run.
-> 
+>

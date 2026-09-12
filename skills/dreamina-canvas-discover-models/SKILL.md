@@ -108,4 +108,4 @@ Default prompt:
 > Before generation, always run `model search --type <x> --detail full` and
 > `voice list` (for TTS) on the live CLI. Never substitute a remembered
 > model or voice name. Confirm flag names with `schema "<command path>"`.
-> 
+>

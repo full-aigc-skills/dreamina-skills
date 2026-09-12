@@ -146,4 +146,4 @@ Default prompt:
 > Before any non-trivial dreamina-canvas call, run version + schema, pass
 > --format json, and route failures by exit code + requiredAction. Never
 > hard-code model or voice names.
-> 
+>

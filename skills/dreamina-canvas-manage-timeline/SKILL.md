@@ -145,4 +145,4 @@ Default prompt:
 > corresponding track and issues new clip identities. Confirm with the
 > user before destructive edits; for title-only changes omit both flags.
 > Hand off paid execution.
-> 
+>

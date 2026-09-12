@@ -105,4 +105,4 @@ Default prompt:
 > Recover by ID, never by minting a new submitId. Treat a missing
 > submission field as 'accepted by server', not as 'absent'. Only the
 > absent + resubmittable=true combination allows a fresh node run.
-> 
+>

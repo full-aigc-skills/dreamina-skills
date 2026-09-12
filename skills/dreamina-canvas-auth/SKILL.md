@@ -110,4 +110,4 @@ Default prompt:
 > Use auth account as the authoritative "am I logged in?" check. auth status
 > is local-only and never enough on its own. Reuse the original projectId /
 > submitId / nodeId after re-authentication.
-> 
+>

@@ -154,4 +154,4 @@ Default prompt:
 > Save image drafts via node create/edit image. Generation edits replace
 > the full block; metadata edits are sparse. Hand off paid execution to
 > dreamina-canvas-quote-and-run; never pass --run from this Skill.
-> 
+>

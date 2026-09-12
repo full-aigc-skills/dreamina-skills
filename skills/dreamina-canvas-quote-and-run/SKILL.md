@@ -144,4 +144,4 @@ Default prompt:
 > Always re-quote from the latest authoritative draft before run. Bind
 > approval with --credit-ceiling, not --yes. Reuse the same submitId on
 > recovery; switching submitId re-bills.
-> 
+>

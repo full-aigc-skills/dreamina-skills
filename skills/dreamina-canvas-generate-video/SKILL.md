@@ -147,4 +147,4 @@ Default prompt:
 > Public video modes are t2v, first_last_frame, m2v. There is no i2v and
 > no multi_modal --mode value. When the user says 'image to video' or
 > wants to preserve a ratio, use m2v. Hand off paid execution.
-> 
+>

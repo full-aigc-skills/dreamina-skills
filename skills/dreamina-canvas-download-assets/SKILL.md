@@ -101,4 +101,4 @@ Default prompt:
 > Always verify the file after download via byte count + SHA-256. Use only
 > the post-write response as truth. Never persist signed URLs or storage
 > IDs.
-> 
+>
