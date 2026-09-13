@@ -12,6 +12,10 @@ license: Complete terms in LICENSE.txt
 
 用于已经进入 CLI 执行、轮询或故障诊断阶段的文生图任务。不该用于图生图、视频生成或单纯的提示词创作；这些场景分别加载对应的 `dreamina-cli-*` 或 `dreamina-prompt-*` 技能。
 
+协作路由：`dreamina-prompt-text2image` 负责提示词创作；本 Skill 负责本地
+`dreamina` CLI 执行；用户明确选择 OpenCLI 传输时改用
+`dreamina-opencli-text2image`，不要同时提交两条执行链。
+
 ## 必须遵守
 
 - 每次提交显式传 `--resolution_type=1k|2k|4k`。

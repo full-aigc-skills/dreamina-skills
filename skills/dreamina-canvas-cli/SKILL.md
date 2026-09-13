@@ -1,6 +1,6 @@
 ---
 name: dreamina-canvas-cli
-description: Use when an agent or script invokes the dreamina-canvas CLI and must construct argv safely, route exit codes, separate stdout/stderr, persist identifiers, and never hard-code model or voice names.
+description: Use when an agent must install, verify, update, or invoke dreamina-canvas and safely construct argv, route exit codes, separate stdout/stderr, persist identifiers, and avoid hard-coded catalogs.
 license: Complete terms in LICENSE
 ---
 
@@ -13,10 +13,14 @@ commands are built, how failures are interpreted, and how identifiers are persis
 The reviewed CLI guide is
 [references/cli-contract.md](references/cli-contract.md) and the routing rules are
 in [references/error-routing.md](references/error-routing.md).
+For authorized first-time installation and update, read
+[references/install-to-use.md](references/install-to-use.md).
 
 ## When to use
 
 - Before constructing any argv for `dreamina-canvas` from another Canvas Skill.
+- When the binary is missing or requests an upgrade and the user wants the
+  official domestic or overseas installer workflow.
 - When a `dreamina-canvas` invocation returned a non-zero exit code or a JSON
   error envelope on stderr.
 - When deciding whether the next step is to wait, retry, re-quote, or hand the
@@ -26,11 +30,15 @@ in [references/error-routing.md](references/error-routing.md).
 
 - For domain-specific generation guidance (`dreamina-canvas-generate-image`,
   `dreamina-canvas-generate-video`, etc.).
-- For installing, logging in, or running any paid command — those are
-  separately authorized at the action boundary (see `dreamina-canvas-auth` and
-  the human-in-the-loop gates in this Skill set).
+- For logging in or running any paid command — those are separately authorized
+  at the action boundary (see `dreamina-canvas-auth` and the human-in-the-loop
+  gates in this Skill set).
 
 ## Mandatory pre-flight
+
+If the command is absent, stop and obtain installation authorization before
+using the official command in `install-to-use.md`. After installation run
+`dreamina-canvas --help`, then continue with the machine-readable checks below.
 
 Before any non-trivial command:
 
@@ -125,7 +133,8 @@ authoritative next-step hint for scripts.
 
 ## What this Skill will not do
 
-- Install the CLI, log in, refresh tokens, or perform any paid generation.
+- Install or update the CLI without explicit user authorization; log in,
+  refresh tokens, or perform paid generation from this foundation Skill.
 - Persist OAuth tokens, cookies, signed URLs, or `credit-approval token`.
 - Branch on localised human-language messages.
 - Mutate the local `--use` canvas context unless the caller asked explicitly.
@@ -133,11 +142,12 @@ authoritative next-step hint for scripts.
 ## Policy
 
 Invocation requires:
-- Confirmed installation of dreamina-canvas
+- Confirmed installation of dreamina-canvas, or explicit authorization to use
+  an official installer
 - Verified --format json contract via dreamina-canvas schema
 
 Forbids:
-- Installing the CLI from this Skill
+- Installing or updating the CLI without explicit user authorization
 - Logging in, refreshing tokens, or running paid commands
 - Persisting OAuth tokens, cookies, signed URLs, or credit-approval token
 

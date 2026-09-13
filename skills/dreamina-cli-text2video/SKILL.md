@@ -12,6 +12,10 @@ license: Complete terms in LICENSE.txt
 
 用于无参考媒体的 CLI 文生视频提交、轮询和故障诊断。不该用于图生视频、故事板或单纯提示词创作；改用 `dreamina-cli-image2video` 或 prompt 技能。
 
+协作路由：`dreamina-prompt-text2video` 负责视频提示词；本 Skill 负责本地
+`dreamina` CLI 执行；用户明确选择 OpenCLI 传输时改用
+`dreamina-opencli-text2video`，不要重复提交。
+
 ## 必须遵守
 
 - 每次提交显式传 `--video_resolution`，token 必须是小写 `480p`/`720p`/`1080p`/`4k`。`480p` 仅 `seedance2.5` 支持。

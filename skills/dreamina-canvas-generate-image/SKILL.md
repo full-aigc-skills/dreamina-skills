@@ -119,6 +119,26 @@ never:
 - Supplies `--credit-ceiling` or `--credit-token`.
 - Persists `credit-approval token`.
 
+## Image upscale
+
+`node upscale image` creates a new node and never overwrites the source. It is
+a separately priced operation with an upscale-scoped approval token; a token
+from `node confirm` is invalid here.
+
+```bash
+# Local-only validation
+dreamina-canvas --format json node upscale image \
+  --node-id <sourceImageNodeId> --mode pro --resolution 2K --dry-run
+
+# After showing the live quote and receiving an exact ceiling approval
+dreamina-canvas --format json node upscale image \
+  --node-id <sourceImageNodeId> --submit-id <stableUuid> \
+  --mode pro --resolution 2K --credit-ceiling <approvedCeiling> --wait
+```
+
+Persist one stable `submitId` per source before execution. On exit 20 or 21,
+query or retry with the same ID; never substitute a new identity.
+
 ## Failure → recovery
 
 | Failure | requiredAction | What to do next |

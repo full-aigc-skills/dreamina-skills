@@ -56,6 +56,37 @@ Element / Text / Image (referenced by downstream nodes)
 The Skill persists every returned `nodeId` keyed by a stable caller
 alias. Never re-derive a `nodeId` from memory — read it from the response.
 
+## Text and Element commands
+
+This Skill owns non-generating Text and Element structure:
+
+```bash
+dreamina-canvas --format json node create text \
+  --title "<title>" --text "<body>"
+dreamina-canvas --format json node edit text \
+  --node-id <textNodeId> --text "<new body>"
+
+dreamina-canvas --format json node create element \
+  --title "<title>" --main <imageNodeId>
+dreamina-canvas --format json node edit element \
+  --node-id <elementNodeId> --voice <audioNodeId> \
+  --auxiliary <otherImageNodeId>
+```
+
+Element slots accept bare Node IDs or resource UUIDs, not `node:`/`res:`
+syntax. Validate every binding against the live schema and resolved media type;
+do not duplicate one image in both main and auxiliary slots.
+
+## Locate and inspect nodes
+
+Use `node find` for filtered summaries and `node show` for full views before
+composing references:
+
+```bash
+dreamina-canvas --format json node find --type image --status success --limit 50
+dreamina-canvas --format json node show --node-id <nodeId>
+```
+
 ## Reference syntax on the canvas
 
 - `node:node_xxx` — follow the node; creates a canvas edge. Used in

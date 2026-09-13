@@ -12,6 +12,10 @@ license: Complete terms in LICENSE.txt
 
 用于至少有一张参考图或一个参考视频的 CLI 视频任务。不该用于纯文本视频、图片生成或纯提示词润色；这些场景改用对应的 `dreamina-cli-*` 或 `dreamina-prompt-*` 技能。
 
+协作路由：`dreamina-prompt-image2video` 负责单图、首尾帧、多帧和多模态提示词；
+本 Skill 负责本地 `dreamina` CLI 执行；用户明确选择 OpenCLI 传输时改用
+`dreamina-opencli-image2video`，不要同时提交两条执行链。
+
 | 场景 | 命令 | 关键输入 |
 |---|---|---|
 | 单图动画 | `image2video` | `--image`、必填 `--prompt` |

@@ -75,6 +75,12 @@ Same as image / video: touching generation flags means submitting the
 complete new block. Metadata is sparse. `--clear-generation` is the
 opt-out and is mutually exclusive with generation flags.
 
+```bash
+# Sparse metadata edit; generation remains unchanged
+dreamina-canvas --format json node edit audio \
+  --node-id <nodeId> --title "<new title>"
+```
+
 ## Paid execution is not this Skill's job
 
 Hand off to `dreamina-canvas-quote-and-run`. This Skill never calls

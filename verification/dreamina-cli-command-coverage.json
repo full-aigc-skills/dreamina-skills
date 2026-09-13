@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "source": "Official Dreamina CLI v1.4.18 install-to-use guide",
+  "commands": [
+    {"id":"install","ownerSkill":"dreamina-cli","evidenceToken":"curl -fsSL https://jimeng.jianying.com/cli | bash"},
+    {"id":"help","ownerSkill":"dreamina-cli","evidenceToken":"dreamina -h"},
+    {"id":"version","ownerSkill":"dreamina-cli","evidenceToken":"dreamina version"},
+    {"id":"login","ownerSkill":"dreamina-cli","evidenceToken":"dreamina login"},
+    {"id":"login headless","ownerSkill":"dreamina-cli","evidenceToken":"dreamina login --headless"},
+    {"id":"login checklogin","ownerSkill":"dreamina-cli","evidenceToken":"dreamina login checklogin"},
+    {"id":"relogin","ownerSkill":"dreamina-cli","evidenceToken":"dreamina relogin"},
+    {"id":"logout","ownerSkill":"dreamina-cli","evidenceToken":"dreamina logout"},
+    {"id":"user_credit","ownerSkill":"dreamina-cli","evidenceToken":"dreamina user_credit"},
+    {"id":"text2image","ownerSkill":"dreamina-cli-text2image","supportingSkills":["dreamina-prompt-text2image","dreamina-opencli-text2image"],"evidenceToken":"dreamina text2image"},
+    {"id":"image2image","ownerSkill":"dreamina-cli-image2image","supportingSkills":["dreamina-prompt-image2image","dreamina-opencli-image2image"],"evidenceToken":"dreamina image2image"},
+    {"id":"text2video","ownerSkill":"dreamina-cli-text2video","supportingSkills":["dreamina-prompt-text2video","dreamina-opencli-text2video"],"evidenceToken":"dreamina text2video"},
+    {"id":"image2video","ownerSkill":"dreamina-cli-image2video","supportingSkills":["dreamina-prompt-image2video","dreamina-opencli-image2video"],"evidenceToken":"dreamina image2video"},
+    {"id":"frames2video","ownerSkill":"dreamina-cli-image2video","supportingSkills":["dreamina-prompt-image2video","dreamina-opencli-image2video"],"evidenceToken":"dreamina frames2video"},
+    {"id":"multiframe2video","ownerSkill":"dreamina-cli-image2video","supportingSkills":["dreamina-prompt-image2video","dreamina-opencli-image2video"],"evidenceToken":"dreamina multiframe2video"},
+    {"id":"multimodal2video","ownerSkill":"dreamina-cli-image2video","supportingSkills":["dreamina-prompt-image2video","dreamina-opencli-image2video"],"evidenceToken":"dreamina multimodal2video"},
+    {"id":"image_upscale","ownerSkill":"dreamina-cli-image2image","evidenceToken":"dreamina image_upscale"},
+    {"id":"query_result","ownerSkill":"dreamina-cli","evidenceToken":"dreamina query_result --submit_id=<submit_id>"},
+    {"id":"query_result download","ownerSkill":"dreamina-cli","evidenceToken":"dreamina query_result --submit_id=<submit_id> --download_dir=./downloads"},
+    {"id":"list_task","ownerSkill":"dreamina-cli","evidenceToken":"dreamina list_task --gen_status=success"},
+    {"id":"session create","ownerSkill":"dreamina-cli","evidenceToken":"dreamina session create"},
+    {"id":"session list","ownerSkill":"dreamina-cli","evidenceToken":"dreamina session list"},
+    {"id":"session search","ownerSkill":"dreamina-cli","evidenceToken":"dreamina session search"},
+    {"id":"session rename","ownerSkill":"dreamina-cli","evidenceToken":"dreamina session rename"},
+    {"id":"session delete","ownerSkill":"dreamina-cli","evidenceToken":"dreamina session delete"}
+  ]
+}

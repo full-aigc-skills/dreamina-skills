@@ -1,6 +1,6 @@
 ---
 name: dreamina-cli-image2image
-description: Use when the user provides one to ten local images and wants to submit, poll, or troubleshoot Dreamina 即梦 image-to-image editing through `dreamina image2image`. Covers CLI v1.4.18 required resolution, custom width/height, Seedream model tokens, batch count, sessions, and async terminal statuses.
+description: Use when the user provides local images and wants Dreamina 即梦 image-to-image editing or image upscaling through `dreamina image2image` or `dreamina image_upscale`, including validation, submission, polling, and troubleshooting.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -12,13 +12,17 @@ license: Complete terms in LICENSE.txt
 
 用于已有本地参考图、需要通过 CLI 编辑并跟踪结果的任务。不该用于文生图、视频生成或纯提示词润色；分别加载对应的执行或 prompt 技能。
 
+协作路由：`dreamina-prompt-image2image` 负责编辑提示词；本 Skill 负责本地
+`dreamina` CLI 执行；用户明确选择 OpenCLI 传输时改用
+`dreamina-opencli-image2image`，不要重复提交。
+
 ## 必须遵守
 
 - `--images` 接收 1–10 个本地文件，多个路径使用逗号分隔。
 - 每次提交显式传 `--resolution_type=1k|2k|4k`。
 - `--width` 与 `--height` 必须成对出现、为正整数，并与 `--ratio` 互斥。
 - 仅 `5.0Pro` 支持 1k；4.x/5.0 只支持 2k 或 4k。
-- 模型 token 是 `5.0Pro`，不是 `5.0Pro`。
+- 模型 token 是 `5.0Pro`，不是展示名 `5.0 Pro`。
 - `generate_num` 范围为 1–10。
 
 完整模型矩阵和像素限制见
@@ -51,6 +55,22 @@ dreamina image2image \
   --height=2048 \
   --poll=0
 ```
+
+## 图片超清
+
+图片超清由本 Skill 路由，但必须先读取实时 help，因为参数与图生图不同：
+
+```bash
+dreamina image_upscale -h
+dreamina user_credit
+dreamina image_upscale \
+  --image=./input.png \
+  --resolution_type=2k \
+  --poll=0
+```
+
+提交前验证源图片可读、展示分辨率和消费影响并取得明确授权。保存返回的
+`submit_id`，通过 `dreamina query_result` 跟踪到 `success` 或 `fail`。
 
 ## 异步闭环
 

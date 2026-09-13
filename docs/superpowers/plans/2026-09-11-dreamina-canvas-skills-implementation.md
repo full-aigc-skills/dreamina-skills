@@ -38,7 +38,7 @@
 - Consumes: the 2026-09-11 Dreamina Octo CLI guide and the existing 13-Skill inventory.
 - Produces: `CANVAS_SKILLS`, a 13-name canonical inventory reused by later tests; an offline command/exit-code fixture with no model catalog.
 
-- [ ] **Step 1: Write the failing inventory test**
+- [x] **Step 1: Write the failing inventory test**
 
 ```python
 CANVAS_SKILLS = {
@@ -56,21 +56,21 @@ def test_canvas_skill_inventory_is_complete():
     assert actual == CANVAS_SKILLS
 ```
 
-- [ ] **Step 2: Run the test and preserve the RED result**
+- [x] **Step 2: Run the test and preserve the RED result**
 
 Run: `python3 -m unittest tests/test_canvas_skill_inventory.py -v`
 
 Expected: FAIL because none of the thirteen Canvas Skill directories exist.
 
-- [ ] **Step 3: Add the guide contract fixture and inventory metadata**
+- [x] **Step 3: Add the guide contract fixture and inventory metadata**
 
 Record command families `auth`, `model`, `voice`, `canvas`, `node`, `operation`, `resource`, `schema`, and `version`; exit codes `0,1,2,10,11,12,13,20,21,22`; and required actions `none,login,confirm,retry,resume,upgrade,human_intervention,contact_support`. Do not include concrete model or voice values.
 
-- [ ] **Step 4: Add the thirteen target paths to package metadata and READMEs**
+- [x] **Step 4: Add the thirteen target paths to package metadata and READMEs**
 
 The manifest and bilingual tables must state the layer and invocation policy for every new Skill. Do not claim implementation is complete until later tasks create and validate every directory.
 
-- [ ] **Step 5: Run fixture validation and commit the RED baseline**
+- [x] **Step 5: Run fixture validation and commit the RED baseline**
 
 Run: `python3 -m json.tool verification/dreamina-canvas-guide-contract.json`
 
@@ -95,7 +95,7 @@ git commit -m "test(canvas): define Skill inventory and CLI guide contract"
 - Consumes: `verification/dreamina-canvas-guide-contract.json`.
 - Produces: the shared rules for argv construction, `--format json`, stdout/stderr separation, profiles/environments, ID persistence, exit-code routing, and runtime schema discovery.
 
-- [ ] **Step 1: Add failing foundation assertions**
+- [x] **Step 1: Add failing foundation assertions**
 
 ```python
 def test_cli_skill_owns_cross_cutting_invariants():
@@ -104,17 +104,17 @@ def test_cli_skill_owns_cross_cutting_invariants():
         assert token in text
 ```
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `python3 -m unittest tests.test_canvas_skill_inventory.CanvasSkillInventoryTests.test_cli_skill_owns_cross_cutting_invariants -v`
 
 Expected: FAIL because `skills/dreamina-canvas-cli/SKILL.md` is missing.
 
-- [ ] **Step 3: Write the minimal foundation Skill**
+- [x] **Step 3: Write the minimal foundation Skill**
 
 The Skill must require `dreamina-canvas version` and the relevant `schema "<command path>"` before command construction; classify exit codes without parsing localized messages; preserve non-empty lowercase UUID `projectId`/`submitId`; and stop before install, login, or paid execution unless separately authorized.
 
-- [ ] **Step 4: Add explicit-only UI policy**
+- [x] **Step 4: Add explicit-only UI policy**
 
 ```yaml
 interface:
@@ -124,7 +124,7 @@ policy:
   allow_implicit_invocation: false
 ```
 
-- [ ] **Step 5: Validate behavior and quality**
+- [x] **Step 5: Validate behavior and quality**
 
 Run:
 
@@ -135,7 +135,7 @@ python3 -m unittest tests/test_canvas_skill_inventory.py -v
 
 Run strict TRACE and the scenario asserting that exit 20 yields “resume the same operation” rather than a new `node run` command.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add skills/dreamina-canvas-cli tests
@@ -155,7 +155,7 @@ git commit -m "feat(canvas): add CLI foundation Skill"
 - Consumes: `dreamina-canvas-cli` error and profile rules.
 - Produces: routes for `auth login`, `wait`, `status`, `account`, `refresh`, and `logout` without exposing credentials.
 
-- [ ] **Step 1: Write the failing auth boundary test**
+- [x] **Step 1: Write the failing auth boundary test**
 
 ```python
 def test_auth_distinguishes_local_and_server_identity():
@@ -165,15 +165,15 @@ def test_auth_distinguishes_local_and_server_identity():
     assert "token" in text and "不得" in text
 ```
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run the single test and expect missing-Skill failure.
 
-- [ ] **Step 3: Implement auth flows**
+- [x] **Step 3: Implement auth flows**
 
 Document TTY blocking login, non-TTY challenge recovery through `auth wait --device-code`, post-login `auth account` verification, profile isolation, and exit-code 11 recovery using the same original operation identity.
 
-- [ ] **Step 4: Validate and commit**
+- [x] **Step 4: Validate and commit**
 
 Run the inventory test, quick validator, strict TRACE, and scenarios for local-valid/server-revoked credentials and non-TTY login recovery.
 
@@ -195,7 +195,7 @@ git commit -m "feat(canvas): add authentication Skill"
 - Consumes: `dreamina-canvas-cli` runtime schema rules.
 - Produces: model, voice, ratio, resolution, duration, input-specification, VIP, and maximum-batch discovery results for media Skills.
 
-- [ ] **Step 1: Write the failing no-hard-coded-catalog test**
+- [x] **Step 1: Write the failing no-hard-coded-catalog test**
 
 ```python
 def test_discovery_uses_runtime_catalogs():
@@ -205,11 +205,11 @@ def test_discovery_uses_runtime_catalogs():
     assert "不要硬编码" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement runtime discovery**
+- [x] **Step 2: Verify RED, then implement runtime discovery**
 
 Require full-detail model lookup before generation, pagination for voices, exact model lookup when a name is chosen, and explicit propagation of server constraints. Explain that account membership and model `isVip` metadata answer different questions.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 Run quick validation, TRACE, and scenarios that reject a remembered model value absent from the current discovery payload.
 
@@ -231,7 +231,7 @@ git commit -m "feat(canvas): add runtime capability discovery Skill"
 - Consumes: foundation ID/profile/environment rules.
 - Produces: an idempotently created or selected `projectId` and rules for safe current-canvas context use.
 
-- [ ] **Step 1: Write the failing idempotency test**
+- [x] **Step 1: Write the failing idempotency test**
 
 ```python
 def test_create_reuses_explicit_project_id_for_cross_process_retry():
@@ -240,11 +240,11 @@ def test_create_reuses_explicit_project_id_for_cross_process_retry():
     assert "并发" in text and "--use" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement create/list/select behavior**
+- [x] **Step 2: Verify RED, then implement create/list/select behavior**
 
 Require a caller-persisted lowercase UUID for cross-process retry, permit `--use` only for a single-user sequential flow, and require explicit `--project-id` in concurrent automation.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-create tests
@@ -264,7 +264,7 @@ git commit -m "feat(canvas): add canvas creation Skill"
 - Consumes: saved node IDs, current project ID, foundation error routing, and an explicit user decision.
 - Produces: quote details, approved ceiling, per-item submission identities, and a no-resubmission recovery handoff.
 
-- [ ] **Step 1: Write the failing paid-action guard test**
+- [x] **Step 1: Write the failing paid-action guard test**
 
 ```python
 def test_paid_run_requires_authoritative_quote_and_action_time_approval():
@@ -274,11 +274,11 @@ def test_paid_run_requires_authoritative_quote_and_action_time_approval():
     assert "--yes" in text and "默认" not in approval_paragraph(text)
 ```
 
-- [ ] **Step 2: Verify RED, then implement the transaction**
+- [x] **Step 2: Verify RED, then implement the transaction**
 
 Treat exit 10 as a non-charging pause, reject `confirmable=false`, preserve ordered per-item IDs, keep the credit token only in memory, and re-quote the latest draft at run time. Never infer that an absent `minimumCreditCeiling` means zero.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 Run scenarios for ceiling too low, modified draft below/above ceiling, token scope mismatch, mixed batch rejection, and unknown item state.
 
@@ -300,7 +300,7 @@ git commit -m "feat(canvas): add quote and run safety Skill"
 - Consumes: non-empty `projectId` and `submitId`, exit code, `requiredAction`, `submission.state`, and `submission.resubmittable`.
 - Produces: terminal success/failure, continued wait, or human-review outcome without automatic resubmission.
 
-- [ ] **Step 1: Write the failing recovery invariant test**
+- [x] **Step 1: Write the failing recovery invariant test**
 
 ```python
 def test_recovery_never_changes_submit_id():
@@ -309,11 +309,11 @@ def test_recovery_never_changes_submit_id():
     assert "resubmittable" in text and "不要重新提交" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement the state machine**
+- [x] **Step 2: Verify RED, then implement the state machine**
 
 Map `in_progress` and `completed` to continued observation, treat a missing submission fact conservatively as accepted, and route `absent + resubmittable=true` to human reconciliation rather than automatic `node run`.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-resume-operation tests
@@ -333,7 +333,7 @@ git commit -m "feat(canvas): add resumable operation Skill"
 - Consumes: successful node/resource identity and a user-approved output directory.
 - Produces: canonical local path, byte count, SHA-256, media metadata, and source `resourceId`.
 
-- [ ] **Step 1: Write the failing artifact-evidence test**
+- [x] **Step 1: Write the failing artifact-evidence test**
 
 ```python
 def test_download_requires_resource_fact_and_receipt():
@@ -342,11 +342,11 @@ def test_download_requires_resource_fact_and_receipt():
         assert token in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement safe download behavior**
+- [x] **Step 2: Verify RED, then implement safe download behavior**
 
 Require resource readiness before download, constrain output to the approved directory, trust only the final atomic-write response, and avoid persisting signed URLs or storage-provider identifiers.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-download-assets tests
@@ -366,7 +366,7 @@ git commit -m "feat(canvas): add verified asset download Skill"
 - Consumes: discovered image-model contract, ordered references, `dreamina-prompt-text2image` or `dreamina-prompt-image2image`, and optional quote/run handoff.
 - Produces: a saved image node and mutation version; when separately approved, a stable submission handoff.
 
-- [ ] **Step 1: Write failing image-mode/reference tests**
+- [x] **Step 1: Write failing image-mode/reference tests**
 
 ```python
 def test_image_skill_separates_t2i_and_i2i_references():
@@ -376,11 +376,11 @@ def test_image_skill_separates_t2i_and_i2i_references():
     assert "完整替换" in text and "--clear-generation" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement draft-first image workflows**
+- [x] **Step 2: Verify RED, then implement draft-first image workflows**
 
 For generation edits, require the complete new prompt and ordered reference set. For metadata-only edits, omit all generation flags. Default to saving without `--run`; route paid execution through `dreamina-canvas-quote-and-run`.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 Run t2i text-reference, i2i node/resource-reference, metadata-only edit, cleared generation, and out-of-catalog parameter scenarios.
 
@@ -402,7 +402,7 @@ git commit -m "feat(canvas): add image node Skill"
 - Consumes: discovered video contract, ordered references, existing Dreamina video prompt Skills, and quote/recovery protocols.
 - Produces: saved `t2v`, `first_last_frame`, or `m2v` node plus optional approved submission handoff.
 
-- [ ] **Step 1: Write the failing video-mode test**
+- [x] **Step 1: Write the failing video-mode test**
 
 ```python
 def test_video_skill_uses_only_public_canvas_modes():
@@ -412,11 +412,11 @@ def test_video_skill_uses_only_public_canvas_modes():
     assert "没有 `i2v`" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement mode routing**
+- [x] **Step 2: Verify RED, then implement mode routing**
 
 Require one or two proportion-compatible frame references for `first_last_frame`; use `m2v` for image/video/Element guidance; preserve user-requested ratios only when the discovered model contract permits them.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-generate-video tests
@@ -436,7 +436,7 @@ git commit -m "feat(canvas): add video node Skill"
 - Consumes: voice/model discovery and quote/recovery protocols.
 - Produces: one saved TTS or music node and optional approved submission identity.
 
-- [ ] **Step 1: Write failing TTS/music exclusivity tests**
+- [x] **Step 1: Write failing TTS/music exclusivity tests**
 
 ```python
 def test_audio_skill_enforces_mode_specific_fields():
@@ -446,11 +446,11 @@ def test_audio_skill_enforces_mode_specific_fields():
     assert "不接受 `--count`" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement audio rules**
+- [x] **Step 2: Verify RED, then implement audio rules**
 
 Require a discovered voice and forbid model for TTS; require a discovered audio model and positive duration for music; forbid implicit/default music-model assumptions.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-generate-audio tests
@@ -470,7 +470,7 @@ git commit -m "feat(canvas): add audio node Skill"
 - Consumes: verified image/video/audio node or resource IDs.
 - Produces: ordered visual/audio tracks or a metadata-only timeline mutation.
 
-- [ ] **Step 1: Write the failing destructive-replacement guard test**
+- [x] **Step 1: Write the failing destructive-replacement guard test**
 
 ```python
 def test_timeline_edit_warns_before_track_replacement():
@@ -479,11 +479,11 @@ def test_timeline_edit_warns_before_track_replacement():
     assert "整体替换" in text and "未提交" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement timeline parsing rules**
+- [x] **Step 2: Verify RED, then implement timeline parsing rules**
 
 Cover image duration, video/audio trim and speed, volume/muted, audio start, audio-only timelines, metadata-only edits, and the loss boundary when either track flag rebuilds the corresponding track.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-manage-timeline tests
@@ -503,7 +503,7 @@ git commit -m "feat(canvas): add timeline management Skill"
 - Consumes: canvas creation, media nodes, text nodes, Element bindings, timeline nodes, and explicit dependency order.
 - Produces: a saved, non-charging canvas graph plus ordered batches eligible for separate quote/run approval.
 
-- [ ] **Step 1: Write the failing DAG and reference test**
+- [x] **Step 1: Write the failing DAG and reference test**
 
 ```python
 def test_compose_saves_graph_before_any_paid_run():
@@ -513,11 +513,11 @@ def test_compose_saves_graph_before_any_paid_run():
     assert "默认只保存" in text
 ```
 
-- [ ] **Step 2: Verify RED, then implement composition**
+- [x] **Step 2: Verify RED, then implement composition**
 
 Create upstream nodes before downstream `node:` references, distinguish follow-node Element bindings from frozen resource bindings, persist every returned node ID, and form explicit topological run batches because `node run` performs no DAG scheduling.
 
-- [ ] **Step 3: Validate and commit**
+- [x] **Step 3: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-compose tests
@@ -537,7 +537,7 @@ git commit -m "feat(canvas): add canvas composition Skill"
 - Consumes: all twelve lower-level Canvas Skills.
 - Produces: the single implicitly discoverable end-to-end Dreamina Canvas workflow.
 
-- [ ] **Step 1: Write failing routing and invocation-policy tests**
+- [x] **Step 1: Write failing routing and invocation-policy tests**
 
 ```python
 def test_only_use_skill_allows_implicit_invocation():
@@ -546,15 +546,15 @@ def test_only_use_skill_allows_implicit_invocation():
     assert load_openai_yaml("dreamina-canvas-use")["policy"]["allow_implicit_invocation"] is True
 ```
 
-- [ ] **Step 2: Verify RED, then implement the thin router**
+- [x] **Step 2: Verify RED, then implement the thin router**
 
 Route authentication, discovery, canvas creation, draft generation, composition, timeline, quote/run, recovery, and download requests without duplicating their command details. Every final response must separate saved draft, quoted amount, user approval, submission acceptance, terminal completion, and artifact verification.
 
-- [ ] **Step 3: Run end-to-end offline scenarios**
+- [x] **Step 3: Run end-to-end offline scenarios**
 
 Required scenarios: draft-only canvas; approved image generation; unapproved exit-10 pause; interrupted video resumed with the same submit ID; mixed batch with per-item results; timeline replacement warning; verified asset download.
 
-- [ ] **Step 4: Validate and commit**
+- [x] **Step 4: Validate and commit**
 
 ```bash
 git add skills/dreamina-canvas-use tests
@@ -574,11 +574,11 @@ git commit -m "feat(canvas): add top-level Canvas orchestration Skill"
 - Consumes: all 13 Canvas Skills and existing 13 Dreamina Skills.
 - Produces: a published commit SHA that `codex-dreamina-canvas-plugin` can pin and verify byte-for-byte.
 
-- [ ] **Step 1: Add repository-wide validation**
+- [x] **Step 1: Add repository-wide validation**
 
 The script must assert directory/frontmatter equality, 26 unique Skill names, exact manifest coverage, invocation policy, valid local links, no scaffold placeholders, no credential patterns, and no hard-coded catalog fixture masquerading as runtime truth.
 
-- [ ] **Step 2: Run the full gate**
+- [x] **Step 2: Run the full gate**
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -588,11 +588,11 @@ git diff --check
 
 Run quick validation and strict TRACE separately for each of the thirteen Canvas Skills. Do not use one aggregate score as evidence for all Skills.
 
-- [ ] **Step 3: Record runtime boundary**
+- [x] **Step 3: Record runtime boundary**
 
 If installation/authentication was not separately approved, record `cli_runtime=NOT_RUN`, `auth=NOT_RUN`, and `paid_canary=NOT_RUN`. If read-only runtime inspection was approved, record exact version/commit/edition/distribution and schema hash without recording account secrets.
 
-- [ ] **Step 4: Commit and push**
+- [x] **Step 4: Commit and push**
 
 ```bash
 git add scripts verification .claude-plugin README.md README.zh-CN.md
@@ -600,6 +600,6 @@ git commit -m "test(canvas): verify and publish Canvas Skill suite"
 git push origin main
 ```
 
-- [ ] **Step 5: Prove publication**
+- [x] **Step 5: Prove publication**
 
 Compare `git rev-parse HEAD`, `git rev-parse '@{upstream}'`, and `git ls-remote origin refs/heads/main`. Pass the identical 40-character SHA to the plugin packaging plan.

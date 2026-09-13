@@ -66,3 +66,8 @@ This repository is the Skill source of truth. The `partme-ai/codex-dreamina-canv
 - Repository inventory tests assert 26 total Skills: the existing 13 Dreamina Skills plus 13 Canvas Skills.
 - Offline fixtures cover every public exit code and required action without installation, login, or paid generation.
 - Live verification is read-only unless installation, authentication, or a paid canary is separately authorized.
+- `verification/dreamina-canvas-command-coverage.json` maps every official
+  `dreamina-canvas` command to one owning Skill and a verifiable evidence token.
+- `verification/dreamina-cli-command-coverage.json` does the same for the
+  classic `dreamina` CLI and records Prompt/OpenCLI supporting routes without
+  confusing them with the local CLI execution owner.

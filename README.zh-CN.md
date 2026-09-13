@@ -16,7 +16,13 @@
 
 ## 📖 简介
 
-**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **13 个 Dreamina 技能** 与 **13 个尚在创建中的 Canvas 技能**（面向 `dreamina-canvas` CLI）。
+**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **13 个 Dreamina 技能** 与 **13 个生产就绪 Canvas 技能**（面向 `dreamina-canvas` CLI）。
+
+官方命令归属由
+[`dreamina-canvas-command-coverage.json`](verification/dreamina-canvas-command-coverage.json)
+和 [`dreamina-cli-command-coverage.json`](verification/dreamina-cli-command-coverage.json)
+持续校验。Canvas Skill 由 `partme-ai/codex-dreamina-canvas-plugin` 打包；传统
+CLI、OpenCLI 与 Prompt Skill 由 `partme-ai/codex-dreamina-design-plugin` 打包。
 
 ## 📦 安装
 
@@ -42,7 +48,7 @@ npx skills add full-aigc-skills/dreamina-skills
 | `dreamina-prompt-text2image` | 编写覆盖场景、风格、色彩、构图和质量约束的结构化文生图提示词。 |
 | `dreamina-prompt-text2video` | 编写覆盖运动、镜头、时间、场景和评估规则的结构化文生视频提示词。 |
 
-### Canvas 技能清单（建设中）
+### Canvas 技能清单
 
 | 层 | 技能 | 调用方式 |
 |----|------|----------|
@@ -60,7 +66,7 @@ npx skills add full-aigc-skills/dreamina-skills
 | 编排 | `dreamina-canvas-compose` | 显式 |
 | 编排 | `dreamina-canvas-use` | 隐式 |
 
-Canvas 技能遵守 `verification/dreamina-canvas-guide-contract.json` 中的引导契约，并以安装版 CLI 的 `version`、`schema`、`model`、`voice` 输出为运行时真相；尚未实现，后续 Task 会逐个创建并验证目录。
+Canvas 技能遵守 `verification/dreamina-canvas-guide-contract.json` 中的引导契约，并以安装版 CLI 的 `version`、`schema`、`model`、`voice` 输出为运行时真相；13 个入口均已实现并独立验证。
 
 ## 🤖 支持的智能体
 
