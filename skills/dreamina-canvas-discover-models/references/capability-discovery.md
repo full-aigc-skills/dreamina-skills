@@ -9,16 +9,17 @@ dreamina-canvas --format json version
 # 2. Confirm active profile
 dreamina-canvas --format json auth account
 
-# 3. Discover candidates (summary)
+# 3. Discover candidates using the command shape declared by schema
 dreamina-canvas --format json model search --type image
 dreamina-canvas --format json model search --type video
 dreamina-canvas --format json model search --type audio
+# Public 1.0.0 compatibility shape: model list --type <type>
 
 # 4. Confirm full spec for the chosen model
 dreamina-canvas --format json model <model-id> --type image
 
-# 5. For TTS, enumerate voices
-dreamina-canvas --format json voice list --language zh-CN --offset 0 --count 50
+# 5. For TTS, enumerate voices; add --language only when schema declares it
+dreamina-canvas --format json voice list --offset 0 --count 50
 # continue paginating with --offset <nextOffset> until nextOffset is absent
 
 # 6. Confirm flag names with the live schema
@@ -26,6 +27,10 @@ dreamina-canvas --format json schema "node create image"
 dreamina-canvas --format json schema "node create video"
 dreamina-canvas --format json schema "node create audio"
 ```
+
+When `schema` declares `model list` rather than `model search`, use
+`model list --type <type>` and read its full per-mode specifications. Pass
+`--language` to `voice list` only when the live schema declares that flag.
 
 ## Per-resource-type notes
 
@@ -53,8 +58,8 @@ dreamina-canvas --format json schema "node create audio"
 
 ### Audio (Music)
 
-- `--model` is mandatory; take it from `model search --type audio --detail
-  full` filtered to `MODE=music`.
+- `--model` is mandatory; take it from the schema-selected full audio model
+  payload and filter to `music` mode.
 - `--voice-name` is forbidden for music.
 - `--duration` is in seconds, must be `> 0`, default 30.
 - The CLI refuses to default the music model; a missing `--model` returns
@@ -62,7 +67,7 @@ dreamina-canvas --format json schema "node create audio"
 
 ## VIP and entitlement signals
 
-`model search --detail full` exposes `generation.isVip` and `vipConfigs[]`.
+The schema-selected full model payload exposes entitlement requirements.
 These describe **what the model requires**, not what the active account has.
 Do not treat them as a credit balance or membership signal — that comes from
 `auth account` plus the live quote response.

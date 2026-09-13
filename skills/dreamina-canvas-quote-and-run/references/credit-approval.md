@@ -38,6 +38,10 @@ includes:
 
 ## Run (`node run`) per-item outcomes
 
+For a batch, provide one stable `--submit-id` for every `--node-id`, with
+equal length and order. Persist the complete ordered mapping before calling
+`node run`; recovery reuses each item's original ID.
+
 | Outcome | Exit | Meaning |
 |---------|------|---------|
 | All items accepted | 0 | Submission accepted for every node; poll for completion. |

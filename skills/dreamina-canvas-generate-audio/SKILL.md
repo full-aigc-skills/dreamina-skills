@@ -51,8 +51,9 @@ dreamina-canvas --format json node create audio \
   --duration 30
 ```
 
-- `--model` is mandatory. Take it from `model search --type audio
-  --detail full` filtered to `MODE=music`.
+- `--model` is mandatory. Take it from the live full audio discovery shape
+  selected by schema (`model search --detail full` or `model list`), filtered
+  to a `music` mode entry.
 - `--voice-name` is **forbidden** for music.
 - `--duration` must be `> 0` seconds; default 30.
 - The CLI refuses to default the music model. A missing `--model`
@@ -84,8 +85,8 @@ persists tokens.
 
 | Failure | requiredAction | What to do next |
 |---------|----------------|-----------------|
-| `cli.audio_music_model_required` (exit 2) | none | Re-run `model search --type audio --detail full`, pick a `MODE=music` model, retry. |
-| `--voice-name` rejected on TTS | none | Re-run `voice list --language <code>` and use a current public name. |
+| `cli.audio_music_model_required` (exit 2) | none | Re-run the schema-selected full audio discovery command, pick a `music` model, retry. |
+| `--voice-name` rejected on TTS | none | Re-run `voice list`; add `--language` only if schema declares it. |
 | `--model` passed on TTS (exit 2) | none | Remove `--model`; let the voice drive the model. |
 | `--voice-name` passed on music (exit 2) | none | Remove `--voice-name`; supply `--model` instead. |
 | `--count` passed on audio (exit 2) | none | Remove `--count`; audio is single-output. |

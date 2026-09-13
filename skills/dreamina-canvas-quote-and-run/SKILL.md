@@ -53,6 +53,12 @@ dreamina-canvas --format json node run \
   --project-id "$PROJECT_ID" \
   --credit-token "$token" \
   --submit-id "$SUBMIT_ID"
+
+# Batch: one --submit-id per --node-id, equal length and order
+dreamina-canvas --format json node run \
+  --node-id <node1> --node-id <node2> \
+  --submit-id <id1> --submit-id <id2> \
+  --project-id "$PROJECT_ID" --credit-token "$token"
 ```
 
 ## Binding rules (read carefully)
@@ -90,6 +96,11 @@ minting a fresh idempotency key.
 
 `node run` may take multiple `--node-id` values. The response `data.items[]`
 is the same length and order as the input. Per-item outcomes:
+
+Before a batch call, mint and persist one `--submit-id` per `--node-id`.
+The two lists must have equal length and order. On retry, reuse every ID in
+its original position; a single batch-wide ID is invalid, and replacing any
+item's ID can re-bill that item.
 
 - `REJECTED` (any item) → `cli.node_run_rejected`, exit code 2. Rejection
   is terminal; retry is useless.

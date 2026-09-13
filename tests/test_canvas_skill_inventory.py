@@ -111,8 +111,9 @@ class CanvasSkillInventoryTests(unittest.TestCase):
 
     def test_discovery_uses_runtime_catalogs(self) -> None:
         text = skill_text("dreamina-canvas-discover-models")
-        for command in ("model search", "--detail full", "voice list", "schema"):
+        for command in ("model search", "model list", "--detail full", "voice list", "schema"):
             self.assertIn(command, text, command)
+        self.assertIn("only when the live schema declares it", text)
         self.assertIn("never", text.lower())
 
     def test_discovery_skill_is_explicit_only(self) -> None:
@@ -141,6 +142,12 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         # The approval paragraph must NOT advertise any default-yes behaviour
         approval_para = text[text.index("--credit-ceiling"):]
         self.assertNotIn("默认", approval_para)
+
+    def test_batch_run_uses_one_submit_id_per_node(self) -> None:
+        text = skill_text("dreamina-canvas-quote-and-run")
+        self.assertIn("one `--submit-id` per `--node-id`", text)
+        self.assertIn("equal length and order", text)
+        self.assertIn("--submit-id <id1> --submit-id <id2>", text)
 
     def test_quote_and_run_skill_is_explicit_only(self) -> None:
         policy = skill_openai_yaml("dreamina-canvas-quote-and-run")["policy"]

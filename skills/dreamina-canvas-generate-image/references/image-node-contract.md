@@ -97,7 +97,7 @@ never mints or persists it.
 |---------|----------------|-----------------|
 | `cli.invalid_generation_reference` | none | Fix the ref format; never retry with a guessed id. |
 | `cli.invalid_resource_reference` | none | An Element slot (--main / --voice / --auxiliary) was given `node:` prefix; strip it. |
-| Model or ratio rejected (exit 2) | none | Re-run `model search --type image --detail full`; replace the cached value. |
+| Model or ratio rejected (exit 2) | none | Re-run the schema-selected full image discovery command; replace the cached value. |
 | `image generation requires --resolution` (exit 2) | none | Pass `--resolution` from the discovery payload. |
 | Generation edit lost references because `--ref` was omitted | none | Re-run `node edit image` with the **complete** new ref set. |
 

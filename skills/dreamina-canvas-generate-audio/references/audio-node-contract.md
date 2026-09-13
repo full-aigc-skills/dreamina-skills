@@ -23,8 +23,8 @@ dreamina-canvas --format json node create audio \
   --duration 30
 ```
 
-- Required: `--model` from `model search --type audio --detail full`
-  filtered to `MODE=music`; `--duration > 0` seconds, default 30.
+- Required: `--model` from the schema-selected full audio discovery payload,
+  filtered to `music` mode; `--duration > 0` seconds, default 30.
 - Forbidden: `--voice-name`.
 - Output: a single audio resource (no batch).
 
@@ -40,8 +40,8 @@ dreamina-canvas --format json node create audio \
 
 | Field | Source |
 |-------|--------|
-| `--voice-name` (TTS) | `voice list --language <code> --offset 0 --count 50`, paginate with `--offset` until `nextOffset` is absent. |
-| `--model` (music) | `model search --type audio --detail full`, then filter the `matches` to `MODE=music`. |
+| `--voice-name` (TTS) | `voice list --offset 0 --count 50`; add `--language` only if schema declares it, and paginate until `nextOffset` is absent. |
+| `--model` (music) | Use the full audio payload from `model search --detail full` or `model list`, whichever schema declares, then filter to `music` mode. |
 
 A remembered name from another environment or older CLI commit is not
 authoritative.

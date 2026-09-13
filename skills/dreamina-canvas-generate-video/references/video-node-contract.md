@@ -14,7 +14,8 @@ not be passed. Both are rejected with exit code 2.
 ## Required flags
 
 - `--mode` — mandatory for any video draft.
-- `--model` — from `model search --type video --detail full`.
+- `--model` — from the schema-selected full video discovery payload
+  (`model search --detail full` or `model list`).
 - `--ratio` — only when the model spec allows it (some m2v / image-driven
   models infer the ratio from the first frame; do **not** pass `--ratio`
   in those cases).

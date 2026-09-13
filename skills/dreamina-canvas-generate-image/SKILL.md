@@ -124,7 +124,7 @@ never:
 | Failure | requiredAction | What to do next |
 |---------|----------------|-----------------|
 | `cli.invalid_generation_reference` (exit 2) | none | Fix the reference: add `node:` or `res:` prefix; lowercase canonical UUID for resource; no internal short links. |
-| Model or ratio not in discovery payload (exit 2) | none | Re-run `model search --type image --detail full` and use the current names. |
+| Model or ratio not in discovery payload (exit 2) | none | Re-run the schema-selected full image discovery command and use the current values. |
 | Reference required (i2i without an image ref) | none | Add at least one `node:` or `res:` of an image / Element / image resource. |
 | Image generation requires `--resolution` but it is missing (exit 2) | none | Pass `--resolution` from the discovery payload. |
 

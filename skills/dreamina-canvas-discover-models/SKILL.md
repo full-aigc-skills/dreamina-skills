@@ -29,11 +29,25 @@ Reference detail is in
 - To bypass a `--credit-ceiling` decision; discovery tells you the legal
   parameter values, it never approves spend.
 
-## The three discovery commands
+## Select commands from the live schema
+
+Run `version` and `schema` before building discovery argv. If `schema`
+declares `model search`, use `model search --detail full`. If it declares
+`model list` instead, use `model list`; that compatibility shape already
+returns per-mode flags, enums, bounds, and reference requirements.
+
+Never send an optional flag merely because a guide mentions it. Pass
+`voice list --language <code>` only when the live schema declares it; public
+1.0.0 accepts only `--offset` and `--count` for `voice list`.
+
+## Discovery commands
 
 ```bash
 # Summary catalog (one row per model)
 dreamina-canvas --format json model search --type image
+
+# Compatibility shape (only when the live schema declares model list)
+dreamina-canvas --format json model list --type image
 
 # Full spec per model (every legal flag, enum, bound, batch limit)
 dreamina-canvas --format json model search --type image --detail full
@@ -41,21 +55,22 @@ dreamina-canvas --format json model search --type image --detail full
 # Single model full spec when you already have a name
 dreamina-canvas --format json model <model-id> --type image
 
-# TTS voice catalog (paginated; --count <= 100; use nextOffset to continue)
-dreamina-canvas --format json voice list --language zh-CN --offset 0 --count 50
+# TTS voice catalog (add --language only when the live schema declares it)
+dreamina-canvas --format json voice list --offset 0 --count 50
 
 # Argument spec for any subcommand (for the exact flag names)
 dreamina-canvas --format json schema "node create image"
 ```
 
-Run the **summary** discovery first to shortlist candidates, then the
-**full** discovery on the candidates you intend to use, then `schema "<path>"`
-to confirm the flag names. Never go directly from a remembered model name to
-generation: the catalog moves.
+Use only the model command shape returned by `schema`. With `model search`,
+run summary discovery and then `--detail full`; with `model list`, read its
+full per-mode specifications directly. Never go from a remembered model name
+to generation: the catalog moves.
 
 ## What to read from the discovery payload
 
-`model search --detail full` exposes the **only** authoritative source for:
+The live full payload (`model search --detail full` or `model list`, as
+declared by schema) is the **only** authoritative source for:
 
 - `--model` identifiers and aliases
 - `--ratio` legal values per model
@@ -105,7 +120,7 @@ Forbids:
 
 Default prompt:
 
-> Before generation, always run `model search --type <x> --detail full` and
-> `voice list` (for TTS) on the live CLI. Never substitute a remembered
-> model or voice name. Confirm flag names with `schema "<command path>"`.
+> Before generation, inspect `schema`, then use its declared full model
+> discovery shape (`model search --detail full` or `model list`) and `voice
+> list` for TTS. Add optional flags only when the live schema declares them.
 >
