@@ -21,7 +21,7 @@
 |---|---|---|
 | `text2image` | 3.0/3.1 | 1k、2k |
 | `text2image` / `image2image` | 4.0/4.1/4.5/4.6/4.7/5.0 | 2k、4k |
-| `text2image` / `image2image` | `5.0Pro` | 1k、2k、4k |
+| `text2image` / `image2image` | `5.0Pro` | 1.5k、2k、4k |
 
 - `--resolution_type` 必填。
 - `--width` 与 `--height` 必须成对提供、为正整数，并与 `--ratio` 互斥。
@@ -63,4 +63,3 @@
 3. 运行 `dreamina version`、`dreamina -h` 和每个生成子命令的 `-h`。
 4. 更新 `verification/dreamina-cli-v1.4.18-contract.json` 中的版本、哈希和命令能力。
 5. 运行仓库测试、逐 Skill 校验及 TRACE 检查。
-

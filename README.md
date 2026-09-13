@@ -54,7 +54,7 @@ Or install specific skills: `npx skills add full-aigc-skills/dreamina-skills --s
 
 | Skill | Description |
 |-------|-------------|
-| `dreamina-cli` | Umbrella skill for CLI v1.4.18 contracts, runtime video-ratio discovery, OAuth login, session CRUD, task history, and routing to the four execution skills. |
+| `dreamina-cli` | Umbrella skill covering installation, updates, CLI v1.4.18 contracts, OAuth/headless login, account checks, all generation commands, session CRUD, task query/download, logs, troubleshooting, and routing to the four execution skills. |
 | `dreamina-cli-image2image` | Run image-guided editing through `dreamina image2image`, including model, size, batch, session, and async-result rules. |
 | `dreamina-cli-image2video` | Route and run image-, frame-, storyboard-, or multimodal-reference video tasks with command-specific ratio constraints. |
 | `dreamina-cli-text2image` | Run prompt-only image generation through `dreamina text2image` with validated model and resolution combinations. |

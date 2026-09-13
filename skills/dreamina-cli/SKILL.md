@@ -1,6 +1,6 @@
 ---
 name: dreamina-cli
-description: Use when an agent needs Dreamina（即梦） login, sessions, task history, or image/video generation through the dreamina CLI, especially when command routing is not yet known or video ratio behavior must be checked at runtime.
+description: Use when an agent needs to install, update, authenticate, troubleshoot, or operate Dreamina（即梦） CLI across account, session, image, video, task-query, and download workflows.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -12,12 +12,20 @@ Use this skill when you need Dreamina（即梦） image or video generation, log
 
 This skill is intentionally short. Detailed flags and supported values belong to the CLI itself, so always treat `dreamina -h` and `dreamina <subcommand> -h` as the primary reference.
 
-The reviewed v1.4.18 contract is recorded in
-[references/dreamina-cli-v1.4.18-contract.md](references/dreamina-cli-v1.4.18-contract.md).
+Read references progressively:
+
+- For installation, authentication, account checks, every public command family,
+  Session CRUD, update, and log troubleshooting, read
+  [references/official-cli-install-to-use.md](references/official-cli-install-to-use.md).
+- For v1.4.18 model, resolution, duration, and ratio constraints, read
+  [references/dreamina-cli-v1.4.18-contract.md](references/dreamina-cli-v1.4.18-contract.md).
 
 ## When to use and boundary
 
-Use this umbrella skill when login, sessions, task history, async follow-up, or command routing spans multiple modalities. Do not use it as a replacement for the four execution skills' mode-specific workflow or for prompt-only authoring.
+Use this umbrella skill from first-time installation through troubleshooting, or
+when login, sessions, task history, async follow-up, or command routing spans
+multiple modalities. Do not use it as a replacement for the four execution
+skills' mode-specific workflow or for prompt-only authoring.
 
 ## What this tool is for
 
@@ -40,11 +48,16 @@ When using this CLI as an agent:
 
 ### Step 1：验证环境
 
-Start with `dreamina -h`, then run `dreamina <subcommand> -h` before real use.
+If `dreamina` is missing, read the install-to-use reference and obtain explicit
+authorization before installing or updating software. Otherwise start with
+`dreamina version` and `dreamina -h`, then run `dreamina <subcommand> -h` before
+real use.
 
 ### Step 2：完成认证与路由
 
-Reuse login unless the user requests a login-state change. Route the task to the matching execution skill.
+Reuse login unless the user requests a login-state change. Use `user_credit` as
+the post-login readiness check. Route generation to the matching execution
+skill.
 
 ### Step 3：提交与终态闭环
 
@@ -64,6 +77,9 @@ Warn about credit consumption, distinguish help inspection from real submit, and
 3. **Accepted versus successful**: `querying` is not terminal success.
 4. **Paid action**: warn before any real generation submit.
 5. **OAuth pause**: always report whether login succeeded, was reused, or failed.
+6. **Troubleshooting order**: capture the exact command, error, `dreamina version`,
+   and relevant `~/.dreamina_cli/logs/` excerpt; redact secrets, update the CLI
+   with authorization, then retry the same command once.
 
 ## Login completion: mandatory user-visible confirmation
 

@@ -28,7 +28,7 @@ npx skills add full-aigc-skills/dreamina-skills
 
 | 技能 | 描述 |
 |------|------|
-| `dreamina-cli` | dreamina CLI v1.4.18 总览技能，覆盖运行时视频比例发现、Seedance 2.5（480p/720p/1080p、4–30 秒）、异步终态、OAuth 登录、会话 CRUD、任务历史与子命令路由。 |
+| `dreamina-cli` | dreamina CLI v1.4.18 总览技能，覆盖安装更新、OAuth/headless 登录、账户检查、全部生成命令、查询下载、会话 CRUD、日志排障、运行时视频比例发现和子命令路由。 |
 | `dreamina-cli-image2image` | 通过 `dreamina image2image` 执行图像编辑，覆盖模型、尺寸、批量、会话和异步结果规则。 |
 | `dreamina-cli-image2video` | 在单图、首尾帧、故事板和多模态参考之间路由，并执行命令级比例约束。 |
 | `dreamina-cli-text2image` | 通过 `dreamina text2image` 执行文生图，并校验模型与分辨率组合。 |
