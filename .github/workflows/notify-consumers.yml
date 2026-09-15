@@ -1,0 +1,31 @@
+name: notify-consumers
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify consumer repositories
+        env:
+          GH_TOKEN: ${{ secrets.SKILLS_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "SKILLS_SYNC_TOKEN not configured; skipping consumer dispatch"
+            exit 0
+          fi
+          sha="${GITHUB_SHA}"
+          for repo in \
+            partme-ai/codex-dreamina-canvas-plugin \
+            partme-ai/codex-dreamina-design-plugin \
+            partme-ai/codex-dreamina-3d-plugin ; do
+            gh api "repos/${repo}/dispatches" \
+              -f event_type=skills-updated \
+              -F "client_payload[package]=dreamina-skills" \
+              -F "client_payload[sha]=${sha}"
+            echo "dispatched to ${repo} at ${sha}"
+          done
