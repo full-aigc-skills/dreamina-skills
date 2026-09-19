@@ -1,31 +1,62 @@
-name: notify-consumers
+name: Dispatch Plugin Skill Sync
 
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
+    inputs:
+      ref:
+        description: Released immutable version tag, for example v1.0.1
+        required: true
+        type: string
+      sha:
+        description: Optional expected peeled commit SHA
+        required: false
+        type: string
 
 jobs:
   dispatch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ secrets.SKILLS_SYNC_TOKEN }}
+      RELEASE_REF: ${{ github.event.release.tag_name || inputs.ref }}
+      REQUESTED_SHA: ${{ inputs.sha }}
     steps:
-      - name: Notify consumer repositories
-        env:
-          GH_TOKEN: ${{ secrets.SKILLS_SYNC_TOKEN }}
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.release.tag_name || inputs.ref }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate release identity
+        id: release
+        shell: bash
         run: |
-          set -euo pipefail
-          if [ -z "${GH_TOKEN:-}" ]; then
-            echo "SKILLS_SYNC_TOKEN not configured; skipping consumer dispatch"
-            exit 0
+          if [[ -z "$GH_TOKEN" ]]; then
+            echo "::error::SKILLS_SYNC_TOKEN is required"
+            exit 1
           fi
-          sha="${GITHUB_SHA}"
+          if [[ ! "$RELEASE_REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Invalid release ref: $RELEASE_REF"
+            exit 1
+          fi
+          release_sha="$(git rev-list -n 1 "$RELEASE_REF")"
+          if [[ -n "$REQUESTED_SHA" && "$REQUESTED_SHA" != "$release_sha" ]]; then
+            echo "::error::Requested SHA does not match the release tag"
+            exit 1
+          fi
+          echo "sha=$release_sha" >> "$GITHUB_OUTPUT"
+      - name: Dispatch immutable release
+        env:
+          RELEASE_SHA: ${{ steps.release.outputs.sha }}
+        run: |
           for repo in \
-            partme-ai/codex-dreamina-canvas-plugin \
-            partme-ai/codex-dreamina-design-plugin \
-            partme-ai/codex-dreamina-3d-plugin ; do
-            gh api "repos/${repo}/dispatches" \
+            full-aigc-plugins/dreamina-canvas-plugin \
+            full-aigc-plugins/dreamina-design-plugin; do
+            gh api --method POST "repos/$repo/dispatches" \
               -f event_type=skills-updated \
               -F "client_payload[package]=dreamina-skills" \
-              -F "client_payload[sha]=${sha}"
-            echo "dispatched to ${repo} at ${sha}"
+              -F "client_payload[ref]=$RELEASE_REF" \
+              -F "client_payload[sha]=$RELEASE_SHA"
           done

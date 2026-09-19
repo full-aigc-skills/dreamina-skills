@@ -1,0 +1,3 @@
+schema: spec-driven
+created: 2026-09-20
+goal: 技能内容经 TRACE 验证后发布不可变 tag，并把 tag 与 peeled SHA 发送到消费插件。

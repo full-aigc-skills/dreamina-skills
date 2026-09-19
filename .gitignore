@@ -21,7 +21,6 @@ bin/
 *.egg-info/
 logs/
 .claude
-openspec
 AGENTS.md
 CLAUDE.md
 *.db
