@@ -40,23 +40,39 @@ EXPECTED_EXISTING = {
     "dreamina-prompt-text2video",
 }
 
+EXPECTED_ORCHESTRATION = {
+    "dreamina-3d-auto-seedance",
+    "dreamina-3d-from-blender",
+    "dreamina-3d-from-maya",
+    "dreamina-3d-jimeng-web",
+    "dreamina-3d-resume",
+    "dreamina-3d-use",
+    "dreamina-design-use",
+    "dreamina-shot-annotator",
+    "dreamina-video-evaluator",
+    "dreamina-video-production",
+}
+
+
+def implicit_invocation_policy(name: str) -> bool:
+    text = (SKILLS / name / "agents" / "openai.yaml").read_text(encoding="utf-8")
+    match = re.search(r"(?m)^\s*allow_implicit_invocation:\s*(true|false)\s*$", text)
+    if match is None:
+        raise AssertionError(f"missing allow_implicit_invocation: {name}")
+    return match.group(1) == "true"
+
 
 class CanvasSuiteValidationTests(unittest.TestCase):
-    def test_skill_count_is_26(self) -> None:
+    def test_skill_count_is_36(self) -> None:
         actual = {p.name for p in SKILLS.iterdir() if p.is_dir()}
-        self.assertEqual(len(actual), 26)
-        self.assertEqual(actual, EXPECTED_CANVAS | EXPECTED_EXISTING)
+        self.assertEqual(len(actual), 36)
+        self.assertEqual(actual, EXPECTED_CANVAS | EXPECTED_EXISTING | EXPECTED_ORCHESTRATION)
 
     def test_implicit_invocation_is_only_use(self) -> None:
-        import yaml  # type: ignore[import-not-found]
-
         for name in EXPECTED_CANVAS:
-            policy_path = SKILLS / name / "agents" / "openai.yaml"
-            policy = yaml.safe_load(policy_path.read_text(encoding="utf-8"))["policy"]
-            self.assertIn("allow_implicit_invocation", policy, name)
             expected = name == "dreamina-canvas-use"
             self.assertEqual(
-                policy["allow_implicit_invocation"], expected, name
+                implicit_invocation_policy(name), expected, name
             )
 
     def test_runtime_boundary_recorded(self) -> None:

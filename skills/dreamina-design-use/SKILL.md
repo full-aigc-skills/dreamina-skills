@@ -5,7 +5,7 @@ description: Thin router Skill for Dreamina Design image and video workflows. Se
 
 # dreamina-design-use
 
-This Skill is the **router** for `codex-dreamina-design`. It does **not**
+This Skill is the **router** for `dreamina-design`. It does **not**
 contain prompt templates, CLI invocation recipes, or model catalogs of its
 own — every such instruction lives in a separate packaged Dreamina Skill
 that this router points to.

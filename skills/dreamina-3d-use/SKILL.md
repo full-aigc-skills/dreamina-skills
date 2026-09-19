@@ -3,11 +3,11 @@ name: dreamina-3d-use
 description: Route a Dreamina 3D orchestration request to the right workflow. Use when the user wants to turn a DCC preview into a Dreamina render without naming the source DCC.
 metadata:
   type: router
-  plugin: codex-dreamina-3d
+  plugin: dreamina-3d
   status: stable
 ---
 
-# codex-dreamina-3d-use
+# dreamina-3d-use
 
 ## When to use
 
@@ -18,10 +18,10 @@ preview comes from Blender or Maya. This Skill routes to the right workflow.
 
 - `preview_only`: produce and validate a local Blender/Maya preview, then stop
   at `PreviewValidated` without web handoff or paid submission.
-- `jimeng_web`: delegate to `codex-dreamina-3d-jimeng-web` and stop at
+- `jimeng_web`: delegate to `dreamina-3d-jimeng-web` and stop at
   `JimengLinkReady`. A ready link is not a submitted or Completed Seedance
   artifact.
-- `auto_seedance`: delegate to `codex-dreamina-3d-auto-seedance`; require
+- `auto_seedance`: delegate to `dreamina-3d-auto-seedance`; require
   approval, submit once, query the same ID, download, and verify before
   `Completed`.
 
@@ -38,7 +38,7 @@ capability is production-ready when it is not:
 - `jimeng_web` is `OPTIONAL_UNAVAILABLE` whenever the user-installed official
   uploader is absent. Report it as optional and unavailable, never as verified.
   Probe for it; never install or enable it to make the route available.
-- `codex-dreamina-3d-from-maya` is **experimental** with runtime status
+- `dreamina-3d-from-maya` is **experimental** with runtime status
   `NOT_RUN`. It is fixture-compatible only and is not part of the production
   release. Do not present Maya as production-ready, and do not route a user
   there without saying so.
@@ -50,8 +50,8 @@ capability is production-ready when it is not:
    install anything.
 2. **Choose the companion.** Call `select_companion(candidates, requested=None)`.
    - zero companions: surface `install_guidance()` and stop.
-   - one companion: route to `codex-dreamina-3d-from-blender`, or to
-     `codex-dreamina-3d-from-maya` only after flagging it experimental.
+   - one companion: route to `dreamina-3d-from-blender`, or to
+     `dreamina-3d-from-maya` only after flagging it experimental.
    - two companions: ask the user to pick.
 3. **Select entry.** Report availability per the section above, then apply the
    explicit route.

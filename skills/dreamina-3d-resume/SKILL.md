@@ -3,11 +3,11 @@ name: dreamina-3d-resume
 description: Resume a paused Dreamina 3D job from its ledger state. Use when the user wants to continue an in-flight job without re-paying or re-exporting.
 metadata:
   type: workflow
-  plugin: codex-dreamina-3d
+  plugin: dreamina-3d
   status: stable
 ---
 
-# codex-dreamina-3d-resume
+# dreamina-3d-resume
 
 ## When to use
 

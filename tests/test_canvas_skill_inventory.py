@@ -31,9 +31,11 @@ def skill_text(name: str) -> str:
 
 
 def skill_openai_yaml(name: str) -> dict:
-    import yaml  # type: ignore[import-not-found]
-
-    return yaml.safe_load((SKILLS / name / "agents" / "openai.yaml").read_text(encoding="utf-8"))
+    text = (SKILLS / name / "agents" / "openai.yaml").read_text(encoding="utf-8")
+    match = re.search(r"(?m)^\s*allow_implicit_invocation:\s*(true|false)\s*$", text)
+    if match is None:
+        raise AssertionError(f"missing allow_implicit_invocation: {name}")
+    return {"policy": {"allow_implicit_invocation": match.group(1) == "true"}}
 
 
 class CanvasSkillInventoryTests(unittest.TestCase):

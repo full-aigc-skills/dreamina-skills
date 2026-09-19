@@ -1,6 +1,6 @@
-"""Companion capability probe for codex-dreamina-3d.
+"""Companion capability probe for dreamina-3d.
 
-Discovers compatible codex-blender / codex-maya installations through stable
+Discovers compatible blender-design / maya-design installations through stable
 plugin manifests or an explicit adapter executable on the search roots. Never
 crawls unrelated user directories and never installs anything.
 
@@ -17,12 +17,23 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Sequence
 
-SUPPORTED_PLUGINS: tuple[str, ...] = ("codex-blender", "codex-maya")
+SUPPORTED_PLUGINS: tuple[str, ...] = ("blender-design", "maya-design")
 SUPPORTED_CONTRACT_VERSIONS: tuple[str, ...] = ("1.0.0",)
 
 DEFAULT_ADAPTER_BINARIES = {
-    "codex-blender": ("bin/blender_adapter",),
-    "codex-maya": ("bin/maya_adapter",),
+    "blender-design": ("bin/blender_adapter",),
+    "maya-design": ("bin/maya_adapter",),
+}
+
+MANIFEST_CANDIDATES: tuple[str, ...] = (
+    ".codex-plugin/plugin.json",
+    ".zcode-plugin/plugin.json",
+    "kimi.plugin.json",
+)
+
+DEFAULT_CONTRACT_VERSIONS: dict[str, tuple[str, ...]] = {
+    "blender-design": ("1.0.0",),
+    "maya-design": ("1.0.0",),
 }
 
 
@@ -62,8 +73,8 @@ def _candidate_dirs(search_root: Path) -> Iterable[Path]:
     """Yield only stable, well-known plugin installation roots.
 
     We deliberately do NOT crawl arbitrary user directories (Documents, Desktop,
-    Projects). The Codex installation model expects companion plugins under
-    ``<root>/<plugin_id>/.codex-plugin/plugin.json``.
+    Projects). Supported hosts keep companion plugins under a stable plugin
+    directory with a Codex, ZCode, or Kimi manifest.
     """
     if not search_root.is_dir():
         return ()
@@ -83,6 +94,15 @@ def _resolve_adapter(plugin_dir: Path, plugin_id: str) -> Path | None:
     return None
 
 
+def _resolve_manifest(plugin_dir: Path) -> tuple[Path, dict] | None:
+    for relative in MANIFEST_CANDIDATES:
+        path = plugin_dir / relative
+        manifest = _load_manifest(path)
+        if manifest is not None:
+            return path, manifest
+    return None
+
+
 def discover_companions(search_roots: Sequence[Path]) -> list[Companion]:
     """Discover compatible companion plugins under ``search_roots``.
 
@@ -95,14 +115,17 @@ def discover_companions(search_roots: Sequence[Path]) -> list[Companion]:
             plugin_id = plugin_dir.name
             if plugin_id in discovered:
                 continue
-            manifest_path = plugin_dir / ".codex-plugin" / "plugin.json"
-            manifest = _load_manifest(manifest_path)
-            if manifest is None:
+            resolved_manifest = _resolve_manifest(plugin_dir)
+            if resolved_manifest is None:
                 continue
+            manifest_path, manifest = resolved_manifest
             if manifest.get("name") != plugin_id:
                 continue
             version = str(manifest.get("version", ""))
-            contracts = tuple(manifest.get("receipt_contract_versions", ()))
+            contracts = tuple(
+                manifest.get("receipt_contract_versions")
+                or DEFAULT_CONTRACT_VERSIONS.get(plugin_id, ())
+            )
             if not any(c in SUPPORTED_CONTRACT_VERSIONS for c in contracts):
                 continue
             executable = _resolve_adapter(plugin_dir, plugin_id)
@@ -123,8 +146,8 @@ def install_guidance() -> str:
     """Return the exact installation guidance shown when no companion is found."""
     return (
         "No compatible companion plugin is installed. Install one of:\n"
-        "  - codex-blender  (https://github.com/partme-ai/codex-blender-plugin)\n"
-        "  - codex-maya     (https://github.com/partme-ai/codex-maya-plugin)\n"
+        "  - blender-design  (https://github.com/full-aigc-plugins/blender-design-plugin)\n"
+        "  - maya-design     (https://github.com/full-aigc-plugins/maya-design-plugin)\n"
         "Then re-run the workflow. The orchestrator will not install or modify "
         "either companion automatically."
     )
@@ -146,11 +169,11 @@ def select_companion(candidates: Sequence[Companion], requested: str | None) -> 
     # only one companion happens to be installed.
     requested_id: str | None = None
     if requested is not None:
-        requested_id = f"codex-{requested.strip().lower()}"
+        requested_id = f"{requested.strip().lower()}-design"
         if requested_id not in SUPPORTED_PLUGINS:
             raise ValueError(
                 f"requested companion {requested!r} is not one of "
-                f"{[p.removeprefix('codex-') for p in SUPPORTED_PLUGINS]}"
+                f"{[p.removesuffix('-design') for p in SUPPORTED_PLUGINS]}"
             )
     if len(candidates) == 1:
         if requested_id is None or candidates[0].plugin_id == requested_id:
@@ -177,6 +200,7 @@ def select_companion(candidates: Sequence[Companion], requested: str | None) -> 
 __all__ = [
     "SUPPORTED_PLUGINS",
     "SUPPORTED_CONTRACT_VERSIONS",
+    "MANIFEST_CANDIDATES",
     "Companion",
     "MissingCompanionError",
     "AmbiguousCompanionError",

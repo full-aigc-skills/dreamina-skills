@@ -1,4 +1,4 @@
-"""Receipt-driven handoff validator for codex-dreamina-3d.
+"""Receipt-driven handoff validator for dreamina-3d.
 
 Validates that an incoming ArtifactReceipt is structurally sound, was produced
 by a known good plugin within its supported version range, and that the
@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Iterable, Sequence
 
 SUPPORTED_SCHEMA_VERSION = "1.0.0"
-SUPPORTED_PRODUCERS: tuple[str, ...] = ("codex-blender", "codex-maya")
+SUPPORTED_PRODUCERS: tuple[str, ...] = ("blender-design", "maya-design")
 SUPPORTED_CODEC = "h264"
 SUPPORTED_CONTAINER = "mp4"
 MAX_DURATION_SECONDS = 60.0
@@ -28,12 +28,10 @@ MAX_FPS = 120.0
 MIN_FPS = 1.0
 
 DEFAULT_VERSION_RANGES: dict[str, Sequence[tuple[str, str]]] = {
-    # codex-blender's adapter emits its own plugin version as producer_version
-    # (scripts/dreamina_adapter.py), and that plugin is published at 0.3.0. A
-    # range stopping at 0.2.99 rejects every current receipt, so track the
-    # published 0.1.x-0.3.x series.
-    "codex-blender": [("0.1.0", "0.3.99")],
-    "codex-maya": [("0.1.0", "0.1.99")],
+    # DCC adapters emit their plugin release as producer_version. Keep the
+    # accepted pre-1.0 range explicit while allowing current patch/minor lines.
+    "blender-design": [("0.1.0", "0.99.99")],
+    "maya-design": [("0.1.0", "0.99.99")],
 }
 
 
