@@ -25,7 +25,7 @@ def frontmatter(text: str) -> dict:
         if line and not line.startswith(" ") and ":" in line:
             key, _, value = line.partition(":")
             fields[key.strip()] = value.strip()
-        elif line.startswith(" ") or line.startswith("-"):
+        elif line.startswith((" ", "-")):
             # continuation of a block scalar or list: mark parent as multiline
             if fields:
                 last = next(reversed(fields))
