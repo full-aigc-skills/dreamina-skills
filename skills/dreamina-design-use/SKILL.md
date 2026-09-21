@@ -47,6 +47,10 @@ The router chooses between the 13 packaged Dreamina Skills based on:
 | image-to-video                  | `dreamina-cli-image2video`   |
 | frames-to-video                 | `dreamina-cli`                |
 | multimodal / multi-frame video  | `dreamina-cli`                |
+| iterate an image against a target until it matches | `dreamina-prompt-image2image` (target-driven revision; see note below) |
+
+
+For target-driven iteration (compare a candidate against a locked target image and repair the gaps), downstream plugin distributions provide a visual quality loop (target locking, an independent fresh-context judge, and an allowance-bound retry). The router only picks the prompt skill; the loop itself is plugin-side.
 
 If the user's request is ambiguous (matches more than one mode), the
 router must refuse to guess and ask for clarification instead.
