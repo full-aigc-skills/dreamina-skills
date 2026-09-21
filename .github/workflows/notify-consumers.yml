@@ -20,7 +20,7 @@ jobs:
     permissions:
       contents: read
     env:
-      GH_TOKEN: ${{ secrets.SKILLS_SYNC_TOKEN }}
+      GH_TOKEN: ${{ secrets.FULL_AIGC_SKILLS_SYNC_TOKEN || secrets.SKILLS_SYNC_TOKEN }}
       RELEASE_REF: ${{ github.event.release.tag_name || inputs.ref }}
       REQUESTED_SHA: ${{ inputs.sha }}
     steps:
@@ -34,7 +34,7 @@ jobs:
         shell: bash
         run: |
           if [[ -z "$GH_TOKEN" ]]; then
-            echo "::error::SKILLS_SYNC_TOKEN is required"
+            echo "::error::FULL_AIGC_SKILLS_SYNC_TOKEN is required"
             exit 1
           fi
           if [[ ! "$RELEASE_REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
