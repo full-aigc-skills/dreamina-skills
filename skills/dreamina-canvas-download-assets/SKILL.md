@@ -1,6 +1,6 @@
 ---
 name: dreamina-canvas-download-assets
-description: Use when an agent or script must verify the readiness of a generated Dreamina Canvas resource and download it to a user-approved path, producing a verifiable SHA-256 and byte count. Never persists signed URLs.
+description: Use when an agent or script must register a local file as a Dreamina Canvas project resource (`resource upload`, with a stable idempotent resourceId), or verify the readiness of a generated Canvas resource and download it to a user-approved path with a verifiable SHA-256 and byte count. Never persists signed URLs.
 license: Complete terms in LICENSE
 ---
 
@@ -11,7 +11,8 @@ completed node, checks that the resource is ready, and downloads it to a
 user-approved directory with a verifiable SHA-256.
 
 Reference detail is in
-[references/artifact-verification.md](references/artifact-verification.md).
+[references/artifact-verification.md](references/artifact-verification.md)
+and [references/resource-upload.md](references/resource-upload.md).
 
 ## When to use
 
@@ -24,8 +25,9 @@ Reference detail is in
 ## When **not** to use
 
 - For re-running generation. That is `dreamina-canvas-quote-and-run`.
-- For accepting user-uploaded files. The CLI's `resource` family is read
-  / download only; uploads use a different flow and are out of scope here.
+- For attaching a registered resource to a node. This Skill registers and
+  retrieves resources; binding them belongs to `dreamina-canvas-compose`
+  and `dreamina-canvas-generate-image`.
 
 ## The two-step delivery
 
@@ -57,6 +59,47 @@ estimate. Trust only the post-write response.
   either the file is complete with a verified checksum or nothing is left
   behind.
 
+## Registering a local asset (`resource upload`)
+
+The `resource` family is **not** read/download only: CLI 1.0.0 ships
+`resource upload`, which registers a local image / video / audio file (or a
+server-reachable image URL) and returns the stable `resourceId` every
+downstream reference uses.
+
+```bash
+dreamina-canvas --format json resource upload \
+  --file "$LOCAL_PATH" \
+  --project-id "$PROJECT_ID" \
+  --resource-id "$STABLE_UUID" \
+  --import-kind local_upload
+```
+
+Two rules dominate this command:
+
+- **Persist `--resource-id` before the call and reuse it verbatim.** It is the
+  only idempotency identity; a fresh UUID on retry registers a second resource.
+  On an ambiguous response, query `resource get <resourceId>` instead.
+- **`--import-kind` is a declaration, not a permission.** `external_generated`
+  records provenance only; it bypasses no authorisation and makes nothing
+  trusted.
+
+Full flag contract, the post-upload reference forms (`res:<resourceId>` vs a
+bare ID in Element slots), and the failure table are in
+[references/resource-upload.md](references/resource-upload.md).
+
+## The `uri:` and `vid:` boundary
+
+The CLI `schema` lists `uri:value` and `vid:value` among the accepted reference
+**forms** for `--ref` and inside `{{...}}` prompt placeholders. The same schema
+does **not** assert that the server accepts any particular `uri:` / `vid:`
+value, and this repository holds no locked evidence for a concrete accepted
+value.
+
+So treat `uri:` / `vid:` as declared-but-unevidenced: prefer `node:` (when an
+upstream node exists) or `res:` (a registered resource). Do not write an
+example, Skill, or receipt that promises a `uri:` / `vid:` reference will
+resolve — the runtime is the authority and a Skill text must not override it.
+
 ## What this Skill will not do
 
 - Persist signed URLs, cookies, OAuth tokens, `storageId`, or provider
@@ -66,7 +109,8 @@ estimate. Trust only the post-write response.
   persisting or echoing signed URLs in any form.
 - Download into a directory the user has not explicitly named.
 - Re-derive a `resourceId` from anything other than `node show` /
-  `operation status` output; never guess.
+  `operation status` output, or the `resourceId` echoed by a persisted
+  `resource upload --resource-id`; never guess.
 - Treat a successful pre-flight `resource get` as proof of completion;
   the final word is the post-download SHA-256.
 
