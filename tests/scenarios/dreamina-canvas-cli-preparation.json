@@ -1,0 +1,22 @@
+{
+ "skill": "dreamina-canvas-cli",
+ "scenario": "canvas and material preparation phase",
+ "description": "Confirms that the preparation phase discovers models (model value, never alias), creates/selects the canvas (--use; canvas ls never switches), uploads material with persisted resourceIds, imports material as canvas nodes, and enforces the node:/res: reference discipline — all free, with no generation.",
+ "expectations": [
+  "--model values come from the live model list/find payload; aliases are never passed as parameters",
+  "canvas create --use returns projectId and webUrl; canvas ls is read-only and never switches the current canvas",
+  "resource upload returns a lowercase canonical resourceId that is persisted immediately",
+  "Material intended as a generation reference is imported via node create image --resource-id <id> --import-kind local_upload",
+  "node:<nodeId> references are preferred for on-canvas material to preserve upstream/downstream relations; res:<resourceId> freezes external material",
+  "This Skill never runs --run, quote, or confirm; preparation is free-only",
+  "The deliverable is the ID set (projectId/nodeId/resourceId) plus candidate model values handed to the generation task skills"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "model",
+  "canvas",
+  "node",
+  "resource",
+  "version"
+ ]
+}

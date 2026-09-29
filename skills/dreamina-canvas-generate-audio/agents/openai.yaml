@@ -1,6 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Audio Node
-  short_description: TTS (--voice-name) or music (--model + --duration); never accepts
-    --count
-policy:
-  allow_implicit_invocation: false

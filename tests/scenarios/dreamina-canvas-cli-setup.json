@@ -1,0 +1,19 @@
+{
+ "skill": "dreamina-canvas-cli-setup",
+ "scenario": "install or update the dreamina-canvas CLI",
+ "description": "Confirms that installation picks exactly one official installer for the current OS, requires explicit authorization, verifies availability with --help/version/schema (never the download exit code alone), and troubleshoots command-not-found as a PATH issue first.",
+ "expectations": [
+  "Exactly one of install.sh / install.ps1 / install.bat is chosen per OS and shell",
+  "Install or update runs only after explicit user authorization",
+  "Verification requires live --help showing the auth/canvas/model/node/operation/resource families plus version/schema output",
+  "command not found is handled as PATH-not-effective first: reopen the terminal, then add the install directory per the installer hint",
+  "Custom install directories use DREAMINA_CANVAS_INSTALL_DIR only with user approval; shell startup files are never modified silently",
+  "Feedback follows the four-piece rule: full command, full error, version output, requestId",
+  "After verification the flow hands off to dreamina-canvas-cli-auth"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "version",
+  "schema"
+ ]
+}

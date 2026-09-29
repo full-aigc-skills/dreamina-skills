@@ -1,6 +1,7 @@
 ---
 name: dreamina-3d-use
-description: Route a Dreamina 3D orchestration request to the right workflow. Use when the user wants to turn a DCC preview into a Dreamina render without naming the source DCC.
+description: Use when the user wants to turn a DCC preview into a Dreamina render without naming the source DCC. Routes the request to the right workflow.
+license: Complete terms in LICENSE
 metadata:
   type: router
   plugin: dreamina-3d
@@ -79,7 +80,7 @@ capability is production-ready when it is not:
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Route a Dreamina 3D orchestration request to the right workflow. Use when the user wants to turn a DCC preview into a Dreamina render without naming the source DCC.。
+当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user wants to turn a DCC preview into a Dreamina render without naming the source DCC. Routes the request to the right workflow.。
 
 ## Rules
 

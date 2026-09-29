@@ -1,3 +1,5 @@
+> 历史设计：技能职责现以 OpenSpec consolidate-canvas-cli-atoms 及 docs/canvas-atomic-migration.md 为准；本文件保留当时设计记录。
+
 # Dreamina Canvas Skills Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.

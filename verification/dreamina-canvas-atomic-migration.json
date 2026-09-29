@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1",
+  "cliSkills": [
+    "dreamina-canvas-cli",
+    "dreamina-canvas-cli-auth",
+    "dreamina-canvas-cli-image2image",
+    "dreamina-canvas-cli-ref2video",
+    "dreamina-canvas-cli-setup",
+    "dreamina-canvas-cli-text2audio",
+    "dreamina-canvas-cli-text2image",
+    "dreamina-canvas-cli-text2video",
+    "dreamina-canvas-cli-text2voice"
+  ],
+  "retired": [
+    {
+      "from": "dreamina-canvas-auth",
+      "to": "dreamina-canvas-cli-auth",
+      "operationDocument": "references/auth-state.md"
+    },
+    {
+      "from": "dreamina-canvas-discover-models",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/discovery.md"
+    },
+    {
+      "from": "dreamina-canvas-create",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/canvas.md"
+    },
+    {
+      "from": "dreamina-canvas-download-assets",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/resources.md"
+    },
+    {
+      "from": "dreamina-canvas-quote-and-run",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/execution.md"
+    },
+    {
+      "from": "dreamina-canvas-resume-operation",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/recovery.md"
+    },
+    {
+      "from": "dreamina-canvas-compose",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/composition.md"
+    },
+    {
+      "from": "dreamina-canvas-manage-timeline",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/timeline.md"
+    },
+    {
+      "from": "dreamina-canvas-ready",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/preparation.md"
+    },
+    {
+      "from": "dreamina-canvas-generate-image",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/image-node.md"
+    },
+    {
+      "from": "dreamina-canvas-generate-video",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/video-node.md"
+    },
+    {
+      "from": "dreamina-canvas-generate-audio",
+      "to": "dreamina-canvas-cli",
+      "operationDocument": "references/audio-node.md"
+    },
+    {
+      "from": "dreamina-setup",
+      "to": "dreamina-canvas-cli-setup",
+      "operationDocument": "references/first-use.md"
+    }
+  ],
+  "classicCli": "frozen"
+}

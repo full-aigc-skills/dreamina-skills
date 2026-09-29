@@ -1,6 +1,7 @@
 ---
 name: dreamina-shot-annotator
 description: Use when labelling contact sheets or keyframes with shot semantics before a Dreamina redesign, producing shot_annotation.schema.json content only.
+license: Complete terms in LICENSE
 ---
 
 # Dreamina Shot Annotator

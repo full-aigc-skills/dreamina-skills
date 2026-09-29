@@ -1,45 +1,45 @@
 {
   "schemaVersion": "1.0",
-  "source": "Dreamina Octo CLI user guide supplied 2026-09-13; live schema is runtime authority",
+  "source": "Dreamina Canvas first-use guide supplied 2026-09-28 plus prior CLI contracts; live schema is runtime authority",
   "commands": [
     {
       "id": "auth account",
-      "ownerSkill": "dreamina-canvas-auth",
+      "ownerSkill": "dreamina-canvas-cli-auth",
       "evidenceToken": "auth account"
     },
     {
       "id": "auth login",
-      "ownerSkill": "dreamina-canvas-auth",
+      "ownerSkill": "dreamina-canvas-cli-auth",
       "evidenceToken": "auth login"
     },
     {
       "id": "auth logout",
-      "ownerSkill": "dreamina-canvas-auth",
+      "ownerSkill": "dreamina-canvas-cli-auth",
       "evidenceToken": "auth logout"
     },
     {
       "id": "auth refresh",
-      "ownerSkill": "dreamina-canvas-auth",
+      "ownerSkill": "dreamina-canvas-cli-auth",
       "evidenceToken": "auth refresh"
     },
     {
       "id": "auth status",
-      "ownerSkill": "dreamina-canvas-auth",
+      "ownerSkill": "dreamina-canvas-cli-auth",
       "evidenceToken": "auth status"
     },
     {
       "id": "auth wait",
-      "ownerSkill": "dreamina-canvas-auth",
+      "ownerSkill": "dreamina-canvas-cli-auth",
       "evidenceToken": "auth wait"
     },
     {
       "id": "canvas create",
-      "ownerSkill": "dreamina-canvas-create",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "canvas create"
     },
     {
       "id": "canvas ls",
-      "ownerSkill": "dreamina-canvas-create",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "canvas ls"
     },
     {
@@ -49,142 +49,152 @@
     },
     {
       "id": "install-cn",
-      "ownerSkill": "dreamina-canvas-cli",
-      "evidenceToken": "curl -s https://jimeng.jianying.com/canvas-cli | bash"
+      "ownerSkill": "dreamina-canvas-cli-setup",
+      "evidenceToken": "curl -fsSL https://jimeng.jianying.com/canvas-cli/install.sh | bash"
+    },
+    {
+      "id": "install-powershell",
+      "ownerSkill": "dreamina-canvas-cli-setup",
+      "evidenceToken": "install.ps1"
+    },
+    {
+      "id": "install-cmd",
+      "ownerSkill": "dreamina-canvas-cli-setup",
+      "evidenceToken": "install.bat"
     },
     {
       "id": "install-oversea",
-      "ownerSkill": "dreamina-canvas-cli",
+      "ownerSkill": "dreamina-canvas-cli-setup",
       "evidenceToken": "dreamina_canvas_cli_oversea/install.sh"
     },
     {
-      "id": "model detail",
-      "ownerSkill": "dreamina-canvas-discover-models",
-      "evidenceToken": "model <model-id>"
+      "id": "model find",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "model find"
     },
     {
       "id": "model list",
-      "ownerSkill": "dreamina-canvas-discover-models",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "model list"
     },
     {
       "id": "model search",
-      "ownerSkill": "dreamina-canvas-discover-models",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "model search"
     },
     {
       "id": "node confirm",
-      "ownerSkill": "dreamina-canvas-quote-and-run",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node confirm"
     },
     {
       "id": "node create audio",
-      "ownerSkill": "dreamina-canvas-generate-audio",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node create audio"
     },
     {
       "id": "node create element",
-      "ownerSkill": "dreamina-canvas-compose",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node create element"
     },
     {
       "id": "node create image",
-      "ownerSkill": "dreamina-canvas-generate-image",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node create image"
     },
     {
       "id": "node create text",
-      "ownerSkill": "dreamina-canvas-compose",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node create text"
     },
     {
       "id": "node create timeline",
-      "ownerSkill": "dreamina-canvas-manage-timeline",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node create timeline"
     },
     {
       "id": "node create video",
-      "ownerSkill": "dreamina-canvas-generate-video",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node create video"
     },
     {
       "id": "node edit audio",
-      "ownerSkill": "dreamina-canvas-generate-audio",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node edit audio"
     },
     {
       "id": "node edit element",
-      "ownerSkill": "dreamina-canvas-compose",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node edit element"
     },
     {
       "id": "node edit image",
-      "ownerSkill": "dreamina-canvas-generate-image",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node edit image"
     },
     {
       "id": "node edit text",
-      "ownerSkill": "dreamina-canvas-compose",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node edit text"
     },
     {
       "id": "node edit timeline",
-      "ownerSkill": "dreamina-canvas-manage-timeline",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node edit timeline"
     },
     {
       "id": "node edit video",
-      "ownerSkill": "dreamina-canvas-generate-video",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node edit video"
     },
     {
       "id": "node find",
-      "ownerSkill": "dreamina-canvas-compose",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node find"
     },
     {
       "id": "node quote",
-      "ownerSkill": "dreamina-canvas-quote-and-run",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node quote"
     },
     {
       "id": "node run",
-      "ownerSkill": "dreamina-canvas-quote-and-run",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node run"
     },
     {
       "id": "node show",
-      "ownerSkill": "dreamina-canvas-compose",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "node show"
     },
     {
       "id": "node upscale image",
-      "ownerSkill": "dreamina-canvas-generate-image",
+      "ownerSkill": "dreamina-canvas-cli-image2image",
       "evidenceToken": "node upscale image"
     },
     {
       "id": "operation status",
-      "ownerSkill": "dreamina-canvas-resume-operation",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "operation status"
     },
     {
       "id": "operation wait",
-      "ownerSkill": "dreamina-canvas-resume-operation",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "operation wait"
     },
     {
       "id": "resource download",
-      "ownerSkill": "dreamina-canvas-download-assets",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "resource download"
     },
     {
       "id": "resource get",
-      "ownerSkill": "dreamina-canvas-download-assets",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "resource get"
     },
     {
       "id": "resource upload",
-      "ownerSkill": "dreamina-canvas-download-assets",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "resource upload"
     },
     {
@@ -199,8 +209,17 @@
     },
     {
       "id": "voice list",
-      "ownerSkill": "dreamina-canvas-discover-models",
+      "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "voice list"
     }
-  ]
+  ],
+  "modeOwners": {
+    "t2i": "dreamina-canvas-cli-text2image",
+    "i2i": "dreamina-canvas-cli-image2image",
+    "t2v": "dreamina-canvas-cli-text2video",
+    "m2v": "dreamina-canvas-cli-ref2video",
+    "first_last_frame": "dreamina-canvas-cli-ref2video",
+    "tts": "dreamina-canvas-cli-text2voice",
+    "music": "dreamina-canvas-cli-text2audio"
+  }
 }

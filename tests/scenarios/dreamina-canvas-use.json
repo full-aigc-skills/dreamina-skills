@@ -8,7 +8,7 @@
     "Routing selects the smallest applicable chain (does not call every Skill)",
     "The end-to-end Skill does not duplicate global flags, exit codes, model catalogs, or node schemas",
     "Spend is never approved on the user's behalf",
-    "submitId is forwarded from dreamina-canvas-quote-and-run, not minted here",
+    "submitId is forwarded from dreamina-canvas-cli, not minted here",
     "tokens, signed URLs, cookies, creditConfirmationToken never appear in any response or log"
   ],
   "cliBinary": "dreamina-canvas",

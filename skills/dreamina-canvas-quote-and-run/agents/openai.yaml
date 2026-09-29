@@ -1,5 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Quote and Run
-  short_description: Quote, confirm, and run saved nodes with quote-bound approval
-policy:
-  allow_implicit_invocation: false

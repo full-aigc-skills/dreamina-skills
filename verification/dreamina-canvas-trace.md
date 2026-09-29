@@ -1,3 +1,5 @@
+> 历史报告：对应辅助技能合并之前的版本。当前结果见 dreamina-canvas-skill-suite.json；不用于本次验收。
+
 # Canvas Skill TRACE evaluation
 
 Evaluator: `skill-trace-evaluation/scripts/trace_evaluate.py` (static base

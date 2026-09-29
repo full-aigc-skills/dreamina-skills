@@ -1,6 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Video Node
-  short_description: Save video drafts in t2v / first_last_frame / m2v; rejects i2v
-    and multi_modal
-policy:
-  allow_implicit_invocation: false

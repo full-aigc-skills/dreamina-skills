@@ -1,0 +1,23 @@
+{
+ "skill": "dreamina-canvas-cli-text2audio",
+ "scenario": "music generation end-to-end task",
+ "description": "Confirms that music generation discovers a music-capable audio model (model list --type audio), saves the music draft with --model and --duration (never --voice-name, no --count), and hands paid execution and download to their owner skills.",
+ "expectations": [
+  "The model comes from model list --type audio and supports the music mode",
+  "The music draft uses --mode music --model <model> --duration <s> and never passes --voice-name",
+  "--duration is within the discovered model bound",
+  "--count is not accepted on audio nodes and is never passed",
+  "Paid execution is handed off to dreamina-canvas-cli; this Skill never calls --run",
+  "Exit 20 / 21 continue via operation wait with the same submitId",
+  "TTS requests route to dreamina-canvas-cli-text2voice",
+  "The artifact is verified with SHA-256 and duration matches the requested --duration"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "node",
+  "model",
+  "operation",
+  "resource",
+  "version"
+ ]
+}

@@ -1,6 +1,6 @@
 ---
 name: dreamina-prompt-text2image
-description: Provides comprehensive guidance for crafting text-to-image prompts for 即梦 (Dreamina/Jimeng) AI image generation. Use when the user wants to write, refine, or optimize an image generation prompt; mentions "提示词", "文生图", "text2image", "文字成图", "AI绘画", "AI生图", "prompt", "帮我写一个...的画面", "生成一张...的图片", "写一个...的提示词"; describes an image they want to create; or provides a rough image description to be turned into a polished production-ready prompt. This skill covers 35 scenario categories with 115+ annotated examples, a comprehensive word library spanning 60+ thematic subcategories, and complete color references including 159 Chinese traditional colors, the 384-color Forbidden City palette, and international standards (Pantone, RAL). Always use this skill when the user needs help writing, refining, or translating any image prompt for 即梦.
+description: Use when the user wants to write, refine, optimize, or translate an image-generation prompt for 即梦 (Dreamina/Jimeng) — mentions "提示词", "文生图", "text2image", "文字成图", "AI绘画", "AI生图", "prompt", "帮我写一个...的画面", "生成一张...的图片", "写一个...的提示词"; describes an image they want; or supplies a rough description to turn into a production-ready prompt. Covers 35 scenario categories with 115+ annotated examples, a word library across 60+ thematic subcategories, and complete color references (159 Chinese traditional colors, the 384-color Forbidden City palette, Pantone, RAL).
 license: Complete terms in LICENSE.txt
 ---
 
@@ -124,7 +124,7 @@ Each component is optional. Select and weight components based on the scenario:
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Provides comprehensive guidance for crafting text-to-image prompts for 即梦 (Dreamina/Jimeng) AI image generation. Use when the user wants to write, refine, or optimize an image generation prompt; mentions "提示词", "文生图", "text2image", "文字成图", "AI绘画", "AI生图", "prompt", "帮我写一个...的画面", "生成一张...的图片", "写一个...的提示词"; describes an image they want to create; or provides a rough image description to be turned into a polished production-ready prompt. This skill covers 35 scenario categories with 115+ annotated examples, a comprehensive word library spanning 60+ thematic subcategories, and complete color references including 159 Chinese traditional colors, the 384-color Forbidden City palette, and international standards (Pantone, RAL). Always use this skill when the user needs help writing, refining, or translating any image prompt for 即梦.。
+当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user wants to write, refine, optimize, or translate an image-generation prompt for 即梦 (Dreamina/Jimeng) — mentions "提示词", "文生图", "text2image", "文字成图", "AI绘画", "AI生图", "prompt", "帮我写一个...的画面", "生成一张...的图片", "写一个...的提示词"; describes an image they want; or supplies a rough description to turn into a production-ready prompt. Covers 35 scenario categories with 115+ annotated examples, a word library across 60+ thematic subcategories, and complete color references (159 Chinese traditional colors, the 384-color Forbidden City palette, Pantone, RAL).。
 
 ## Rules
 

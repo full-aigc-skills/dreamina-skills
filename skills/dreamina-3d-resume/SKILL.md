@@ -1,6 +1,7 @@
 ---
 name: dreamina-3d-resume
-description: Resume a paused Dreamina 3D job from its ledger state. Use when the user wants to continue an in-flight job without re-paying or re-exporting.
+description: Use when the user wants to continue an in-flight Dreamina 3D job without re-paying or re-exporting. Resumes the job from its ledger state.
+license: Complete terms in LICENSE
 metadata:
   type: workflow
   plugin: dreamina-3d
@@ -60,7 +61,7 @@ submission without a new user instruction.
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **从已记录状态恢复中断任务，避免重复提交或重复计费** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Resume a paused Dreamina 3D job from its ledger state. Use when the user wants to continue an in-flight job without re-paying or re-exporting.。
+当用户需要 **从已记录状态恢复中断任务，避免重复提交或重复计费** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user wants to continue an in-flight Dreamina 3D job without re-paying or re-exporting. Resumes the job from its ledger state.。
 
 ## Rules
 

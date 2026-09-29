@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
-OWNER = "dreamina-canvas-download-assets"
+OWNER = "dreamina-canvas-cli"
 CLI = shutil.which("dreamina-canvas")
 
 REQUIRED_FLAGS = (

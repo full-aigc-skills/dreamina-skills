@@ -1,0 +1,23 @@
+{
+ "skill": "dreamina-canvas-cli-text2image",
+ "scenario": "text-to-image end-to-end task",
+ "description": "Confirms that the t2i task routes prompt finalization to dreamina-prompt-text2image, takes model/ratio/resolution only from live discovery, saves a free t2i draft, and hands the paid quote-confirm-run chain and download to their owner skills.",
+ "expectations": [
+  "Prompts not yet finalized are handed off to dreamina-prompt-text2image; user text is never silently rewritten",
+  "Model / ratio / resolution / count values come only from the live discovery payload",
+  "Draft save uses node create image --mode t2i and never adds --run",
+  "t2i drafts carry no image / Element / resource references",
+  "Paid execution is handed off to dreamina-canvas-cli; this Skill never passes --credit-ceiling or --credit-token",
+  "Exit 20 / 21 continue via operation wait with the same submitId; a new submitId is never minted",
+  "Legacy v1.4.18 tokens (--model_version, --resolution_type, --generate_num, --poll) are never reused",
+  "The sunset notice points users away from the legacy dreamina text2image binary"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "node",
+  "model",
+  "operation",
+  "resource",
+  "version"
+ ]
+}

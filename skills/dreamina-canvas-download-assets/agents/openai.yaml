@@ -1,5 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Asset Download
-  short_description: Verify and download completed node resources with SHA-256
-policy:
-  allow_implicit_invocation: false

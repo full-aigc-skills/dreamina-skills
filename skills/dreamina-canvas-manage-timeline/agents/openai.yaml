@@ -1,6 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Timeline
-  short_description: Build and edit timeline tracks; warns before destructive track
-    replacement
-policy:
-  allow_implicit_invocation: false

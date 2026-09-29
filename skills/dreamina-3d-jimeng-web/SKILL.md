@@ -1,6 +1,7 @@
 ---
 name: dreamina-3d-jimeng-web
-description: Route a validated Blender preview or existing video through the user's official uploader into Jimeng Web without claiming Seedance completion.
+description: Use when the user needs a validated Blender preview or existing video routed through the official uploader into Jimeng Web. Never claims Seedance completion.
+license: Complete terms in LICENSE
 ---
 
 # Jimeng Web Entry
@@ -54,7 +55,7 @@ or the encoded resource URL. The official add-on owns its Bridge lifecycle.
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Route a validated Blender preview or existing video through the user's official uploader into Jimeng Web without claiming Seedance completion.。
+当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user needs a validated Blender preview or existing video routed through the official uploader into Jimeng Web. Never claims Seedance completion.。
 
 ## Rules
 

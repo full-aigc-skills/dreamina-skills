@@ -11,26 +11,34 @@ CONTRACT = ROOT / "verification" / "dreamina-canvas-guide-contract.json"
 
 CANVAS_SKILLS = {
     "dreamina-canvas-cli",
-    "dreamina-canvas-auth",
-    "dreamina-canvas-discover-models",
-    "dreamina-canvas-create",
-    "dreamina-canvas-compose",
-    "dreamina-canvas-generate-image",
-    "dreamina-canvas-generate-video",
-    "dreamina-canvas-generate-audio",
-    "dreamina-canvas-manage-timeline",
-    "dreamina-canvas-quote-and-run",
-    "dreamina-canvas-resume-operation",
-    "dreamina-canvas-download-assets",
+    "dreamina-canvas-cli-setup",
+    "dreamina-canvas-cli-auth",
+    "dreamina-canvas-cli-text2image",
+    "dreamina-canvas-cli-image2image",
+    "dreamina-canvas-cli-text2voice",
+    "dreamina-canvas-cli-text2audio",
+    "dreamina-canvas-cli-text2video",
+    "dreamina-canvas-cli-ref2video",
     "dreamina-canvas-use",
 }
 
 
+MIGRATION = {item["from"]: item for item in json.loads(
+    (ROOT / "verification/dreamina-canvas-atomic-migration.json").read_text()
+)["retired"]}
+
+
 def skill_text(name: str) -> str:
-    return (SKILLS / name / "SKILL.md").read_text(encoding="utf-8")
+    entry = MIGRATION.get(name)
+    owner = entry["to"] if entry else name
+    root = SKILLS / owner
+    parts = [(root / entry["operationDocument"]).read_text()] if entry else [(root / "SKILL.md").read_text()]
+    parts.extend(p.read_text() for p in sorted((root / "references").glob("*.md")))
+    return "\n".join(parts)
 
 
 def skill_openai_yaml(name: str) -> dict:
+    name = MIGRATION.get(name, {}).get("to", name)
     text = (SKILLS / name / "agents" / "openai.yaml").read_text(encoding="utf-8")
     match = re.search(r"(?m)^\s*allow_implicit_invocation:\s*(true|false)\s*$", text)
     if match is None:
@@ -57,7 +65,7 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         )
         self.assertEqual(
             set(contract["exitCodes"]),
-            {0, 1, 2, 11, 12, 13, 20, 21, 22},
+            {0, 1, 2, 10, 11, 12, 13, 20, 21, 22},
         )
         self.assertEqual(
             set(contract["requiredActions"]),
@@ -83,6 +91,105 @@ class CanvasSkillInventoryTests(unittest.TestCase):
         )
         for family in ("auth", "model", "voice", "canvas", "node", "operation", "resource"):
             self.assertIn(family, schema["commands"], family)
+
+    def test_cli_task_skills_carry_sunset_notice_and_handoff(self) -> None:
+        # The four task-level dreamina-canvas-cli-* skills replace the
+        # sunset legacy `dreamina` CLI paths; each must say so and must
+        # hand paid execution to quote-and-run.
+        for name in (
+            "dreamina-canvas-cli-text2image",
+            "dreamina-canvas-cli-image2image",
+            "dreamina-canvas-cli-text2video",
+            "dreamina-canvas-cli-ref2video",
+        ):
+            text = skill_text(name)
+            self.assertIn("Sunset notice", text, name)
+            self.assertIn("dreamina-canvas-cli", text, name)
+            self.assertIn("dreamina-prompt-", text, name)
+
+    def test_cli_task_skills_are_explicit_only(self) -> None:
+        for name in (
+            "dreamina-canvas-cli-text2image",
+            "dreamina-canvas-cli-image2image",
+            "dreamina-canvas-cli-text2video",
+            "dreamina-canvas-cli-ref2video",
+        ):
+            policy = skill_openai_yaml(name)["policy"]
+            self.assertEqual(policy["allow_implicit_invocation"], False, name)
+
+    def test_text2image_task_uses_t2i_mode(self) -> None:
+        text = skill_text("dreamina-canvas-cli-text2image")
+        self.assertIn("--mode t2i", text)
+        self.assertIn("node create image", text)
+
+    def test_image2image_task_requires_uploaded_resource_ref(self) -> None:
+        text = skill_text("dreamina-canvas-cli-image2image")
+        self.assertIn("resource upload", text)
+        self.assertIn("--mode i2i", text)
+        self.assertIn("res:", text)
+        # The upscale boundary must be called out as separately priced
+        self.assertIn("separately priced", text)
+
+    def test_text2video_task_makes_duration_mandatory(self) -> None:
+        text = skill_text("dreamina-canvas-cli-text2video")
+        self.assertIn("--mode t2v", text)
+        self.assertIn("--duration", text)
+
+    def test_ref2video_task_rejects_i2v_mode(self) -> None:
+        text = skill_text("dreamina-canvas-cli-ref2video")
+        self.assertIn("m2v", text)
+        self.assertIn("first_last_frame", text)
+        self.assertIn("i2v", text)
+
+    def test_text2voice_task_uses_voice_name_only(self) -> None:
+        text = skill_text("dreamina-canvas-cli-text2voice")
+        self.assertIn("--mode tts", text)
+        self.assertIn("--voice-name", text)
+        self.assertIn("voice list", text)
+        self.assertIn("--model", text)  # present only as the forbidden flag
+
+    def test_text2audio_task_uses_model_and_duration(self) -> None:
+        text = skill_text("dreamina-canvas-cli-text2audio")
+        self.assertIn("--mode music", text)
+        self.assertIn("--duration", text)
+        self.assertIn("model list --type audio", text)
+
+    def test_audio_task_skills_are_explicit_only(self) -> None:
+        for name in ("dreamina-canvas-cli-text2voice", "dreamina-canvas-cli-text2audio"):
+            policy = skill_openai_yaml(name)["policy"]
+            self.assertEqual(policy["allow_implicit_invocation"], False, name)
+
+    def test_ready_skill_covers_prep_phase_and_stays_free(self) -> None:
+        text = skill_text("dreamina-canvas-ready")
+        for token in ("model list", "model find", "canvas create", "canvas ls",
+                      "resource upload", "--import-kind local_upload",
+                      "node:<nodeId>", "res:<resourceId>"):
+            self.assertIn(token, text, token)
+        # The prep phase must be free-only: no paid chain ownership
+        self.assertIn("no paid action", text.lower())
+
+    def test_ready_skill_is_explicit_only(self) -> None:
+        policy = skill_openai_yaml("dreamina-canvas-ready")["policy"]
+        self.assertEqual(policy["allow_implicit_invocation"], False)
+
+    def test_setup_skill_covers_installer_matrix_and_authorization(self) -> None:
+        text = skill_text("dreamina-canvas-cli-setup")
+        for token in ("install.sh", "install.ps1", "install.bat",
+                      "command not found", "explicit authorization"):
+            self.assertIn(token, text, token)
+
+    def test_auth_task_skill_covers_login_flow_and_account_check(self) -> None:
+        text = skill_text("dreamina-canvas-cli-auth")
+        for token in ("auth login", "auth account", "auth wait",
+                      "--non-interactive", "auth status"):
+            self.assertIn(token, text, token)
+        # auth status must be explicitly distrusted as login evidence
+        self.assertIn("proof of login", text.lower())
+
+    def test_install_and_auth_task_skills_are_explicit_only(self) -> None:
+        for name in ("dreamina-canvas-cli-setup", "dreamina-canvas-cli-auth"):
+            policy = skill_openai_yaml(name)["policy"]
+            self.assertEqual(policy["allow_implicit_invocation"], False, name)
 
     def test_cli_skill_owns_cross_cutting_invariants(self) -> None:
         text = skill_text("dreamina-canvas-cli")

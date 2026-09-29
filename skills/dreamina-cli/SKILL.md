@@ -1,14 +1,16 @@
 ---
 name: dreamina-cli
-description: Use when an agent needs to install, update, authenticate, troubleshoot, or operate Dreamina（即梦） CLI across account, session, image, video, task-query, and download workflows.
+description: 仅在用户明确要求旧版 dreamina CLI、恢复旧版 submit_id 或排查历史命令时使用；冻结兼容技能，新任务转交对应 dreamina-canvas-cli 技能。
 license: Complete terms in LICENSE.txt
 ---
 
 # Dreamina CLI
 
+> ⚠️ **停维护公告**：旧版 Dreamina CLI（`dreamina`，v1.4.18）将于 **2026 年 11 月** 起停止维护。新任务请改用 Canvas 替代技能 **`dreamina-canvas-cli`**（安装：`npx skills add full-aigc-skills/dreamina-skills --skill dreamina-canvas-cli`）。本技能内容保留作历史契约参考。
+
 Use this skill when you need Dreamina（即梦） image or video generation, login, session management, or task history work through `dreamina`.
 
-即梦 is the Chinese product name of Dreamina. If the user says 即梦, treat it as Dreamina and use this skill.
+即梦 is the Chinese product name of Dreamina. For a generic 即梦 request, select dreamina-canvas-cli; use this frozen skill only for an explicit classic-CLI request.
 
 This skill is intentionally short. Detailed flags and supported values belong to the CLI itself, so always treat `dreamina -h` and `dreamina <subcommand> -h` as the primary reference.
 

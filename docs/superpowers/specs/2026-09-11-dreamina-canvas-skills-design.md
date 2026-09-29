@@ -1,3 +1,5 @@
+> 历史设计：技能职责现以 OpenSpec consolidate-canvas-cli-atoms 及 docs/canvas-atomic-migration.md 为准；本文件保留当时设计记录。
+
 # Dreamina Canvas Skills Design
 
 ## Goal

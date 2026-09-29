@@ -1,0 +1,5 @@
+interface:
+  display_name: dreamina-canvas-cli-image2image
+  short_description: 即梦画布原子操作与场景示例
+policy:
+  allow_implicit_invocation: false

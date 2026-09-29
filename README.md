@@ -20,7 +20,7 @@ English | [简体中文](./README.zh-CN.md)
 
 **dreamina-skills** is a curated collection of Agent Skills for AI coding agents, part of the [Full AIGC Skills](https://github.com/full-aigc-skills) ecosystem.
 
-This package includes **36 skills**: 17 Dreamina Design skills, 13 Canvas skills, and 6 Dreamina 3D orchestration skills. Each skill is a self-contained `SKILL.md` file that AI agents load on-demand.
+This package includes **33 skills**: 17 Design/legacy skills, 10 Canvas skills (nine CLI entrypoints and one orchestrator), and six Dreamina 3D skills. Each skill loads its operation references and scenarios on demand.
 
 Official command ownership is enforced by
 [`dreamina-canvas-command-coverage.json`](verification/dreamina-canvas-command-coverage.json)
@@ -29,25 +29,26 @@ Canvas Skills are packaged by `full-aigc-plugins/dreamina-canvas-plugin`;
 classic CLI, OpenCLI, and Prompt Skills are packaged by
 `full-aigc-plugins/dreamina-design-plugin`.
 
-### Canvas Skill inventory
+### Canvas 原子技能
 
-| Layer | Skill | Invocation |
-|-------|-------|------------|
-| Foundation | `dreamina-canvas-cli` | explicit |
-| Atomic | `dreamina-canvas-auth` | explicit |
-| Atomic | `dreamina-canvas-discover-models` | explicit |
-| Atomic | `dreamina-canvas-create` | explicit |
-| Atomic | `dreamina-canvas-quote-and-run` | explicit |
-| Atomic | `dreamina-canvas-resume-operation` | explicit |
-| Atomic | `dreamina-canvas-download-assets` | explicit |
-| Domain | `dreamina-canvas-generate-image` | explicit |
-| Domain | `dreamina-canvas-generate-video` | explicit |
-| Domain | `dreamina-canvas-generate-audio` | explicit |
-| Domain | `dreamina-canvas-manage-timeline` | explicit |
-| Orchestration | `dreamina-canvas-compose` | explicit |
-| Orchestration | `dreamina-canvas-use` | implicit |
+九个 CLI 技能保持独立；模型、画布、素材、报价运行、恢复和时间轴是总技能内部的标准操作，不再发布同名辅助技能。文生图等场景见各自 examples/。
 
-Canvas Skills consume the guide contract at `verification/dreamina-canvas-guide-contract.json` and rely on the installed CLI's `version`, `schema`, `model`, and `voice` output for runtime truth. All thirteen entries are implemented and validated independently.
+| 技能 | 职责 |
+|---|---|
+| `dreamina-canvas-cli` | 公共契约、模型音色、画布资源、节点共享机制、报价运行、恢复与校验 |
+| `dreamina-canvas-cli-setup` | 安装、升级与环境检查 |
+| `dreamina-canvas-cli-auth` | 登录、授权等待、账户、刷新与退出 |
+| `dreamina-canvas-cli-text2image` | t2i 文生图 |
+| `dreamina-canvas-cli-image2image` | i2i 图生图与独立定价的图片放大 |
+| `dreamina-canvas-cli-text2video` | t2v 文生视频 |
+| `dreamina-canvas-cli-ref2video` | m2v 与 first_last_frame 参考视频 |
+| `dreamina-canvas-cli-text2voice` | tts 语音 |
+| `dreamina-canvas-cli-text2audio` | music 音乐 |
+| `dreamina-canvas-use` | 唯一隐式 Canvas 编排入口 |
+
+首次安装使用 `dreamina-canvas-cli-setup`。每个操作按输入、动作、副作用、输出、恢复和验收组织，按需读取 references/。跨技能按名称安装，不依赖相邻目录。
+
+旧的五个 `dreamina-cli*` 技能冻结，仅服务明确的旧版请求。辅助技能迁移表见 [Canvas 迁移说明](docs/canvas-atomic-migration.md)。消费者更新前需检查固定路径，当前本地整理不代表已发布或真实生成验收。
 
 ## 📦 Install
 
@@ -57,7 +58,7 @@ npx skills add full-aigc-skills/dreamina-skills
 
 Or install specific skills: `npx skills add full-aigc-skills/dreamina-skills --skill <skill-name>`
 
-## 🎯 Dreamina Skills (13)
+## 🎯 Design CLI, OpenCLI and Prompt Skills (13)
 
 | Skill | Description |
 |-------|-------------|
@@ -74,6 +75,8 @@ Or install specific skills: `npx skills add full-aigc-skills/dreamina-skills --s
 | `dreamina-prompt-image2video` | Author prompts for single-image, first/last-frame, multi-frame, and multimodal video generation. |
 | `dreamina-prompt-text2image` | Author structured Dreamina text-to-image prompts with scene, style, color, composition, and quality guidance. |
 | `dreamina-prompt-text2video` | Author structured Dreamina text-to-video prompts with motion, camera, timing, scene, and evaluation guidance. |
+
+The other four Design skills are `dreamina-design-use`, `dreamina-shot-annotator`, `dreamina-video-evaluator`, and `dreamina-video-production`.
 
 ## 🤖 Supported Agents
 

@@ -1,6 +1,6 @@
 ---
 name: dreamina-opencli-text2video
-description: Guide Jimeng text-to-video for standard members without dreamina CLI. Use opencli jimeng generate-video (type=video), history, new, workspaces, and account commands. Use with dreamina-prompt-text2video for motion prompts. Never invoke dreamina or jimeng-cli execution skills.
+description: Use when the user is a standard member without the dreamina CLI and needs 即梦 text-to-video through opencli jimeng. Covers generate-video (type=video), history, new, workspaces, and account commands. Pair with dreamina-prompt-text2video for motion prompts. Never invoke dreamina or jimeng-cli execution skills.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -46,9 +46,9 @@ opencli jimeng user_credit
 - 不得使用 dreamina CLI 提交或轮询视频任务。
 - 不得用 `generate`（`type=image`）冒充视频生成。
 
-## 与 dreamina-cli-text2video
+## 与 dreamina-canvas-cli-text2video 的分工
 
-已开通 dreamina CLI 的用户使用 `dreamina-cli-text2video`；本技能读者**不得**改用 dreamina。
+已安装 dreamina-canvas CLI 的用户使用 `dreamina-canvas-cli-text2video`（旧 `dreamina text2video` 于 2026-11 停止维护，勿再路由过去）；本技能读者**不得**改用 dreamina。
 
 ## 智能体规范
 
@@ -65,7 +65,7 @@ opencli jimeng user_credit
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Guide Jimeng text-to-video for standard members without dreamina CLI. Use opencli jimeng generate-video (type=video), history, new, workspaces, and account commands. Use with dreamina-prompt-text2video for motion prompts. Never invoke dreamina or jimeng-cli execution skills.。
+当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user is a standard member without the dreamina CLI and needs 即梦 text-to-video through opencli jimeng. Covers generate-video (type=video), history, new, workspaces, and account commands. Pair with dreamina-prompt-text2video for motion prompts. Never invoke dreamina or jimeng-cli execution skills.。
 
 ## Rules
 

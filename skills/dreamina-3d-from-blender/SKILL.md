@@ -1,6 +1,7 @@
 ---
 name: dreamina-3d-from-blender
-description: Drive a Blender preview through the validated Dreamina 3D pipeline. Use when the user has a Blender scene and wants a Seedance 2.5 render from it.
+description: Use when the user has a Blender scene and wants a Seedance 2.5 render from it. Drives the preview through the validated Dreamina 3D pipeline.
+license: Complete terms in LICENSE
 metadata:
   type: workflow
   plugin: dreamina-3d
@@ -85,7 +86,7 @@ Querying → Completed | Failed | Unknown` exactly once each.
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Drive a Blender preview through the validated Dreamina 3D pipeline. Use when the user has a Blender scene and wants a Seedance 2.5 render from it.。
+当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user has a Blender scene and wants a Seedance 2.5 render from it. Drives the preview through the validated Dreamina 3D pipeline.。
 
 ## Rules
 

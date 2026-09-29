@@ -18,7 +18,7 @@ build `2026-09-05T08:54:32Z`):
 - Output envelope (success):
   `{"schemaVersion": "1", "ok": true, "data": {...}}`
 - Output envelope (failure, written to stderr): `{"ok": false, "error": {...}}`.
-- Identifiers are lowercase canonical UUIDs.
+- Project, resource and submit IDs are canonical UUIDs; node IDs are opaque node_ identifiers returned by the CLI, never generated as UUIDs.
 
 The authoritative fixture is `verification/dreamina-canvas-guide-contract.json`
 in the repository root. Do **not** copy values from this document into tests;

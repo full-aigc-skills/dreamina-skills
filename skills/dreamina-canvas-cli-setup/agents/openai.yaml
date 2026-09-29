@@ -1,0 +1,5 @@
+interface:
+  display_name: Dreamina Canvas CLI Install Task
+  short_description: Install or update dreamina-canvas via the official OS installer, verify with --help/version/schema, troubleshoot PATH; authorization required; hands off to the auth Skill
+policy:
+  allow_implicit_invocation: false

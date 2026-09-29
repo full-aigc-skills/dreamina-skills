@@ -1,5 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Composition
-  short_description: Save multi-node Canvas graphs for later approval; never runs
-policy:
-  allow_implicit_invocation: false

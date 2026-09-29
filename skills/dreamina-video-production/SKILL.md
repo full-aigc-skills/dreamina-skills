@@ -1,6 +1,7 @@
 ---
 name: dreamina-video-production
 description: Use when creating a complete Dreamina video project from a local reference video, including analysis, redesign or authorized replication, batch generation, evaluation, audio, subtitles, composition, recovery, and verified export.
+license: Complete terms in LICENSE
 ---
 
 # Dreamina Video Production

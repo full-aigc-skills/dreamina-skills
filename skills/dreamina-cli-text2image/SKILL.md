@@ -1,10 +1,12 @@
 ---
 name: dreamina-cli-text2image
-description: Use when the user wants to submit, poll, or troubleshoot Dreamina 即梦 text-to-image tasks through `dreamina text2image`. Covers CLI v1.4.18 required resolution, custom width/height, Seedream model tokens, batch count, sessions, and async terminal status handling.
+description: 仅在用户明确要求旧版 dreamina CLI、恢复旧版 submit_id 或排查历史命令时使用；冻结兼容技能，新任务转交对应 dreamina-canvas-cli 技能。
 license: Complete terms in LICENSE.txt
 ---
 
 # 即梦 CLI 文生图
+
+> ⚠️ **停维护公告**：旧版 Dreamina CLI（`dreamina`，v1.4.18）将于 **2026 年 11 月** 起停止维护。新任务请改用 Canvas 替代技能 **`dreamina-canvas-cli-text2image`**（安装：`npx skills add full-aigc-skills/dreamina-skills --skill dreamina-canvas-cli-text2image`）。本技能内容保留作历史契约参考。
 
 执行前先运行 `dreamina text2image -h`。本技能记录 v1.4.18 稳定工作流；实际 help 始终是参数事实源。
 

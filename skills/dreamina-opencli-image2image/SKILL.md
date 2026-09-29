@@ -1,6 +1,6 @@
 ---
 name: dreamina-opencli-image2image
-description: Guide Jimeng image-to-image for standard members without dreamina CLI. opencli jimeng has no image2image subcommand; only generate, history, new, and workspaces are allowed. Use with dreamina-prompt-image2image for edit prompts, manual reference upload on the Jimeng web UI in the same browser session, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.
+description: Use when the user is a standard (non-VIP) Jimeng member without the dreamina CLI and needs image-to-image on jimeng.jianying.com. opencli jimeng has no image2image subcommand; only generate, history, new, and workspaces are allowed. Pair with dreamina-prompt-image2image for edit prompts, manual reference upload on the Jimeng web UI in the same browser session, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -44,9 +44,9 @@ opencli jimeng history --limit 10 --format table
 - 不得引导用户安装 dreamina CLI 作为回退。
 - 不得用 `generate`（无 `--images`）冒充图生图。
 
-## 与 dreamina-cli-image2image
+## 与 dreamina-canvas-cli-image2image 的分工
 
-已开通 dreamina CLI / 高级会员且可本地提交图生图任务时，改用 `dreamina-cli-image2image`；本技能用户**不要**混用。
+已安装 dreamina-canvas CLI 的本地执行路径是 `dreamina-canvas-cli-image2image`（旧 `dreamina image2image` 于 2026-11 停止维护，勿再路由过去）；本技能用户**不要**混用。
 
 ## 智能体规范
 
@@ -63,7 +63,7 @@ opencli jimeng history --limit 10 --format table
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Guide Jimeng image-to-image for standard members without dreamina CLI. opencli jimeng has no image2image subcommand; only generate, history, new, and workspaces are allowed. Use with dreamina-prompt-image2image for edit prompts, manual reference upload on the Jimeng web UI in the same browser session, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.。
+当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user is a standard (non-VIP) Jimeng member without the dreamina CLI and needs image-to-image on jimeng.jianying.com. opencli jimeng has no image2image subcommand; only generate, history, new, and workspaces are allowed. Pair with dreamina-prompt-image2image for edit prompts, manual reference upload on the Jimeng web UI in the same browser session, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.。
 
 ## Rules
 

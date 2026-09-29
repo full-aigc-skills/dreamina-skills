@@ -2,14 +2,15 @@
 """Validate the Dreamina Canvas skill suite end to end.
 
 Asserts:
-- 13 dreamina-canvas-* Skill directories exist.
-- 13 pre-existing dreamina-* Skill directories still exist.
-- Total Skill count is 26.
+- 10 dreamina-canvas-* Skill directories exist.
+- The 13 classic Dreamina skills and later orchestration entries exist.
+- Total Skill count is 33.
 - Every Skill directory contains a SKILL.md with a `name:` frontmatter
   matching the directory name.
-- Every Skill has an agents/openai.yaml with a `policy.allow_implicit_invocation`
-  field; exactly one Skill (dreamina-canvas-use) sets it to true.
-- Every Skill has at least one reference document under references/.
+- Every Canvas Skill has an agents/openai.yaml with a
+  `policy.allow_implicit_invocation` field; exactly one Canvas Skill
+  (dreamina-canvas-use) sets it to true.
+- Every Canvas Skill has at least one reference document under references/.
 - No SKILL.md or openai.yaml contains a hard-coded catalog masquerading
   as runtime truth (e.g. a concrete `--model` token outside placeholders).
 - No skill file contains a credential-like pattern (OAuth access/refresh
@@ -33,17 +34,14 @@ MANIFEST = ROOT / ".claude-plugin" / "plugin.json"
 
 CANVAS_SKILLS = {
     "dreamina-canvas-cli",
-    "dreamina-canvas-auth",
-    "dreamina-canvas-discover-models",
-    "dreamina-canvas-create",
-    "dreamina-canvas-compose",
-    "dreamina-canvas-generate-image",
-    "dreamina-canvas-generate-video",
-    "dreamina-canvas-generate-audio",
-    "dreamina-canvas-manage-timeline",
-    "dreamina-canvas-quote-and-run",
-    "dreamina-canvas-resume-operation",
-    "dreamina-canvas-download-assets",
+    "dreamina-canvas-cli-setup",
+    "dreamina-canvas-cli-auth",
+    "dreamina-canvas-cli-text2image",
+    "dreamina-canvas-cli-image2image",
+    "dreamina-canvas-cli-text2voice",
+    "dreamina-canvas-cli-text2audio",
+    "dreamina-canvas-cli-text2video",
+    "dreamina-canvas-cli-ref2video",
     "dreamina-canvas-use",
 }
 
@@ -63,7 +61,20 @@ EXISTING_DREAMINA_SKILLS = {
     "dreamina-prompt-text2video",
 }
 
-EXPECTED_ALL = CANVAS_SKILLS | EXISTING_DREAMINA_SKILLS
+ORCHESTRATION_AND_SETUP_SKILLS = {
+    "dreamina-3d-auto-seedance",
+    "dreamina-3d-from-blender",
+    "dreamina-3d-from-maya",
+    "dreamina-3d-jimeng-web",
+    "dreamina-3d-resume",
+    "dreamina-3d-use",
+    "dreamina-design-use",
+    "dreamina-shot-annotator",
+    "dreamina-video-evaluator",
+    "dreamina-video-production",
+}
+
+EXPECTED_ALL = CANVAS_SKILLS | EXISTING_DREAMINA_SKILLS | ORCHESTRATION_AND_SETUP_SKILLS
 
 SECRET_PATTERNS = [
     "access_token",

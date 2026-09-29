@@ -1,0 +1,24 @@
+{
+ "skill": "dreamina-canvas-cli-ref2video",
+ "scenario": "reference-driven video end-to-end task",
+ "description": "Confirms that reference material is uploaded as res:/node: references, the correct public mode is selected (single image or multimodal guidance -> m2v; ordered start/end frames -> first_last_frame; never i2v), and paid execution is handed off.",
+ "expectations": [
+  "Material is ingested via resource upload and referenced as res:<lowercaseUuid> or as an imported node; file:// and uri: refs are rejected",
+  "Single-image motion guidance uses --mode m2v; --mode i2v and --mode multi_modal are rejected with exit code 2 and never passed",
+  "Ordered start/end frames use --mode first_last_frame with two refs in start-then-end order",
+  "Two-frame drafts require matching source ratios; the output ratio follows the first frame",
+  "Frame-driven models that infer ratio from the first frame receive no explicit --ratio",
+  "--duration is mandatory (>0, default 5) and bounded by the discovered model spec",
+  "Multimodal reference limits (types/counts) come from the live discovery payload",
+  "Paid execution is handed off to dreamina-canvas-cli; this Skill never calls --run",
+  "Exit 20 / 21 continue via operation wait with the same submitId"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "node",
+  "model",
+  "operation",
+  "resource",
+  "version"
+ ]
+}

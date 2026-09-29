@@ -1,0 +1,19 @@
+{
+ "skill": "dreamina-canvas-cli-auth",
+ "scenario": "login and account check on the dreamina-canvas CLI",
+ "description": "Confirms that the authorization workflow follows the guide's five-step login flow, selects the right auth subcommand per environment (TTY login vs non-interactive plus device-code wait), verifies with auth account as the only trusted login evidence, and delegates credential-security internals to dreamina-canvas-cli-auth.",
+ "expectations": [
+  "The five-step flow ends with auth account as the login self-check",
+  "Agent environments use --non-interactive auth login plus auth wait --device-code; login is never polled in a loop",
+  "auth status is never trusted alone as proof of login; auth account is the server-side truth",
+  "Account switching uses auth login --force",
+  "auth refresh is only called inside the refresh window",
+  "Tokens, cookies, and device codes are never persisted or logged",
+  "No paid command runs from this Skill"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "auth",
+  "version"
+ ]
+}

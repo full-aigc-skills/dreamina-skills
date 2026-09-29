@@ -23,9 +23,11 @@
 
 | 技能词库 | 加载文件 | 比对方法 |
 |----------|----------|----------|
-| 动作词库 | `references/video-words/motion.md` | 逐动作词检查命中 |
-| 场景/风格词库 | `references/video-words/scene-style.md` | 逐场景/风格词检查命中 |
-| 运镜词库 | `references/camera-basic.md` | 逐运镜术语检查命中 |
+下表路径均相对本技能的 `references/` 目录。
+
+| 动作词库 | `video-words/motion.md` | 逐动作词检查命中 |
+| 场景/风格词库 | `video-words/scene-style.md` | 逐场景/风格词检查命中 |
+| 运镜词库 | `camera-basic.md` | 逐运镜术语检查命中 |
 
 ### 输出格式
 ```

@@ -1,5 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Image Node
-  short_description: Save and edit image nodes (t2i / i2i); never approves spend
-policy:
-  allow_implicit_invocation: false

@@ -9,9 +9,9 @@ CLI_COVERAGE = ROOT / "verification" / "dreamina-cli-command-coverage.json"
 
 
 CANVAS_COMMANDS = {
-    "install-cn", "install-oversea", "help", "version", "schema",
+    "install-cn", "install-powershell", "install-cmd", "install-oversea", "help", "version", "schema",
     "auth login", "auth wait", "auth account", "auth status", "auth refresh", "auth logout",
-    "model search", "model list", "model detail", "voice list",
+    "model search", "model list", "model find", "voice list",
     "canvas create", "canvas ls",
     "node create image", "node edit image", "node create video", "node edit video",
     "node create audio", "node edit audio", "node create text", "node edit text",
@@ -40,6 +40,9 @@ def skill_corpus(name: str) -> str:
     refs = root / "references"
     if refs.is_dir():
         parts.extend(p.read_text(encoding="utf-8") for p in sorted(refs.rglob("*.md")))
+    examples = root / "examples"
+    if examples.is_dir():
+        parts.extend(p.read_text(encoding="utf-8") for p in sorted(examples.rglob("*.md")))
     return "\n".join(parts)
 
 

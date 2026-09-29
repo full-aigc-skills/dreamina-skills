@@ -1,5 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Authentication
-  short_description: Login, refresh, logout, profile isolation; never persists tokens
-policy:
-  allow_implicit_invocation: false

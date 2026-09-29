@@ -1,0 +1,22 @@
+{
+ "skill": "dreamina-canvas-cli-image2image",
+ "scenario": "image-to-image and upscale end-to-end task",
+ "description": "Confirms that local files are uploaded and frozen as res: references before the i2i draft, restyle edits are full-replace, and upscale is routed as a separately priced flow.",
+ "expectations": [
+  "Local images are ingested via resource upload and referenced as res:<lowercaseUuid>; file:// and uri: refs are rejected",
+  "The i2i draft requires at least one image-bearing reference",
+  "Restyle via node edit image provides the complete new generation block (full replace), not a partial diff",
+  "Upscale is separately priced: node confirm tokens are invalid for node upscale image",
+  "Model / ratio / resolution values come only from the live discovery payload; legacy v1.4.18 tokens are never reused",
+  "Paid execution is handed off to dreamina-canvas-cli; this Skill never calls --run",
+  "Exit 20 / 21 continue via operation wait with the same submitId"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "node",
+  "model",
+  "operation",
+  "resource",
+  "version"
+ ]
+}

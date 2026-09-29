@@ -1,17 +1,12 @@
-# dreamina-canvas-cli：正常路径示例
+# CLI 就绪与命令契约
 
-## 请求
+先只读核对安装制品。自动化时把 `--format json` 放在子命令前；本文其余示例为便于人工阅读使用简写。
 
-用户给出明确目标、输入、交付格式与验收条件，希望使用 `dreamina-canvas-cli` 完成一次有界任务。
+```bash
+dreamina-canvas --help
+dreamina-canvas version
+dreamina-canvas schema
+dreamina-canvas node create image --help
+```
 
-## 执行
-
-1. 识别触发条件与范围。
-2. 确认目标、输入、约束、可用工具、成功标准和失败边界。
-3. 展示计划和需要的授权点。
-4. 按最小充分步骤执行，并在关键状态变化处记录证据。
-5. 输出结果、验证证据、未完成项、风险和明确的下一步。
-
-## 期望输出
-
-返回 `COMPLETED`、真实证据与产物位置；任何未执行检查单独列在 `skipped` 中。
+`--help` 应列出 auth、canvas、model、node、operation、resource。若报错，保存完整命令、错误、`version` 输出和 `meta.requestId`；生成任务还需 `projectId` 与 `submitId`。日志或反馈不得包含凭据。缺少命令时转交 `dreamina-canvas-cli-setup`。

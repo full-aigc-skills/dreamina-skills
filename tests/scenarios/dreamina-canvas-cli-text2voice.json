@@ -1,0 +1,22 @@
+{
+ "skill": "dreamina-canvas-cli-text2voice",
+ "scenario": "text-to-speech end-to-end task",
+ "description": "Confirms that TTS picks the voice from the live voice catalog (voice list pagination), saves the tts draft with --voice-name only (never --model, no --count), and hands paid execution and download to their owner skills.",
+ "expectations": [
+  "voiceName comes from the live voice list payload, never reused from old conversations",
+  "The tts draft uses --mode tts --voice-name <voiceName> and never passes --model",
+  "--count is not accepted on audio nodes and is never passed",
+  "Paid execution is handed off to dreamina-canvas-cli; this Skill never calls --run",
+  "Exit 20 / 21 continue via operation wait with the same submitId",
+  "Music requests route to dreamina-canvas-cli-text2audio",
+  "The artifact is verified with SHA-256 and a plausibility check on duration vs narration length"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "node",
+  "voice",
+  "operation",
+  "resource",
+  "version"
+ ]
+}

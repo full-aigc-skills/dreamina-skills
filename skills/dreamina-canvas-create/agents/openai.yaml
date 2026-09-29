@@ -1,6 +1,0 @@
-interface:
-  display_name: Dreamina Canvas Lifecycle
-  short_description: Create, list, and select canvases; reuse lowercase --project-id
-    across processes
-policy:
-  allow_implicit_invocation: false

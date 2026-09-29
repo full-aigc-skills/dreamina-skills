@@ -16,7 +16,7 @@
 
 ## 📖 简介
 
-**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **36 个技能**：17 个 Dreamina Design 技能、13 个 Canvas 技能与 6 个 Dreamina 3D 编排技能。
+**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **33 个技能**：17 个 Design/历史兼容技能、10 个 Canvas 技能（9 个 CLI 原子入口 + 1 个编排入口）、6 个 Dreamina 3D 编排技能。
 
 官方命令归属由
 [`dreamina-canvas-command-coverage.json`](verification/dreamina-canvas-command-coverage.json)
@@ -30,7 +30,7 @@ CLI、OpenCLI 与 Prompt Skill 由 `full-aigc-plugins/dreamina-design-plugin` �
 npx skills add full-aigc-skills/dreamina-skills
 ```
 
-## 🎯 技能列表 (13)
+## 🎯 Design CLI、OpenCLI 与 Prompt 技能 (13)
 
 | 技能 | 描述 |
 |------|------|
@@ -48,25 +48,28 @@ npx skills add full-aigc-skills/dreamina-skills
 | `dreamina-prompt-text2image` | 编写覆盖场景、风格、色彩、构图和质量约束的结构化文生图提示词。 |
 | `dreamina-prompt-text2video` | 编写覆盖运动、镜头、时间、场景和评估规则的结构化文生视频提示词。 |
 
-### Canvas 技能清单
+其余 4 个 Design 技能为 `dreamina-design-use`、`dreamina-shot-annotator`、`dreamina-video-evaluator` 和 `dreamina-video-production`。
 
-| 层 | 技能 | 调用方式 |
-|----|------|----------|
-| 基础 | `dreamina-canvas-cli` | 显式 |
-| 原子 | `dreamina-canvas-auth` | 显式 |
-| 原子 | `dreamina-canvas-discover-models` | 显式 |
-| 原子 | `dreamina-canvas-create` | 显式 |
-| 原子 | `dreamina-canvas-quote-and-run` | 显式 |
-| 原子 | `dreamina-canvas-resume-operation` | 显式 |
-| 原子 | `dreamina-canvas-download-assets` | 显式 |
-| 领域 | `dreamina-canvas-generate-image` | 显式 |
-| 领域 | `dreamina-canvas-generate-video` | 显式 |
-| 领域 | `dreamina-canvas-generate-audio` | 显式 |
-| 领域 | `dreamina-canvas-manage-timeline` | 显式 |
-| 编排 | `dreamina-canvas-compose` | 显式 |
-| 编排 | `dreamina-canvas-use` | 隐式 |
+### Canvas 原子技能
 
-Canvas 技能遵守 `verification/dreamina-canvas-guide-contract.json` 中的引导契约，并以安装版 CLI 的 `version`、`schema`、`model`、`voice` 输出为运行时真相；13 个入口均已实现并独立验证。
+九个 CLI 技能保持独立；模型、画布、素材、报价运行、恢复和时间轴是总技能内部的标准操作，不再发布同名辅助技能。文生图等场景见各自 examples/。
+
+| 技能 | 职责 |
+|---|---|
+| `dreamina-canvas-cli` | 公共契约、模型音色、画布资源、节点共享机制、报价运行、恢复与校验 |
+| `dreamina-canvas-cli-setup` | 安装、升级与环境检查 |
+| `dreamina-canvas-cli-auth` | 登录、授权等待、账户、刷新与退出 |
+| `dreamina-canvas-cli-text2image` | t2i 文生图 |
+| `dreamina-canvas-cli-image2image` | i2i 图生图与独立定价的图片放大 |
+| `dreamina-canvas-cli-text2video` | t2v 文生视频 |
+| `dreamina-canvas-cli-ref2video` | m2v 与 first_last_frame 参考视频 |
+| `dreamina-canvas-cli-text2voice` | tts 语音 |
+| `dreamina-canvas-cli-text2audio` | music 音乐 |
+| `dreamina-canvas-use` | 唯一隐式 Canvas 编排入口 |
+
+首次安装使用 `dreamina-canvas-cli-setup`。每个操作按输入、动作、副作用、输出、恢复和验收组织，按需读取 references/。跨技能按名称安装，不依赖相邻目录。
+
+旧的五个 `dreamina-cli*` 技能冻结，仅服务明确的旧版请求。辅助技能迁移表见 [Canvas 迁移说明](docs/canvas-atomic-migration.md)。消费者更新前需检查固定路径，当前本地整理不代表已发布或真实生成验收。
 
 ## 🤖 支持的智能体
 

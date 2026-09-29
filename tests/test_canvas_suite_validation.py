@@ -10,17 +10,14 @@ SUITE_JSON = ROOT / "verification" / "dreamina-canvas-skill-suite.json"
 
 EXPECTED_CANVAS = {
     "dreamina-canvas-cli",
-    "dreamina-canvas-auth",
-    "dreamina-canvas-discover-models",
-    "dreamina-canvas-create",
-    "dreamina-canvas-compose",
-    "dreamina-canvas-generate-image",
-    "dreamina-canvas-generate-video",
-    "dreamina-canvas-generate-audio",
-    "dreamina-canvas-manage-timeline",
-    "dreamina-canvas-quote-and-run",
-    "dreamina-canvas-resume-operation",
-    "dreamina-canvas-download-assets",
+    "dreamina-canvas-cli-setup",
+    "dreamina-canvas-cli-auth",
+    "dreamina-canvas-cli-text2image",
+    "dreamina-canvas-cli-image2image",
+    "dreamina-canvas-cli-text2voice",
+    "dreamina-canvas-cli-text2audio",
+    "dreamina-canvas-cli-text2video",
+    "dreamina-canvas-cli-ref2video",
     "dreamina-canvas-use",
 }
 
@@ -53,6 +50,8 @@ EXPECTED_ORCHESTRATION = {
     "dreamina-video-production",
 }
 
+EXPECTED_SETUP = set()
+
 
 def implicit_invocation_policy(name: str) -> bool:
     text = (SKILLS / name / "agents" / "openai.yaml").read_text(encoding="utf-8")
@@ -63,10 +62,10 @@ def implicit_invocation_policy(name: str) -> bool:
 
 
 class CanvasSuiteValidationTests(unittest.TestCase):
-    def test_skill_count_is_36(self) -> None:
+    def test_skill_count_is_33(self) -> None:
         actual = {p.name for p in SKILLS.iterdir() if p.is_dir()}
-        self.assertEqual(len(actual), 36)
-        self.assertEqual(actual, EXPECTED_CANVAS | EXPECTED_EXISTING | EXPECTED_ORCHESTRATION)
+        self.assertEqual(len(actual), 33)
+        self.assertEqual(actual, EXPECTED_CANVAS | EXPECTED_EXISTING | EXPECTED_ORCHESTRATION | EXPECTED_SETUP)
 
     def test_implicit_invocation_is_only_use(self) -> None:
         for name in EXPECTED_CANVAS:

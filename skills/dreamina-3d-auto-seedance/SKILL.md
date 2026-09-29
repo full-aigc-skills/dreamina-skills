@@ -1,6 +1,7 @@
 ---
 name: dreamina-3d-auto-seedance
-description: Automatically turn a validated DCC preview into an approved Seedance video through Dreamina Design MCP, with submit-once recovery and verified download.
+description: Use when the user wants a validated DCC preview turned into an approved Seedance video through Dreamina Design MCP. Covers submit-once recovery and verified download.
+license: Complete terms in LICENSE
 ---
 
 # Automatic Seedance Entry
@@ -56,7 +57,7 @@ timestamps and error categories only.
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Automatically turn a validated DCC preview into an approved Seedance video through Dreamina Design MCP, with submit-once recovery and verified download.。
+当用户需要 **为当前请求选择并执行可验证、可恢复的专业工作流** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user wants a validated DCC preview turned into an approved Seedance video through Dreamina Design MCP. Covers submit-once recovery and verified download.。
 
 ## Rules
 

@@ -1,6 +1,6 @@
 ---
 name: dreamina-opencli-text2image
-description: Execute Jimeng text-to-image for standard (non-VIP) members using only opencli jimeng browser commands on jimeng.jianying.com. Covers generate, history, new, workspaces, user_credit, user_assets, user_subscription. Does not use dreamina CLI. Pair with dreamina-prompt-text2image for prompts. Use when the user cannot use dreamina and must automate via opencli Browser Bridge.
+description: Use when the user cannot use the dreamina CLI (standard non-VIP member) and must automate 即梦 text-to-image through opencli Browser Bridge on jimeng.jianying.com. Covers generate, history, new, workspaces, user_credit, user_assets, user_subscription. Does not use the dreamina CLI. Pair with dreamina-prompt-text2image for prompts.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -64,12 +64,12 @@ opencli jimeng new
 opencli jimeng workspaces
 ```
 
-## 与 dreamina-cli-text2image 的分工
+## 与 dreamina-canvas-cli-text2image 的分工
 
 | 用户条件 | 使用技能 |
 |----------|----------|
 | 仅有普通会员 / 无 dreamina CLI | **本技能**（仅 opencli） |
-| 已安装 dreamina CLI、可 `user_credit` | `dreamina-cli-text2image` |
+| 已安装 dreamina-canvas CLI | `dreamina-canvas-cli-text2image`（旧 `dreamina text2image` 于 2026-11 停止维护，勿再路由过去） |
 
 ## 智能体规范
 
@@ -87,7 +87,7 @@ opencli jimeng workspaces
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Execute Jimeng text-to-image for standard (non-VIP) members using only opencli jimeng browser commands on jimeng.jianying.com. Covers generate, history, new, workspaces, user_credit, user_assets, user_subscription. Does not use dreamina CLI. Pair with dreamina-prompt-text2image for prompts. Use when the user cannot use dreamina and must automate via opencli Browser Bridge.。
+当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user cannot use the dreamina CLI (standard non-VIP member) and must automate 即梦 text-to-image through opencli Browser Bridge on jimeng.jianying.com. Covers generate, history, new, workspaces, user_credit, user_assets, user_subscription. Does not use the dreamina CLI. Pair with dreamina-prompt-text2image for prompts.。
 
 ## Rules
 

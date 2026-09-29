@@ -1,6 +1,6 @@
 ---
 name: dreamina-opencli-image2video
-description: Guide Jimeng image-to-video for standard members without dreamina CLI. opencli jimeng has no image2video, frames2video, or multimodal subcommands. Use with dreamina-prompt-image2video for incremental motion prompts, manual mode selection on the Jimeng web UI, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.
+description: Use when the user is a standard (non-VIP) Jimeng member without the dreamina CLI and needs image-to-video on jimeng.jianying.com. opencli jimeng has no image2video, frames2video, or multimodal subcommands. Pair with dreamina-prompt-image2video for incremental motion prompts, manual mode selection on the Jimeng web UI, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -53,9 +53,9 @@ opencli jimeng history --limit 10 --type=video
 - 不得虚构 opencli 图生视频参数。
 - 不得引导安装 dreamina。
 
-## 与 dreamina-cli-image2video
+## 与 dreamina-canvas-cli-ref2video 的分工
 
-已开通 dreamina CLI 的用户用 `dreamina-cli-image2video` 做子命令路由与轮询；本技能用户**不得**改用。
+已安装 dreamina-canvas CLI 的用户用 `dreamina-canvas-cli-ref2video` 做模式选择与路由（旧 `dreamina image2video` 于 2026-11 停止维护，勿再路由过去）；本技能用户**不得**改用。
 
 ## 智能体规范
 
@@ -72,7 +72,7 @@ opencli jimeng history --limit 10 --type=video
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Guide Jimeng image-to-video for standard members without dreamina CLI. opencli jimeng has no image2video, frames2video, or multimodal subcommands. Use with dreamina-prompt-image2video for incremental motion prompts, manual mode selection on the Jimeng web UI, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.。
+当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user is a standard (non-VIP) Jimeng member without the dreamina CLI and needs image-to-video on jimeng.jianying.com. opencli jimeng has no image2video, frames2video, or multimodal subcommands. Pair with dreamina-prompt-image2video for incremental motion prompts, manual mode selection on the Jimeng web UI, and opencli history for verification. Never invoke dreamina or jimeng-cli execution skills.。
 
 ## Rules
 

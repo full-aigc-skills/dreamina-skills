@@ -10,6 +10,7 @@ Never parse the localized `error.message`.
 | 0 | success | none | continue |
 | 1 | uncategorized internal failure | none / contact_support | alert; do not retry blindly |
 | 2 | invalid command, argument, or input schema | none / human_intervention | fix the command; retry is useless |
+| 10 | draft saved; credit confirmation needed before submission | confirm | show latest quote, obtain approval, reuse returned node and task IDs |
 | 11 | login required or session expired | login | re-authenticate, then retry with the same identity |
 | 12 | permission / capability / entitlement denied | human_intervention / contact_support | do not retry; escalate |
 | 13 | environment or release compatibility blocked | upgrade | upgrade per `error.clientUpgrade.upgradeUrl` |

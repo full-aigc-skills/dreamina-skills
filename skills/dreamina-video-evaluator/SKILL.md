@@ -1,6 +1,7 @@
 ---
 name: dreamina-video-evaluator
 description: Use when judging generated Dreamina shot clips against measured gates, producing shot_evaluation.schema.json content only.
+license: Complete terms in LICENSE
 ---
 
 # Dreamina Video Evaluator

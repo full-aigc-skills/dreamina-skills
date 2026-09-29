@@ -1,0 +1,23 @@
+{
+ "skill": "dreamina-canvas-cli-text2video",
+ "scenario": "text-to-video end-to-end task",
+ "description": "Confirms that the t2v task finalizes motion prompts, discovers model/duration/ratio from the live payload, saves a draft with mandatory --duration, and hands off paid execution and download.",
+ "expectations": [
+  "Prompts without motion intent are handed off to dreamina-prompt-text2video",
+  "--duration is mandatory (>0, default 5) and bounded by the discovered model spec",
+  "--ratio is passed only when the discovered model contract accepts it",
+  "t2v drafts carry no image or frame references (reference tasks route to dreamina-canvas-cli-ref2video)",
+  "Model / duration values come only from the live discovery payload; legacy v1.4.18 tokens are never reused",
+  "Paid execution is handed off to dreamina-canvas-cli; this Skill never calls --run",
+  "Exit 20 / 21 continue via operation wait with the same submitId; a new submitId is never minted",
+  "The sunset notice points users away from the legacy dreamina text2video binary"
+ ],
+ "cliBinary": "dreamina-canvas",
+ "cliCommandFamilies": [
+  "node",
+  "model",
+  "operation",
+  "resource",
+  "version"
+ ]
+}

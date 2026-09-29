@@ -1,6 +1,6 @@
 ---
 name: dreamina-prompt-image2image
-description: "Provides comprehensive guidance for crafting image-to-image (图生图) edit prompts for 即梦 (Dreamina/Jimeng) models 4.0+. Uses a Keep/Change framework: explicitly declare what stays and what transforms. Use when the user wants to modify an existing image via style transfer (风格迁移), background replacement (背景替换), detail enhancement (细节增强), color adjustment (色彩调整), element add/remove (元素添加移除), season/time change (季节时间变换), restoration (修复), outfit change (换装), creative transformation (创意变形), or multi-reference compositing (多图合成); mentions \"图生图\", \"image2image\", \"编辑图片\", \"换背景\", \"改风格\", \"修图\", \"把这张图变成\"; or provides a reference image and asks to transform it. Covers 10 edit categories with 30 annotated examples and I2I-specific Keep/Change templates. Always use this skill when the user wants to edit an existing image using 即梦."
+description: Use when the user wants to edit an existing image with 即梦 (Dreamina/Jimeng) models 4.0+ via style transfer (风格迁移), background replacement (背景替换), detail enhancement (细节增强), color adjustment (色彩调整), element add/remove (元素添加移除), season/time change (季节时间变换), restoration (修复), outfit change (换装), creative transformation (创意变形), or multi-reference compositing (多图合成); mentions "图生图", "image2image", "编辑图片", "换背景", "改风格", "修图", "把这张图变成"; or supplies a reference image and asks to transform it. Uses a Keep/Change framework that declares what stays and what transforms, with 10 edit categories, 30 annotated examples, and I2I-specific templates.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -168,7 +168,7 @@ When using 2+ reference images, clearly assign each one's role:
 <!-- QUALITY_BASELINE_V1 -->
 ## When to use（什么时候使用）
 
-当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为："Provides comprehensive guidance for crafting image-to-image (图生图) edit prompts for 即梦 (Dreamina/Jimeng) models 4.0+. Uses a Keep/Change framework: explicitly declare what stays and what transforms. Use when the user wants to modify an existing image via style transfer (风格迁移), background replacement (背景替换), detail enhancement (细节增强), color adjustment (色彩调整), element add/remove (元素添加移除), season/time change (季节时间变换), restoration (修复), outfit change (换装), creative transformation (创意变形), or multi-reference compositing (多图合成); mentions \"图生图\", \"image2image\", \"编辑图片\", \"换背景\", \"改风格\", \"修图\", \"把这张图变成\"; or provides a reference image and asks to transform it. Covers 10 edit categories with 30 annotated examples and I2I-specific Keep/Change templates. Always use this skill when the user wants to edit an existing image using 即梦."。
+当用户需要 **在明确输入、预算和交付约束后执行生成或写入操作** 时加载本技能。先从请求中提取目标、输入、约束、交付格式和验收标准；描述摘要为：Use when the user wants to edit an existing image with 即梦 (Dreamina/Jimeng) models 4.0+ via style transfer (风格迁移), background replacement (背景替换), detail enhancement (细节增强), color adjustment (色彩调整), element add/remove (元素添加移除), season/time change (季节时间变换), restoration (修复), outfit change (换装), creative transformation (创意变形), or multi-reference compositing (多图合成); mentions "图生图", "image2image", "编辑图片", "换背景", "改风格", "修图", "把这张图变成"; or supplies a reference image and asks to transform it. Uses a Keep/Change framework that declares what stays and what transforms, with 10 edit categories, 30 annotated examples, and I2I-specific templates.。
 
 ## Rules
 

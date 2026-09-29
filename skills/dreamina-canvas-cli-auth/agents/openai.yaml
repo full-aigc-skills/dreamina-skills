@@ -1,0 +1,5 @@
+interface:
+  display_name: Dreamina Canvas CLI Auth Task
+  short_description: Walk the five-step login flow, select the right auth subcommand per environment, verify with auth account; credential-security internals live in dreamina-canvas-cli-auth
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-29",
+  "change": "consolidate-canvas-cli-atoms",
+  "scope": "local uncommitted workspace",
+  "cliSkills": 9,
+  "canvasSkillsWithOrchestrator": 10,
+  "packageSkills": 33,
+  "unitTests": {
+    "run": 77,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "packageResources": "PASS including isolated installation of all nine CLI entries",
+  "canvasValidator": "PASS",
+  "lint": "PASS",
+  "schemaLeafCommandCoverage": 36,
+  "exampleFlagAudit": "Concrete bash examples checked against installed schema flags; no generation executed",
+  "trace": {
+    "status": "PASS",
+    "threshold": 4.5,
+    "evaluatorCommit": "91cd3e8e2aafd73d73fc037ce75dee7b6b663ffb",
+    "evaluatedPackageSkillCount": 33,
+    "canvasScores": {
+      "dreamina-canvas-cli": 4.72,
+      "dreamina-canvas-cli-auth": 4.57,
+      "dreamina-canvas-cli-image2image": 4.67,
+      "dreamina-canvas-cli-ref2video": 4.69,
+      "dreamina-canvas-cli-setup": 4.63,
+      "dreamina-canvas-cli-text2audio": 4.59,
+      "dreamina-canvas-cli-text2image": 4.66,
+      "dreamina-canvas-cli-text2video": 4.66,
+      "dreamina-canvas-cli-text2voice": 4.59,
+      "dreamina-canvas-use": 4.55
+    },
+    "packageSummary": "TRACE: 33 skills, average=4.651, minimum=4.55, maximum=4.76, threshold=4.50",
+    "limits": "Deterministic static scores; not agent dispatch or real generation acceptance."
+  },
+  "runtimeBoundary": {
+    "cli_runtime": "PASS",
+    "cli_runtime_version": "1.0.1",
+    "cli_runtime_commit": "09307bb",
+    "cli_runtime_evidence": "Read-only version/schema and subcommand help probe; all 36 live leaf commands covered; no account, upload, draft or paid calls.",
+    "auth": "NOT_RUN",
+    "paid_canary": "NOT_RUN"
+  },
+  "release": "NOT_RUN",
+  "consumerPlugins": "NOT_UPDATED",
+  "backup": "/var/folders/_s/9_xnnkz141920t1yv5zhvd1r0000gn/T/dreamina-atomic-backup-ej8o6nkn/before.tar.gz"
+}
