@@ -1,6 +1,6 @@
 interface:
-  display_name: Dreamina Canvas (end-to-end)
-  short_description: Single implicit entry point; routes to the smallest applicable
-    Canvas Skill chain
+  display_name: "Dreamina Canvas (end-to-end)"
+  short_description: "根据图片、视频、语音或音乐需求选择画布技能并交接生命周期状态"
+  default_prompt: "使用 $dreamina-canvas-use 根据图片、视频、语音或音乐需求选择画布技能并交接生命周期状态；先核对输入、可用能力和交付要求。"
 policy:
   allow_implicit_invocation: true

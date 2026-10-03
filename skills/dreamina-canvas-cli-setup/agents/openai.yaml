@@ -1,5 +1,6 @@
 interface:
-  display_name: Dreamina Canvas CLI Install Task
-  short_description: Install or update dreamina-canvas via the official OS installer, verify with --help/version/schema, troubleshoot PATH; authorization required; hands off to the auth Skill
+  display_name: "Dreamina Canvas CLI Install Task"
+  short_description: "检查或按授权安装升级画布 CLI，验证版本、命令和环境就绪状态"
+  default_prompt: "使用 $dreamina-canvas-cli-setup 检查或按授权安装升级画布 CLI，验证版本、命令和环境就绪状态；先核对输入、可用能力和交付要求。"
 policy:
   allow_implicit_invocation: false

@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦三维流程导航"
+  short_description: "按来源场景选择 DCC 预览转即梦视频的流程并交接当前状态"
+  default_prompt: "使用 $dreamina-3d-use 按来源场景选择 DCC 预览转即梦视频的流程并交接当前状态；先核对输入、可用能力和交付要求。"

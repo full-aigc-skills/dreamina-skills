@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦文生视频提示词"
+  short_description: "为即梦视频创作组织动作、镜头与时序，编写并优化生成提示词"
+  default_prompt: "使用 $dreamina-prompt-text2video 为即梦视频创作组织动作、镜头与时序，编写并优化生成提示词；先核对输入、可用能力和交付要求。"

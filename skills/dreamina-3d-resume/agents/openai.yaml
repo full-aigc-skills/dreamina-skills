@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦三维任务恢复"
+  short_description: "依据任务台账继续未完成的即梦三维任务，避免重复付费或导出"
+  default_prompt: "使用 $dreamina-3d-resume 依据任务台账继续未完成的即梦三维任务，避免重复付费或导出；先核对输入、可用能力和交付要求。"

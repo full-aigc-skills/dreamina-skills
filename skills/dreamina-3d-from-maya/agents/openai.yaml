@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maya 场景转即梦视频"
+  short_description: "从 Maya 场景准备 Playblast 并进入经过验证的即梦三维流程"
+  default_prompt: "使用 $dreamina-3d-from-maya 从 Maya 场景准备 Playblast 并进入经过验证的即梦三维流程；先核对输入、可用能力和交付要求。"

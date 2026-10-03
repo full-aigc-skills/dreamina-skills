@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦视频效果评估"
+  short_description: "根据视频与创作要求检查生成效果，记录可验证问题与改进建议"
+  default_prompt: "使用 $dreamina-video-evaluator 根据视频与创作要求检查生成效果，记录可验证问题与改进建议；先核对输入、可用能力和交付要求。"

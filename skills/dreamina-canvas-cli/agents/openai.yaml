@@ -1,5 +1,6 @@
 interface:
-  display_name: dreamina-canvas-cli
-  short_description: 即梦画布原子操作与场景示例
+  display_name: "dreamina-canvas-cli"
+  short_description: "管理画布、素材、节点与时间线，核对报价、运行状态和下载结果"
+  default_prompt: "使用 $dreamina-canvas-cli 管理画布、素材、节点与时间线，核对报价、运行状态和下载结果；先核对输入、可用能力和交付要求。"
 policy:
   allow_implicit_invocation: false

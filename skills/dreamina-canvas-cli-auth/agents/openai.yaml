@@ -1,5 +1,6 @@
 interface:
-  display_name: Dreamina Canvas CLI Auth Task
-  short_description: Walk the five-step login flow, select the right auth subcommand per environment, verify with auth account; credential-security internals live in dreamina-canvas-cli-auth
+  display_name: "Dreamina Canvas CLI Auth Task"
+  short_description: "处理画布登录、设备授权、账户检查、凭据刷新和退出操作"
+  default_prompt: "使用 $dreamina-canvas-cli-auth 处理画布登录、设备授权、账户检查、凭据刷新和退出操作；先核对输入、可用能力和交付要求。"
 policy:
   allow_implicit_invocation: false

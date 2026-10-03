@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦图生图提示词"
+  short_description: "明确图片保留与修改内容，为风格、背景、细节或多图合成编写提示词"
+  default_prompt: "使用 $dreamina-prompt-image2image 明确图片保留与修改内容，为风格、背景、细节或多图合成编写提示词；先核对输入、可用能力和交付要求。"

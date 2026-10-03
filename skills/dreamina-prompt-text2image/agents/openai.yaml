@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦文生图提示词"
+  short_description: "为即梦图片创作组织主体、构图与视觉风格，编写并优化生成提示词"
+  default_prompt: "使用 $dreamina-prompt-text2image 为即梦图片创作组织主体、构图与视觉风格，编写并优化生成提示词；先核对输入、可用能力和交付要求。"

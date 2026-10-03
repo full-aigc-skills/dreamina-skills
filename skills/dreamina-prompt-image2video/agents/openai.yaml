@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦图生视频提示词"
+  short_description: "为参考图片设计增量运动描述，按单图、首尾帧或多参考选择提示词"
+  default_prompt: "使用 $dreamina-prompt-image2video 为参考图片设计增量运动描述，按单图、首尾帧或多参考选择提示词；先核对输入、可用能力和交付要求。"

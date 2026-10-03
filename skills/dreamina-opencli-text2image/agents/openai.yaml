@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦网页文生图"
+  short_description: "通过 OpenCLI 浏览器桥接组织即梦文生图并检查历史生成结果"
+  default_prompt: "使用 $dreamina-opencli-text2image 通过 OpenCLI 浏览器桥接组织即梦文生图并检查历史生成结果；先核对输入、可用能力和交付要求。"

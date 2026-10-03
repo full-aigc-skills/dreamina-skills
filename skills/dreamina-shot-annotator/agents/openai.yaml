@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦视频镜头标注"
+  short_description: "按视频镜头整理画面与动作信息，形成可追溯的镜头标注结果"
+  default_prompt: "使用 $dreamina-shot-annotator 按视频镜头整理画面与动作信息，形成可追溯的镜头标注结果；先核对输入、可用能力和交付要求。"

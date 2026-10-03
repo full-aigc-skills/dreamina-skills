@@ -1,0 +1,4 @@
+interface:
+  display_name: "三维预览送入即梦网页"
+  short_description: "把已验证预览或视频经官方上传器送入即梦网页，不宣称生成完成"
+  default_prompt: "使用 $dreamina-3d-jimeng-web 把已验证预览或视频经官方上传器送入即梦网页，不宣称生成完成；先核对输入、可用能力和交付要求。"

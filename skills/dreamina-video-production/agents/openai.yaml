@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦视频制作流程"
+  short_description: "按素材、镜头与交付要求组织即梦视频制作阶段并核对产物"
+  default_prompt: "使用 $dreamina-video-production 按素材、镜头与交付要求组织即梦视频制作阶段并核对产物；先核对输入、可用能力和交付要求。"

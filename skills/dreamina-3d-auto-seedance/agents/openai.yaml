@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦三维预览转视频"
+  short_description: "将已验证 DCC 预览提交为授权的 Seedance 视频并核对下载"
+  default_prompt: "使用 $dreamina-3d-auto-seedance 将已验证 DCC 预览提交为授权的 Seedance 视频并核对下载；先核对输入、可用能力和交付要求。"

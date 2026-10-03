@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦创作需求导航"
+  short_description: "按用户目标选择画布、提示词或视频项目入口，不复制底层命令规范"
+  default_prompt: "使用 $dreamina-design-use 按用户目标选择画布、提示词或视频项目入口，不复制底层命令规范；先核对输入、可用能力和交付要求。"

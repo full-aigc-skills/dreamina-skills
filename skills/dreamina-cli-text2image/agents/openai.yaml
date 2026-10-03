@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦旧版文生图兼容"
+  short_description: "仅处理旧版文生图历史命令与任务恢复，核对参数并避免新任务误用"
+  default_prompt: "使用 $dreamina-cli-text2image 仅处理旧版文生图历史命令与任务恢复，核对参数并避免新任务误用；先核对输入、可用能力和交付要求。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "即梦旧版 CLI 兼容"
+  short_description: "仅处理明确指定的旧版 CLI、历史命令和任务恢复，新任务使用画布路径"
+  default_prompt: "使用 $dreamina-cli 仅处理明确指定的旧版 CLI、历史命令和任务恢复，新任务使用画布路径；先核对输入、可用能力和交付要求。"
