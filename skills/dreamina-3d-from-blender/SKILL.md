@@ -50,6 +50,9 @@ does not bypass the native paid-action approval in Dreamina Design.
 4. **Validate.** Run `validate_artifact(receipt, current_file)` from
    `scripts/handoff_validator.py`. On any error, transition the job to
    `Failed` with the classified `error_category`.
+   调用方若需限定生产者版本，可传 `version_ranges={"blender-design": [("1.0.0", "1.9.9")]}`；
+   显式映射替换默认范围，`{}` 拒绝全部生产者，`None` 保留默认范围。
+   版本通过仍必须完成路径、字节数、摘要与其余元数据校验。
 5. **Resolve readiness.** Use `McpDesignClient` to call
    `dreamina_cli_status` and `dreamina_account`. On user action required, stop
    with the returned remediation.

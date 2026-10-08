@@ -1,6 +1,6 @@
 {
   "name": "dreamina-skills",
-  "version": "1.6.3",
+  "version": "1.7.1",
   "description": "即梦技能：九个 Canvas CLI 原子入口、独立编排与评估，以及冻结的旧 CLI 兼容技能。运行时能力以当前 CLI schema/model/voice 为准。",
   "author": {
     "name": "AIGC Skills Community"

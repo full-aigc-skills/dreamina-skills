@@ -90,7 +90,8 @@ def _check_path(value: object, errors: list[str]) -> Path | None:
     return path
 
 
-def _validate_structural(receipt: dict, errors: list[str]) -> None:
+def _validate_structural(receipt: dict, errors: list[str],
+                         version_ranges: dict[str, Sequence[tuple[str, str]]] | None = None) -> None:
     if not isinstance(receipt, dict):
         errors.append("receipt must be an object")
         return
@@ -112,8 +113,8 @@ def _validate_structural(receipt: dict, errors: list[str]) -> None:
     producer_version = receipt.get("producer_version")
     if not isinstance(producer_version, str) or not producer_version:
         errors.append("receipt.producer_version must be a non-empty string")
-    elif producer_plugin in SUPPORTED_PRODUCERS and not compatible_producer(producer_plugin, producer_version):
-        ranges = DEFAULT_VERSION_RANGES.get(producer_plugin, [])
+    elif producer_plugin in SUPPORTED_PRODUCERS and not compatible_producer(producer_plugin, producer_version, version_ranges):
+        ranges = (DEFAULT_VERSION_RANGES if version_ranges is None else version_ranges).get(producer_plugin, [])
         errors.append(
             f"receipt.producer_version {producer_version!r} is outside supported "
             f"ranges {list(ranges)} for {producer_plugin}"
@@ -195,9 +196,10 @@ def validate_artifact(
     """Validate the receipt and the on-disk artifact.
 
     Returns a list of human-readable error strings. Empty list means accepted.
+    version_ranges=None uses defaults; an explicit map replaces them ({} denies all).
     """
     errors: list[str] = []
-    _validate_structural(receipt, errors)
+    _validate_structural(receipt, errors, version_ranges)
     if errors:
         return errors
 
