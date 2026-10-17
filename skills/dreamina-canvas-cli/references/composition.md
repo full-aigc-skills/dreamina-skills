@@ -78,8 +78,18 @@ composing references:
 
 ```bash
 dreamina-canvas --format json node find --type image --status success --limit 50
+# Public 1.0.3 also declares --name <substring> and --tag <tag-id> filters
+dreamina-canvas --format json node find --name "<node title substring>" --limit 20
 dreamina-canvas --format json node show --node-id <nodeId>
 ```
+
+## Removing nodes
+
+Deletion is a separate confirmation-gated transaction (summary →
+`node delete confirm` mints a short-lived token → execute → read-only
+`node delete status`). It is owned by
+[node-deletion.md](node-deletion.md); composition only plans which nodes
+the user wants removed and never deletes without the documented token flow.
 
 ## Reference syntax on the canvas
 
@@ -92,7 +102,10 @@ dreamina-canvas --format json node show --node-id <nodeId>
   `--description`) take **bare** node ids or lowercase UUIDs. Do **not**
   prefix with `node:` / `res:`; the CLI rejects with
   `cli.invalid_resource_reference`.
-- `uri:` / `vid:` — reserved, rejected.
+- `uri:<value>` / `vid:<value>` — additional typed reference forms. The
+  public 1.0.3 schema accepts `node | res | uri | vid` for `--ref`; use
+  them only when the live schema declares them and only with values the
+  current environment supports.
 
 ## Element vs frozen resource
 

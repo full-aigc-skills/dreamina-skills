@@ -9,4 +9,4 @@ dreamina-canvas node create text --title "分镜说明" --text "镜头一：海�
 dreamina-canvas node create element --title "主角" --description "稳定的角色外观" --main "<图片节点ID>"
 ```
 
-保存返回的 `nodeId` 和 `mutationVersion`。本机公开版 1.0.0 的主体槽位使用裸节点 ID；`node:` 前缀会被拒绝。若其他版本的 schema 不同，以当前 schema 为准。
+保存返回的 `nodeId` 和 `mutationVersion`。公开版的主体槽位使用裸节点 ID；`node:` 前缀会被拒绝。若其他版本的 schema 不同，以当前 schema 为准。

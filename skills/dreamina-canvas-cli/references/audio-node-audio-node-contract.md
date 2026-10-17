@@ -2,15 +2,42 @@
 
 ## TTS
 
+Public 1.0.3 shapes `tts` in three forms (live schema is authoritative):
+
 ```bash
+# Legacy: voice-driven, no model
 dreamina-canvas --format json node create audio \
   --prompt "<text to speak>" \
   --mode tts \
   --voice-name "<public-voice-name>"
+
+# Scenario: explicit model + scenario
+dreamina-canvas --format json node create audio \
+  --prompt "<text to speak>" \
+  --mode tts \
+  --model "<scenario-capable-model>" \
+  --scenario text-reading \
+  --voice-name "<public-voice-name>"
+
+# Omni-dubbing: optional single catalog voice and/or audio references
+dreamina-canvas --format json node create audio \
+  --prompt "<dubbing script or intent>" \
+  --mode tts \
+  --model "<scenario-capable-model>" \
+  --scenario omni-dubbing \
+  --voice-name "<optional-single-catalog-voice>" \
+  --ref "node:<audioNodeId>"
 ```
 
-- Required: `--voice-name`. The CLI resolves the public name server-side.
-- Forbidden: `--model`.
+- Legacy: required `--voice-name`; `--model` without `--scenario` is
+  rejected. The CLI resolves the public name server-side.
+- `--scenario` is `text-reading | omni-dubbing`, requires `--mode tts` and
+  an explicit `--model`.
+- `text-reading` keeps `--voice-name` mandatory.
+- `omni-dubbing` makes `--voice-name` optional (a single catalog voice,
+  converted server-side into an audio reference) and accepts repeatable
+  typed `--ref` audio references (`node:` / `res:`), sharing the
+  reference limits reported by discovery.
 - Output: a single audio resource (no batch).
 
 ## Music
@@ -40,7 +67,8 @@ dreamina-canvas --format json node create audio \
 
 | Field | Source |
 |-------|--------|
-| `--voice-name` (TTS) | `voice list --offset 0 --count 50`; add `--language` only if schema declares it, and paginate until `nextOffset` is absent. |
+| `--voice-name` (TTS) | `voice list --offset 0 --count 50`, optionally narrowed with `--model <canonical-model>`; keep the same model while paginating; paginate until `nextOffset` is absent. |
+| `--model` (scenario TTS) | Live audio discovery; only models the payload marks as scenario-capable. Never a remembered name. |
 | `--model` (music) | Use the full audio payload from `model search --detail full` or `model list`, whichever schema declares, then filter to `music` mode. |
 
 A remembered name from another environment or older CLI commit is not
@@ -57,7 +85,9 @@ Hand off to `dreamina-canvas-cli`. This operation never calls
 |---------|----------------|-----------------|
 | `cli.audio_music_model_required` (exit 2) | none | Re-discover; pass a `MODE=music` model. |
 | `--voice-name` rejected (exit 2) | none | Re-enumerate voices; pick a current public name. |
-| `--model` on TTS (exit 2) | none | Remove `--model`. |
+| `--model` without `--scenario` on tts (exit 2) | none | Remove `--model`, or add `--scenario` with a scenario-capable model. |
+| `--scenario` without `--model` (exit 2) | none | Pass an explicit scenario-capable model from live discovery. |
+| `--ref` outside omni-dubbing (exit 2) | none | Remove `--ref`, or switch to `--scenario omni-dubbing`. |
 | `--voice-name` on music (exit 2) | none | Remove `--voice-name`; supply `--model`. |
 | `--count` on audio (exit 2) | none | Remove `--count`. |
 | Missing `--duration` on music (exit 2) | none | Pass `--duration`. |

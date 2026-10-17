@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "source": "Dreamina Canvas first-use guide supplied 2026-09-28 plus prior CLI contracts; live schema is runtime authority",
+  "source": "Dreamina Canvas first-use guide supplied 2026-09-28 plus prior CLI contracts; live schema is runtime authority; node delete family recorded from the public 1.0.3 schema (2026-10-17)",
   "commands": [
     {
       "id": "auth account",
@@ -171,6 +171,21 @@
       "id": "node upscale image",
       "ownerSkill": "dreamina-canvas-cli-image2image",
       "evidenceToken": "node upscale image"
+    },
+    {
+      "id": "node delete",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete"
+    },
+    {
+      "id": "node delete confirm",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete confirm"
+    },
+    {
+      "id": "node delete status",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete status"
     },
     {
       "id": "operation status",

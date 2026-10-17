@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
-  "source": "dreamina-canvas-cli-guide-2026-09-11 + first-use guide supplied 2026-09-28 + live schema probe v1.0.0/ae2c968; refreshed read-only version/schema 2026-09-29",
+  "source": "dreamina-canvas-cli-guide-2026-09-11 + first-use guide supplied 2026-09-28 + live schema probe v1.0.0/ae2c968; refreshed read-only version/schema 2026-09-29; refreshed read-only version/schema 2026-10-17 against v1.0.3/244064d",
   "binary": "dreamina-canvas",
   "version": {
-    "version": "1.0.1",
-    "commit": "09307bb",
-    "buildTime": "2026-09-16T08:11:25Z",
+    "version": "1.0.3",
+    "commit": "244064d",
+    "buildTime": "2026-10-14T03:28:54Z",
     "edition": "public",
     "distribution": "cn",
-    "releaseDate": "2026-09-11",
-    "releaseNotes": "优化安装、认证与本地存储错误提示，改进已受理生成任务的恢复指引，并在授权链接已包含授权码时省略重复输码提示。"
+    "releaseDate": "2026-10-09",
+    "releaseNotes": "支持 Seed Audio 1.0，全能配音支持选择音色或参考素材；支持删除节点和调整节点位置。"
   },
   "cliConventions": {
     "formatFlag": "--format json",
@@ -83,8 +83,8 @@
   "referenceSyntax": {
     "nodeRef": "node:node_xxx — refers to a node's latest resource and creates a canvas edge",
     "resourceRef": "res:<lowercase UUID> — frozen to a specific resource, no canvas edge",
-    "uriRef": "uri:<value> — reserved, currently rejected",
-    "vidRef": "vid:<value> — reserved, currently rejected",
+    "uriRef": "uri:<value> — declared typed reference form in the public 1.0.3 --ref constraint (node|res|uri|vid); per-mode acceptance is server-validated",
+    "vidRef": "vid:<value> — declared typed reference form in the public 1.0.3 --ref constraint (node|res|uri|vid); per-mode acceptance is server-validated",
     "promptPlaceholder": "{{type:value}} — inline placeholders that become references when mentioned in prompt",
     "elementSlots": "main/voice/auxiliary/description take bare node_xxx or lowercase UUID; node: prefix returns cli.invalid_resource_reference exit 2"
   },
@@ -143,5 +143,14 @@
   "localState": {
     "contextsPath": "dreamina-canvas/contexts/<profile-and-environment>.json (mode 0600)",
     "operationsPath": "dreamina-canvas/operations/<profile-and-environment>/<submitId>.json (mode 0600)"
+  },
+  "ttsScenarios": {
+    "mode": "tts",
+    "scenarios": [
+      "text-reading",
+      "omni-dubbing"
+    ],
+    "requires": "explicit --model plus --scenario; omni-dubbing takes an optional single catalog --voice-name (converted server-side into an audio reference) and/or typed --ref audio references",
+    "since": "1.0.3"
   }
 }

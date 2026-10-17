@@ -17,6 +17,7 @@ CANVAS_COMMANDS = {
     "node create audio", "node edit audio", "node create text", "node edit text",
     "node create element", "node edit element", "node create timeline", "node edit timeline",
     "node find", "node show", "node quote", "node confirm", "node run", "node upscale image",
+    "node delete", "node delete confirm", "node delete status",
     "operation status", "operation wait",
     "resource get", "resource download", "resource upload",
 }

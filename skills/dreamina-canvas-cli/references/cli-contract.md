@@ -8,8 +8,15 @@ dreamina-canvas --format json version
 dreamina-canvas --format json schema
 ```
 
-Recorded live probe (commit `ae2c968`, edition `public`, distribution `cn`,
-build `2026-09-05T08:54:32Z`):
+Recorded live probes (edition `public`, distribution `cn`):
+
+- 2026-09-05, commit `ae2c968` — initial public 1.0.0 seed.
+- 2026-10-17, commit `244064d`, version `1.0.3`, build
+  `2026-10-14T03:28:54Z` — adds the `node delete` family
+  (confirm/status), paired `--x`/`--y` placement flags, node
+  `--tag`/`--clear-tags`, `--dry-run`, `--resource-source`, `voice list
+  --model`, `node find --name/--tag`, and the audio `--scenario`
+  (`text-reading` | `omni-dubbing`) contract.
 
 - Global flags (place before the subcommand): `--format`, `--non-interactive`,
   `--yes`, `--profile`, `--region`.

@@ -14,7 +14,7 @@ license: Complete terms in LICENSE
 | 项目 | 标准 |
 |---|---|
 | 输入与前置 | 已选择的公共命令与其所需身份 |
-| 副作用 | 模型查询只读；画布/上传/编辑写入；运行可能计费 |
+| 副作用 | 模型查询只读；画布/上传/编辑/删除写入；运行可能计费 |
 | 输出交接 | JSON data / error、projectId、nodeId、resourceId、submitId |
 | 恢复规则 | 未知写入先核对身份，不能用新 ID 绕过结果不明 |
 
@@ -34,6 +34,7 @@ license: Complete terms in LICENSE
 - 编辑视频节点或处理模式与引用时，读取 [视频节点共享机制与编辑](references/video-node.md)。
 - 创建/编辑音频节点（tts、music 字段互斥）时，读取 [音频节点共享机制与编辑](references/audio-node.md)。
 - 需要 Text/Element 节点、节点查找或 DAG 依赖顺序时，读取 [Text、Element、节点查找及依赖顺序](references/composition.md)。
+- 删除节点（含删除确认令牌与批次恢复）或调整节点位置（`--x`/`--y`）时，读取 [节点删除与位置](references/node-deletion.md)。
 - 排时间轴、替换轨道或装配音视频时，读取 [时间轴及轨道替换](references/timeline.md)。
 - 需要报价、用户批准、提交生成或批量身份时，读取 [报价、确认、运行与批次身份](references/execution.md)。
 - 任务在跑、本地等待超时或需要按原身份恢复时，读取 [查询、等待与恢复](references/recovery.md)。
@@ -48,6 +49,7 @@ license: Complete terms in LICENSE
 - [查询恢复](examples/recovery-happy-path.md)
 - [图文元素组合](examples/composition-happy-path.md)
 - [时间轴](examples/timeline-happy-path.md)
+- [删除节点](examples/node-deletion-happy-path.md)
 
 ## Rules
 - 一个命令的规范只维护在对应 references；示例用于组合，不定义第二套参数契约。
