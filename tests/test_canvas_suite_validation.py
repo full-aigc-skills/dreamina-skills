@@ -79,6 +79,12 @@ class CanvasSuiteValidationTests(unittest.TestCase):
                 implicit_invocation_policy(name), expected, name
             )
 
+    def test_novel_implicit_invocation_is_only_use(self) -> None:
+        for name in EXPECTED_NOVEL:
+            self.assertEqual(
+                implicit_invocation_policy(name), name == "dreamina-novel-use", name
+            )
+
     def test_runtime_boundary_recorded(self) -> None:
         suite = json.loads(SUITE_JSON.read_text(encoding="utf-8"))
         boundary = suite["runtimeBoundary"]

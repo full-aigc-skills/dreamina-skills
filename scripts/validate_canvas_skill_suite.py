@@ -115,6 +115,7 @@ def main() -> None:
         fail(f"unexpected skill directories: {sorted(extra)}")
 
     implicit_skill: str | None = None
+    novel_implicit_skill: str | None = None
     for name in sorted(actual_dirs):
         skill_md = SKILLS / name / "SKILL.md"
         if not skill_md.is_file():
@@ -123,7 +124,7 @@ def main() -> None:
             fail(f"SKILL.md frontmatter name mismatch: {skill_md}")
         is_canvas_skill = name in CANVAS_SKILLS
         openai_yaml = SKILLS / name / "agents" / "openai.yaml"
-        if is_canvas_skill:
+        if is_canvas_skill or name in NOVEL_SKILLS:
             if not openai_yaml.is_file():
                 fail(f"missing openai.yaml: {openai_yaml}")
             # Parse YAML with minimal stdlib parser (avoid extra dependency)
@@ -136,12 +137,17 @@ def main() -> None:
             if "allow_implicit_invocation" not in policy:
                 fail(f"openai.yaml missing policy.allow_implicit_invocation: {openai_yaml}")
             if policy["allow_implicit_invocation"] is True:
-                if implicit_skill is not None:
+                if name in NOVEL_SKILLS:
+                    if novel_implicit_skill is not None:
+                        fail(f"multiple novel skills with implicit invocation: {novel_implicit_skill}, {name}")
+                    novel_implicit_skill = name
+                elif implicit_skill is not None:
                     fail(
                         f"multiple skills with allow_implicit_invocation=true: "
                         f"{implicit_skill}, {name}"
                     )
-                implicit_skill = name
+                else:
+                    implicit_skill = name
             refs_dir = SKILLS / name / "references"
             if not refs_dir.is_dir() or not any(refs_dir.iterdir()):
                 fail(f"references/ empty or missing for skill: {name}")
@@ -199,6 +205,8 @@ def main() -> None:
         fail(
             f"only dreamina-canvas-use may be implicit; found implicit={implicit_skill!r}"
         )
+    if novel_implicit_skill != "dreamina-novel-use":
+        fail(f"only dreamina-novel-use may be implicit in the novel layer; found {novel_implicit_skill!r}")
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     declared = {Path(p).name for p in manifest.get("skills", [])}
