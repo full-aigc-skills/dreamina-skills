@@ -8,6 +8,14 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 
 EXPECTED_SKILLS = {
+    "dreamina-novel-cli",
+    "dreamina-novel-cli-setup",
+    "dreamina-novel-cli-script",
+    "dreamina-novel-cli-assets",
+    "dreamina-novel-cli-storyboard",
+    "dreamina-novel-cli-production",
+    "dreamina-novel-cli-post",
+    "dreamina-novel-use",
     # Classic Dreamina skills
     "dreamina-cli",
     "dreamina-cli-image2image",
