@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "source": "Dreamina Canvas first-use guide supplied 2026-09-28 and updated guide supplied 2026-11-09; new command names checked against local public cn 1.3.0/c6a5530a schema; live schema remains runtime authority",
+  "source": "Dreamina Canvas first-use guides supplied 2026-09-28 and 2026-11-09; node delete family recorded from public 1.0.3; later command names checked against local public cn 1.3.0/c6a5530a schema; live schema remains runtime authority",
   "commands": [
     {
       "id": "auth account",
@@ -173,6 +173,21 @@
       "evidenceToken": "node upscale image"
     },
     {
+      "id": "node delete",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete"
+    },
+    {
+      "id": "node delete confirm",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete confirm"
+    },
+    {
+      "id": "node delete status",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete status"
+    },
+    {
       "id": "operation status",
       "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "operation status"
@@ -246,21 +261,6 @@
       "id": "node interpolate video",
       "ownerSkill": "dreamina-canvas-cli-ref2video",
       "evidenceToken": "node interpolate video"
-    },
-    {
-      "id": "node delete",
-      "ownerSkill": "dreamina-canvas-cli",
-      "evidenceToken": "node delete"
-    },
-    {
-      "id": "node delete confirm",
-      "ownerSkill": "dreamina-canvas-cli",
-      "evidenceToken": "node delete confirm"
-    },
-    {
-      "id": "node delete status",
-      "ownerSkill": "dreamina-canvas-cli",
-      "evidenceToken": "node delete status"
     },
     {
       "id": "director",

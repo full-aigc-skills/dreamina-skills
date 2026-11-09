@@ -9,7 +9,7 @@ dreamina-canvas --format json version
 # 2. Confirm active profile
 dreamina-canvas --format json auth account
 
-# 3. Public 1.0.0 shape; another release must first declare its own shape in schema
+# 3. Public shape (verified against 1.0.3); another release must first declare its own shape in schema
 dreamina-canvas --format json model list --type image
 dreamina-canvas --format json model list --type video
 dreamina-canvas --format json model list --type audio
@@ -17,8 +17,9 @@ dreamina-canvas --format json model list --type audio
 # 4. Find a name/alias, then use the returned model value
 dreamina-canvas --format json model find "<name>" --type image
 
-# 5. For TTS, enumerate voices; add --language only when schema declares it
+# 5. For TTS, enumerate voices (whole catalog, or one model's page via --model)
 dreamina-canvas --format json voice list --offset 0 --count 50
+dreamina-canvas --format json voice list --model "<canonical-model>" --offset 0 --count 50
 # continue paginating with --offset <nextOffset> until nextOffset is absent
 
 # 6. Confirm flag names with the live schema
@@ -27,8 +28,9 @@ dreamina-canvas --format json schema
 ```
 
 When another release declares `model search --detail full` rather than `model list`,
-use that release's shape. Pass
-`--language` to `voice list` only when the live schema declares that flag.
+use that release's shape. Public 1.0.3 accepts `--offset`, `--count` and the
+optional `--model <canonical-model>` for `voice list`; pass any other flag
+(e.g. `--language`) only when the live schema declares it.
 
 ## Per-resource-type notes
 

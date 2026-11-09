@@ -1,0 +1,3 @@
+schema: spec-driven
+created: 2026-10-17
+goal: 将九个 dreamina-canvas-cli 技能与验证基线从 CLI 1.0.0/1.0.1 契约同步到公开版 1.0.3（节点删除、节点位置、全能配音音色/参考素材选择、voice list --model、uri:/vid: 引用转正）。

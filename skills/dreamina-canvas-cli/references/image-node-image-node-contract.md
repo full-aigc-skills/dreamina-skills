@@ -62,7 +62,7 @@ Mutually exclusive with all generation flags.
 | `node:node_xxx` | ❌ | ✅ | ✅ (follows the node) |
 | `res:<uuid>` (image / Element / image resource) | ❌ | ✅ | ❌ (frozen) |
 | `node:<textNodeId>` | ✅ | ✅ | ✅ |
-| `uri:`, `vid:` | ❌ (reserved, rejected) | ❌ | n/a |
+| `uri:`, `vid:` | declared typed forms in the public 1.0.3 `--ref` constraint; per-mode acceptance is server-validated — confirm against the live environment (earlier public builds rejected them) | same | n/a |
 | Internal short links (`image_xxx`, etc.) | ❌ | ❌ | n/a |
 
 ## `i2i` minimum

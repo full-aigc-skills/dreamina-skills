@@ -10,7 +10,7 @@ Never parse the localized `error.message`.
 | 0 | success | none | continue |
 | 1 | uncategorized internal failure | none / contact_support | alert; do not retry blindly |
 | 2 | invalid command, argument, or input schema | none / human_intervention | fix the command; retry is useless |
-| 10 | draft saved; credit confirmation needed before submission | confirm | show latest quote, obtain approval, reuse returned node and task IDs |
+| 10 | draft or destructive batch saved; confirmation needed before proceeding (credit approval for generation, deletion approval for `node delete`) | confirm | show the latest quote or the batch to remove, obtain approval, reuse the returned node/task/update IDs and the minted token |
 | 11 | login required or session expired | login | re-authenticate, then retry with the same identity |
 | 12 | permission / capability / entitlement denied | human_intervention / contact_support | do not retry; escalate |
 | 13 | environment or release compatibility blocked | upgrade | upgrade per `error.clientUpgrade.upgradeUrl` |
@@ -25,7 +25,8 @@ Never parse the localized `error.message`.
 ## Read vs write semantics
 
 - Read commands (`model`, `voice`, `canvas ls`, `node find`, `node show`,
-  `operation status`, `resource get`, `schema`, `version`) return a
+  `node delete status`, `operation status`, `resource get`, `schema`,
+  `version`) return a
   non-terminal state with exit 0 and `ok: true`. Continue.
 - `operation wait` returns exit 0 only when the operation reaches a terminal
   state. Local timeout on `operation wait` returns exit 20; the operation is

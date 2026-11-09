@@ -26,18 +26,20 @@ Reference detail is in
 ## Select commands from the live schema
 
 Run `version` and `schema` before building discovery argv. The inspected
-domestic public 1.2.0 binary declares `model list` and `model find <name...>`;
+domestic public 1.3.0 binary declares `model list` and `model find <name...>`;
 `model list` returns per-mode flags, enums, bounds, and reference requirements.
 Use `model search --detail full` only if another installed release declares it.
 
-Never send an optional flag merely because a guide mentions it. Pass
-`voice list --language <code>` only when the live schema declares it; public
-1.2.0 accepts `--offset`, `--count` and `--model` for `voice list`.
+Never send an optional flag merely because a guide mentions it. Public 1.3.0
+accepts `--offset`, `--count`, and the optional `--model <canonical-model>`
+for `voice list` (omit `--model` to page the whole local catalog; keep the
+same model while paging); pass any further flag (e.g. a language filter)
+only when the live schema declares it.
 
 ## Discovery commands
 
 ```bash
-# Inspected public 1.2.0 shape; confirm against the installed CLI
+# Inspected public 1.3.0 shape; confirm against the installed CLI
 dreamina-canvas --format json model list --type image
 dreamina-canvas --format json model list --type video
 dreamina-canvas --format json model list --type audio
@@ -45,8 +47,10 @@ dreamina-canvas --format json model list --type audio
 # Search a known name or alias; use the returned model identifier for generation
 dreamina-canvas --format json model find "<name>" --type image
 
-# TTS voice catalog (add --language only when the live schema declares it)
+# TTS voice catalog: whole local catalog, or one model's page
 dreamina-canvas --format json voice list --offset 0 --count 50
+dreamina-canvas --format json voice list --model "<canonical-model>" \
+  --offset 0 --count 50
 
 # Argument spec for any subcommand (for the exact flag names)
 dreamina-canvas --format json schema
@@ -72,11 +76,17 @@ declared by schema) is the **only** authoritative source for:
 
 For audio:
 
-- TTS `--voice-name` must come from `voice list` or from `model search
-  --type audio --detail full`. The CLI resolves the public voice name into
-  the server-side authoritative identifier.
-- Music `--model` must come from `model search --type audio --detail full`
-  filtered to `MODE=music`. Music **does not** use a server-implicit default;
+- TTS `--voice-name` must come from `voice list` (optionally narrowed with
+  `--model`). The CLI resolves the public voice name into the
+  server-side authoritative identifier.
+- Scenario-capable TTS models (`--scenario text-reading | omni-dubbing`,
+  public 1.0.3) are identified from the live audio discovery payload;
+  omni-dubbing also accepts reference audio material via `--ref` and an
+  optional single catalog voice via `--voice-name` (converted server-side
+  into an audio reference). See the audio-node references for the field
+  exclusivity rules.
+- Music `--model` must come from the schema-selected full audio discovery
+  payload filtered to `MODE=music`. Music **does not** use a server-implicit default;
   the CLI refuses `--model` missing with `cli.audio_music_model_required` and
   exit code 2.
 

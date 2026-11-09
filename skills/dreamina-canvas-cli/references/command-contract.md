@@ -14,6 +14,8 @@
 `projectId`、`resourceId`、`submitId` 使用各自契约要求的小写 UUID。`nodeId` 是 CLI 返回的 node_ 标识，不能把所有 ID 当成 UUID。`updateId` 依实时 schema 管理。
 首次写入前持久化支持的幂等键；跨进程显式传 projectId/profile，不依赖其他进程的 --use。
 普通节点 create/edit 不带 --run 只保存草稿；修改生成参数是完整替换，元数据编辑是稀疏更新。
+公开版 1.0.3 起，typed 节点 create/edit 还接受以下跨切面 flag（以当前 schema 声明为准）：`--x/--y` 成组提供节点左上角坐标（组内为父组相对坐标），无布局需求时不传；`--tag default-tag-1..5`/`--clear-tags` 管理颜色标签（用户未明确要求时省略不传）；`--dry-run` 仅本地校验并输出计划，不连服务端、不写草稿、不报价；`--resource-source <资源UUID>@<来源项目UUID>` 声明本次保存使用的跨项目资源，可重复。
+删除节点是独立的确认门控事务：`node delete confirm` 签发的 `deleteConfirmationToken` 与积分 `creditConfirmationToken` 同为短期凭证，只保留在内存，互不通用，`--yes` 均不可替代；详见 [节点删除与位置](node-deletion.md)。
 Never persist or log tokens, cookies, signed URLs or creditConfirmationToken; keep short-lived approval material in-memory only.
 
 ## 恢复与验收

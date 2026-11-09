@@ -87,7 +87,10 @@ Same surface as `dreamina-canvas-cli`:
 
 - `node:node_xxx` — follow the node (canvas edge).
 - `res:<lowercase UUID>` — freeze to a specific resource.
-- `uri:` / `vid:` — reserved, rejected.
+- `uri:<value>` / `vid:<value>` — declared typed forms in the public 1.0.3
+  `--ref` constraint (`node|res|uri|vid`); per-mode acceptance is validated
+  server-side, so confirm against the live environment before use (earlier
+  public builds rejected them).
 - Internal short links (`video_xxx`, `image_xxx`) — rejected.
 
 Video nodes may reference Image, Element, or Video nodes/resources.
