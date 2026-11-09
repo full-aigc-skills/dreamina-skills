@@ -1,0 +1,6 @@
+interface:
+  display_name: "dreamina-novel-cli-storyboard"
+  short_description: "分镜和画布结构"
+  default_prompt: "使用 $dreamina-novel-cli-storyboard 完成即梦短剧的分镜和画布结构；先检查已有输入、当前 CLI 能力和用户授权。"
+policy:
+  allow_implicit_invocation: false

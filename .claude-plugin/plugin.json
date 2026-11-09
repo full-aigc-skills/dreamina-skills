@@ -1,7 +1,7 @@
 {
   "name": "dreamina-skills",
-  "version": "1.7.2",
-  "description": "即梦技能：九个 Canvas CLI 原子入口、独立编排与评估，以及冻结的旧 CLI 兼容技能。运行时能力以当前 CLI schema/model/voice 为准。",
+  "version": "1.8.0",
+  "description": "即梦技能：Canvas、短剧创作、3D 与旧 CLI 兼容技能；短剧以 jimeng-novel 实时 schema 和模型为准。",
   "author": {
     "name": "AIGC Skills Community"
   },
@@ -31,6 +31,14 @@
     "./skills/dreamina-cli-text2image",
     "./skills/dreamina-cli-text2video",
     "./skills/dreamina-design-use",
+    "./skills/dreamina-novel-cli",
+    "./skills/dreamina-novel-cli-assets",
+    "./skills/dreamina-novel-cli-post",
+    "./skills/dreamina-novel-cli-production",
+    "./skills/dreamina-novel-cli-script",
+    "./skills/dreamina-novel-cli-setup",
+    "./skills/dreamina-novel-cli-storyboard",
+    "./skills/dreamina-novel-use",
     "./skills/dreamina-opencli-image2image",
     "./skills/dreamina-opencli-image2video",
     "./skills/dreamina-opencli-text2image",
@@ -66,6 +74,16 @@
       "./skills/dreamina-shot-annotator",
       "./skills/dreamina-video-evaluator",
       "./skills/dreamina-video-production"
+    ],
+    "novel": [
+      "./skills/dreamina-novel-cli",
+      "./skills/dreamina-novel-cli-setup",
+      "./skills/dreamina-novel-cli-script",
+      "./skills/dreamina-novel-cli-assets",
+      "./skills/dreamina-novel-cli-storyboard",
+      "./skills/dreamina-novel-cli-production",
+      "./skills/dreamina-novel-cli-post",
+      "./skills/dreamina-novel-use"
     ]
   }
 }
