@@ -20,7 +20,7 @@ English | [简体中文](./README.zh-CN.md)
 
 **dreamina-skills** is a curated collection of Agent Skills for AI coding agents, part of the [Full AIGC Skills](https://github.com/full-aigc-skills) ecosystem.
 
-This package includes **41 skills**: 17 Design/legacy skills, 10 Canvas skills (nine CLI entrypoints and one orchestrator), and six Dreamina 3D skills. Each skill loads its operation references and scenarios on demand.
+This package includes **41 skills**: 17 Design/legacy skills, 10 Canvas skills (nine CLI entrypoints and one orchestrator), six Dreamina 3D skills, and eight Novel CLI skills. Each skill loads its operation references and scenarios on demand.
 
 Official command ownership is enforced by
 [`dreamina-canvas-command-coverage.json`](verification/dreamina-canvas-command-coverage.json)

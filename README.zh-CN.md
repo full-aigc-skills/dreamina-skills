@@ -16,7 +16,7 @@
 
 ## 📖 简介
 
-**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **41 个技能**：17 个 Design/历史兼容技能、10 个 Canvas 技能（9 个 CLI 原子入口 + 1 个编排入口）、6 个 Dreamina 3D 编排技能。
+**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **41 个技能**：17 个 Design/历史兼容技能、10 个 Canvas 技能（9 个 CLI 原子入口 + 1 个编排入口）、6 个 Dreamina 3D 编排技能和 8 个短剧 CLI 技能。
 
 官方命令归属由
 [`dreamina-canvas-command-coverage.json`](verification/dreamina-canvas-command-coverage.json)
