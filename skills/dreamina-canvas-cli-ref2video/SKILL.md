@@ -45,6 +45,7 @@ dreamina-canvas --format json node create video --project-id <projectId> \
 - 需要逐 flag 的必填/取值/冲突规则时，读取 [参数规范](references/parameter-reference.md)。
 - 需要从当前 discovery 结果选模型、比例、分辨率或时长时，读取 [模型或音色选择](references/model-guide.md)。
 - 需要批量、异步、多项目、迭代等成段工作流时，读取 [常用场景组合](references/workflow-patterns.md)。
+- 需要样片转正、视频超清或补帧时，读取 [视频后处理与样片](references/video-postprocessing.md)。
 - 遇到超时、部分成功或恢复场景时，读取 [异常处理](references/error-recovery.md)。
 - 交付前自检时，读取 [验收清单](references/validation-checklist.md)。
 - 首次运行看 [成功场景](examples/happy-path.md)；批量/异步/多项目/拒绝越权/失败恢复样例见 `examples/` 目录。

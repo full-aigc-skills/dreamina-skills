@@ -26,12 +26,11 @@ Reference detail is in
 ## Select commands from the live schema
 
 Run `version` and `schema` before building discovery argv. The inspected
-domestic public binary (refreshed against 1.0.3, commit `244064d`) declares
-`model list` and `model find <name...>`;
+domestic public 1.3.0 binary declares `model list` and `model find <name...>`;
 `model list` returns per-mode flags, enums, bounds, and reference requirements.
 Use `model search --detail full` only if another installed release declares it.
 
-Never send an optional flag merely because a guide mentions it. Public 1.0.3
+Never send an optional flag merely because a guide mentions it. Public 1.3.0
 accepts `--offset`, `--count`, and the optional `--model <canonical-model>`
 for `voice list` (omit `--model` to page the whole local catalog; keep the
 same model while paging); pass any further flag (e.g. a language filter)
@@ -40,7 +39,7 @@ only when the live schema declares it.
 ## Discovery commands
 
 ```bash
-# Current public 1.0.3 shape
+# Inspected public 1.3.0 shape; confirm against the installed CLI
 dreamina-canvas --format json model list --type image
 dreamina-canvas --format json model list --type video
 dreamina-canvas --format json model list --type audio
@@ -96,9 +95,9 @@ For audio:
 The discovery payload is per environment (`distribution` × `edition` ×
 profile). A model name valid in one environment is not portable to another.
 
-- Re-run `model search --type image --detail full` whenever the active
-  profile or environment changes (`dreamina-canvas version` reports
-  `distribution` and `edition`; trust them).
+- Re-run the schema-declared model discovery whenever the active profile,
+  environment or personal/team space changes (`dreamina-canvas version`
+  reports `distribution` and `edition`; `space current` reports the space).
 - Re-run discovery after any CLI upgrade that bumps `commit`/`buildTime`.
 
 ## What this operation will not do

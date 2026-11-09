@@ -54,6 +54,8 @@ All handoffs stay inside this package; install any missing skill with
 | `auth refresh` | 刷新登录凭据 | 凭据需要续期时（仅在 refresh window 内） |
 | `auth logout` | 退出登录 | 清除当前 profile 本地登录态 |
 
+在 1.2.0 及之后的账户查询中，按实时 `auth account` 返回值检查会员档位有效期、积分余额与到期明细；团队创作前还需用 `space current` 确认空间。余额只用于预检，不能替代单次操作的实时报价与批准。
+
 Agent 环境要点（细节见 [认证状态规范](references/auth-state.md)）：
 
 - 非交互登录返回 device code 后**不要原地轮询 login**；把授权入口

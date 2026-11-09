@@ -71,6 +71,8 @@ npx skills add full-aigc-skills/dreamina-skills
 
 旧的五个 `dreamina-cli*` 技能冻结，仅服务明确的旧版请求。辅助技能迁移表见 [Canvas 迁移说明](docs/canvas-atomic-migration.md)。消费者更新前需检查固定路径，当前本地整理不代表已发布或真实生成验收。
 
+Canvas CLI 1.3.0 的工作流批量生成、模板复用，以及此前版本的团队空间、样片转正、导演台和后处理，按 [新版能力与版本边界](skills/dreamina-canvas-cli/references/new-capabilities.md) 和当前已安装 CLI 的 `schema` 使用。技能内容更新不代表远端生成已经验收。
+
 ## 🤖 支持的智能体
 
 适用于 [Claude Code](https://code.claude.com)、[Codex](https://developers.openai.com/codex)、[Cursor](https://cursor.com)、[OpenCode](https://opencode.ai)、[Gemini CLI](https://geminicli.com)、[GitHub Copilot](https://github.com/features/copilot)、[Windsurf](https://codeium.com/windsurf) 及 [70+ 其他](https://agentskills.io/clients)。
