@@ -20,6 +20,13 @@ CANVAS_COMMANDS = {
     "node delete", "node delete confirm", "node delete status",
     "operation status", "operation wait",
     "resource get", "resource download", "resource upload",
+    "team ls", "space use", "space current", "node promote video-sample",
+    "node cutout image", "node upscale video", "node interpolate video",
+    "director",
+    "workflow capabilities", "workflow quote", "workflow confirm", "workflow run",
+    "workflow get", "workflow wait", "workflow list", "workflow cancel",
+    "workflow template list", "workflow template get", "workflow template instantiate",
+    "workflow template instantiation",
 }
 
 CLI_COMMANDS = {

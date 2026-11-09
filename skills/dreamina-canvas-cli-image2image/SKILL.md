@@ -48,7 +48,7 @@ dreamina-canvas --format json node create image --project-id <projectId> \
 - 遇到超时、部分成功或恢复场景时，读取 [异常处理](references/error-recovery.md)。
 - 交付前自检时，读取 [验收清单](references/validation-checklist.md)。
 - 首次运行看 [成功场景](examples/happy-path.md)；批量/异步/多项目/拒绝越权/失败恢复样例见 `examples/` 目录。
-- 需要高清放大（独立定价、独立批准）时，读取 [图片放大](references/upscale.md)。
+- 需要高清放大（独立定价、独立批准）时，读取 [图片放大](references/upscale.md)。需要图片抠图时，先按名称加载 `dreamina-canvas-cli`（缺失时安装：`npx skills add full-aigc-skills/dreamina-skills --skill dreamina-canvas-cli`）的新版能力参考，并以当前 schema 核实 `node cutout image`。
 
 ## Validation checklist
 - [ ] 输入与 i2i 模式一致，参数经过实时发现。
