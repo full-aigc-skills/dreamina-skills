@@ -50,6 +50,8 @@ classic CLI, OpenCLI, and Prompt Skills are packaged by
 
 旧的五个 `dreamina-cli*` 技能冻结，仅服务明确的旧版请求。辅助技能迁移表见 [Canvas 迁移说明](docs/canvas-atomic-migration.md)。消费者更新前需检查固定路径，当前本地整理不代表已发布或真实生成验收。
 
+Canvas CLI 1.3.0 adds workflow batches and template reuse. Team spaces, sample promotion, director operations, and post-processing are covered in the [versioned capability guide](skills/dreamina-canvas-cli/references/new-capabilities.md); always confirm against the installed CLI schema.
+
 ## 📦 Install
 
 ```bash

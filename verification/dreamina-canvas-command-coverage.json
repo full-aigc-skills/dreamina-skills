@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "source": "Dreamina Canvas first-use guide supplied 2026-09-28 plus prior CLI contracts; live schema is runtime authority",
+  "source": "Dreamina Canvas first-use guide supplied 2026-09-28 and updated guide supplied 2026-11-09; new command names checked against local public cn 1.3.0/c6a5530a schema; live schema remains runtime authority",
   "commands": [
     {
       "id": "auth account",
@@ -211,6 +211,121 @@
       "id": "voice list",
       "ownerSkill": "dreamina-canvas-cli",
       "evidenceToken": "voice list"
+    },
+    {
+      "id": "team ls",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "team ls"
+    },
+    {
+      "id": "space use",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "space use"
+    },
+    {
+      "id": "space current",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "space current"
+    },
+    {
+      "id": "node promote video-sample",
+      "ownerSkill": "dreamina-canvas-cli-ref2video",
+      "evidenceToken": "node promote video-sample"
+    },
+    {
+      "id": "node cutout image",
+      "ownerSkill": "dreamina-canvas-cli-image2image",
+      "evidenceToken": "node cutout image"
+    },
+    {
+      "id": "node upscale video",
+      "ownerSkill": "dreamina-canvas-cli-ref2video",
+      "evidenceToken": "node upscale video"
+    },
+    {
+      "id": "node interpolate video",
+      "ownerSkill": "dreamina-canvas-cli-ref2video",
+      "evidenceToken": "node interpolate video"
+    },
+    {
+      "id": "node delete",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete"
+    },
+    {
+      "id": "node delete confirm",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete confirm"
+    },
+    {
+      "id": "node delete status",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "node delete status"
+    },
+    {
+      "id": "director",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "director"
+    },
+    {
+      "id": "workflow capabilities",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow capabilities"
+    },
+    {
+      "id": "workflow quote",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow quote"
+    },
+    {
+      "id": "workflow confirm",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow confirm"
+    },
+    {
+      "id": "workflow run",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow run"
+    },
+    {
+      "id": "workflow get",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow get"
+    },
+    {
+      "id": "workflow wait",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow wait"
+    },
+    {
+      "id": "workflow list",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow list"
+    },
+    {
+      "id": "workflow cancel",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow cancel"
+    },
+    {
+      "id": "workflow template list",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow template list"
+    },
+    {
+      "id": "workflow template get",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow template get"
+    },
+    {
+      "id": "workflow template instantiate",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow template instantiate"
+    },
+    {
+      "id": "workflow template instantiation",
+      "ownerSkill": "dreamina-canvas-cli",
+      "evidenceToken": "workflow template instantiation"
     }
   ],
   "modeOwners": {

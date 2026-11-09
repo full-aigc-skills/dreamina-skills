@@ -1,6 +1,6 @@
 ---
 name: dreamina-canvas-cli
-description: 当需要调用即梦画布 dreamina-canvas 的公共操作时使用，包括模型音色发现、画布与素材管理、节点编辑、时间轴、报价确认运行、状态恢复和下载校验；具体生成模式、安装和登录分别交给对应 CLI 技能。
+description: 当需要调用即梦画布 dreamina-canvas 的公共操作时使用，包括空间与画布、素材、导演台、节点编辑、后处理、工作流发现、报价运行和恢复；具体生成模式、安装和登录分别交给对应 CLI 技能。
 license: Complete terms in LICENSE
 ---
 
@@ -77,6 +77,7 @@ license: Complete terms in LICENSE
 - 需要产物字节数与 SHA-256 验证细则时，读取 [resources-artifact-verification](references/resources-artifact-verification.md)。
 - 需要 resource upload 标志位与幂等细节时，读取 [resources-resource-upload](references/resources-resource-upload.md)。
 - 需要时间轴轨道与剪辑参数完整契约时，读取 [timeline-timeline-contract](references/timeline-timeline-contract.md)。
+- 需要团队空间、节点删除/位置、导演台、样片、后处理或 1.3.0 工作流与模板能力时，读取 [新版能力与版本边界](references/new-capabilities.md)。
 - 交付前逐项核对时，读取 [validation-checklist](references/validation-checklist.md)。
 - 需要 video 节点模式与引用机制的完整契约时，读取 [video-node-video-node-contract](references/video-node-video-node-contract.md)。
 - 需要本技能级工作流契约（状态、交接、授权）时，读取 [workflow-contract](references/workflow-contract.md)。

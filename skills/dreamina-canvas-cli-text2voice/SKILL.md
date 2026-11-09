@@ -40,6 +40,7 @@ dreamina-canvas --format json node create audio --project-id <projectId> \
 ## Progressive disclosure（按需读取）
 
 - 需要逐 flag 的必填/取值/冲突规则时，读取 [参数规范](references/parameter-reference.md)。
+- 需要 Seed Audio 1.0 的参考素材配音时，先检查当前 `node create audio` schema 与模型/音色能力；`--ref` 和音色是不同输入，不把普通 tts 示例直接套用到参考配音。
 - 需要从当前 discovery 结果选模型、比例、分辨率或时长时，读取 [模型或音色选择](references/model-guide.md)。
 - 需要批量、异步、多项目、迭代等成段工作流时，读取 [常用场景组合](references/workflow-patterns.md)。
 - 遇到超时、部分成功或恢复场景时，读取 [异常处理](references/error-recovery.md)。

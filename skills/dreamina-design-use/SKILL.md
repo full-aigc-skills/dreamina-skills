@@ -21,6 +21,9 @@ license: Complete terms in LICENSE
 | 语音旁白 | dreamina-canvas-cli-text2voice |
 | 背景音乐 | dreamina-canvas-cli-text2audio |
 | 画布、素材、时间轴、报价、查询、下载 | dreamina-canvas-cli |
+| 个人/团队空间、导演台、节点删除/位置、工作流模板 | dreamina-canvas-cli（先核对当前版本与 schema） |
+| 样片转正、视频超清、补帧 | dreamina-canvas-cli-ref2video |
+| 图片抠图 | dreamina-canvas-cli-image2image |
 | 参考视频到完整成片 | dreamina-video-production |
 
 ### Step 1：记录用户意图、输入、交付要求与已存在的身份。
