@@ -4,7 +4,7 @@
 Asserts:
 - 10 dreamina-canvas-* Skill directories exist.
 - The 13 classic Dreamina skills and later orchestration entries exist.
-- Total Skill count is 33.
+- Total Skill count is 41.
 - Every Skill directory contains a SKILL.md with a `name:` frontmatter
   matching the directory name.
 - Every Canvas Skill has an agents/openai.yaml with a
@@ -74,7 +74,9 @@ ORCHESTRATION_AND_SETUP_SKILLS = {
     "dreamina-video-production",
 }
 
-EXPECTED_ALL = CANVAS_SKILLS | EXISTING_DREAMINA_SKILLS | ORCHESTRATION_AND_SETUP_SKILLS
+NOVEL_SKILLS = {'dreamina-novel-cli-script', 'dreamina-novel-cli-storyboard', 'dreamina-novel-use', 'dreamina-novel-cli', 'dreamina-novel-cli-post', 'dreamina-novel-cli-setup', 'dreamina-novel-cli-assets', 'dreamina-novel-cli-production'}
+
+EXPECTED_ALL = CANVAS_SKILLS | EXISTING_DREAMINA_SKILLS | ORCHESTRATION_AND_SETUP_SKILLS | NOVEL_SKILLS
 
 SECRET_PATTERNS = [
     "access_token",
@@ -178,6 +180,8 @@ def main() -> None:
                         "forbids",
                         "echo or log",
                         "must not",
+                        "不写入",
+                        "| mints |",
                     )
                     for idx in lines_with_pattern:
                         window = "\n".join(

@@ -51,6 +51,11 @@ EXPECTED_ORCHESTRATION = {
 }
 
 EXPECTED_SETUP = set()
+EXPECTED_NOVEL = {
+    "dreamina-novel-cli", "dreamina-novel-cli-setup", "dreamina-novel-cli-script",
+    "dreamina-novel-cli-assets", "dreamina-novel-cli-storyboard",
+    "dreamina-novel-cli-production", "dreamina-novel-cli-post", "dreamina-novel-use",
+}
 
 
 def implicit_invocation_policy(name: str) -> bool:
@@ -62,10 +67,10 @@ def implicit_invocation_policy(name: str) -> bool:
 
 
 class CanvasSuiteValidationTests(unittest.TestCase):
-    def test_skill_count_is_33(self) -> None:
+    def test_skill_count_is_41(self) -> None:
         actual = {p.name for p in SKILLS.iterdir() if p.is_dir()}
-        self.assertEqual(len(actual), 33)
-        self.assertEqual(actual, EXPECTED_CANVAS | EXPECTED_EXISTING | EXPECTED_ORCHESTRATION | EXPECTED_SETUP)
+        self.assertEqual(len(actual), 41)
+        self.assertEqual(actual, EXPECTED_CANVAS | EXPECTED_EXISTING | EXPECTED_ORCHESTRATION | EXPECTED_SETUP | EXPECTED_NOVEL)
 
     def test_implicit_invocation_is_only_use(self) -> None:
         for name in EXPECTED_CANVAS:

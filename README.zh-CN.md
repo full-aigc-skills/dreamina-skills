@@ -16,13 +16,28 @@
 
 ## 📖 简介
 
-**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **33 个技能**：17 个 Design/历史兼容技能、10 个 Canvas 技能（9 个 CLI 原子入口 + 1 个编排入口）、6 个 Dreamina 3D 编排技能。
+**dreamina-skills** 是一组 AI 编码智能体技能，属于 [Full AIGC Skills](https://github.com/full-aigc-skills) 生态。包含 **41 个技能**：17 个 Design/历史兼容技能、10 个 Canvas 技能（9 个 CLI 原子入口 + 1 个编排入口）、6 个 Dreamina 3D 编排技能。
 
 官方命令归属由
 [`dreamina-canvas-command-coverage.json`](verification/dreamina-canvas-command-coverage.json)
 和 [`dreamina-cli-command-coverage.json`](verification/dreamina-cli-command-coverage.json)
 持续校验。Canvas Skill 由 `full-aigc-plugins/dreamina-canvas-plugin` 打包；传统
 CLI、OpenCLI 与 Prompt Skill 由 `full-aigc-plugins/dreamina-design-plugin` 打包。
+
+## 即梦短剧创作 CLI（jimeng-novel）
+
+8 个独立技能覆盖安装验证、剧本、角色与场景资产、分镜画布、样片与批量生成、审片合成，以及全链路路由。CLI 1.0.1 已核对；运行时命令、模型和费用以本机 `jimeng-novel --help`、`schema get`、`model list`、`credit estimate` 为准。
+
+| 技能 | 用途 |
+|---|---|
+| `dreamina-novel-cli` | 画布、身份、报价与恢复 |
+| `dreamina-novel-cli-setup` | 安装、登录与可用性 |
+| `dreamina-novel-cli-script` | 故事、大纲、剧本与诊断 |
+| `dreamina-novel-cli-assets` | 角色、场景与参考素材 |
+| `dreamina-novel-cli-storyboard` | 分镜和画布结构 |
+| `dreamina-novel-cli-production` | 样片、批量生成与返修 |
+| `dreamina-novel-cli-post` | 抽帧、字幕与成片 |
+| `dreamina-novel-use` | 短剧全链路路由 |
 
 ## 📦 安装
 
